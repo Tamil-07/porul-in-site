@@ -1,0 +1,86 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  { href: "/stories/", label: "Stories" },
+  { href: "/intelligence/", label: "Intelligence" },
+  { href: "/the-room/", label: "The Room" },
+  { href: "/about/", label: "About" },
+  { href: "/rss.xml", label: "RSS" }
+];
+---
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <a class="footer__brand" href="/" aria-label="Porul.in home">Porul<span>.</span>in</a>
+      <p>An independent publication covering Tamil Nadu precision engineering.</p>
+    </div>
+    <nav class="footer__links" aria-label="Footer navigation">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a href="mailto:hello@porul.in">hello@porul.in</a>
+      <a href="https://www.linkedin.com/company/porul-in/" rel="me noopener noreferrer">LinkedIn</a>
+    </nav>
+    <p class="footer__fine">© {year} Porul.in. Built as a static site so the domain is the only recurring bill.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0 56px;
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) auto;
+    gap: 28px;
+  }
+
+  .footer__brand {
+    display: inline-flex;
+    margin-bottom: 10px;
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .footer__brand span {
+    color: var(--spark);
+  }
+
+  .footer p {
+    max-width: 46ch;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+
+  .footer__links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  .footer__links a:hover {
+    color: var(--ink);
+  }
+
+  .footer__fine {
+    grid-column: 1 / -1;
+    padding-top: 6px;
+  }
+
+  @media (max-width: 760px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__links {
+      justify-content: flex-start;
+    }
+  }
+</style>

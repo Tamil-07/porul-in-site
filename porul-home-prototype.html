@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Porul.in — Tamil Nadu precision engineering</title>
+<!--
+  PORUL.IN — Home page design prototype.
+  Purpose: a real, rendered page so the founder can SEE and APPROVE the look
+  (typography, the calibration copper rule, colour, editorial tone) before we
+  build the actual Astro site against it.
+  Content here is SAMPLE/representative for design purposes only — no invented
+  metrics, in keeping with the authenticity rule.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&family=Noto+Serif+Tamil:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN TOKENS — the single source of how the site looks.
+     ============================================================ */
+  :root{
+    --paper:        #F4F0E8;   /* warm technical paper */
+    --paper-2:      #EDE8DC;   /* slightly deeper panel */
+    --ink:          #1C1814;   /* warm near-black */
+    --ink-muted:    #6E6456;   /* captions / metadata */
+    --copper:       #A65E37;   /* THE signature accent — copper */
+    --copper-deep:  #7E4526;   /* hover / depth */
+    --line:         #D5CDBE;   /* hairline rules */
+
+    --serif: "DM Serif Display", Georgia, serif;
+    --sans:  "DM Sans", system-ui, sans-serif;
+    --mono:  "DM Mono", ui-monospace, monospace;
+    --tamil: "Noto Serif Tamil", serif;
+
+    --maxw: 1120px;
+    --gutter: clamp(20px, 5vw, 64px);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    /* faint engineering graph-paper atmosphere */
+    background-image:
+      linear-gradient(to right, rgba(28,24,20,0.022) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(28,24,20,0.022) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); }
+
+  /* ---- THE SIGNATURE: the calibration rule -------------------
+     A copper baseline read like a steel ruler / caliper scale:
+     minor ticks every 13px, major ticks every 65px. ---------- */
+  .calibration{
+    height:13px; position:relative; width:100%;
+  }
+  .calibration::before{  /* baseline */
+    content:""; position:absolute; left:0; right:0; top:0;
+    height:1.5px; background:var(--copper);
+  }
+  .calibration::after{   /* ticks hanging from the baseline */
+    content:""; position:absolute; left:0; right:0; top:0; height:9px;
+    background-image:
+      repeating-linear-gradient(90deg, var(--copper) 0 1px, transparent 1px 65px),          /* major */
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--copper) 55%, transparent) 0 1px, transparent 1px 13px); /* minor */
+    -webkit-mask-image:
+      repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 65px),
+      linear-gradient(180deg,#000 0 5px, transparent 5px);
+    mask-image:
+      repeating-linear-gradient(90deg, #000 0 1px, transparent 1px 65px),
+      linear-gradient(180deg,#000 0 5px, transparent 5px);
+    /* simpler robust fallback below overrides the mask trick for minor ticks */
+  }
+  /* robust two-layer ticks (no mask dependency) */
+  .calibration .minor, .calibration .major{ position:absolute; left:0; right:0; top:1.5px; }
+  .calibration .minor{
+    height:5px;
+    background-image: repeating-linear-gradient(90deg,
+      color-mix(in srgb, var(--copper) 50%, transparent) 0 1px, transparent 1px 13px);
+  }
+  .calibration .major{
+    height:9px;
+    background-image: repeating-linear-gradient(90deg,
+      var(--copper) 0 1px, transparent 1px 65px);
+  }
+
+  /* ---- Masthead ---------------------------------------------- */
+  header.masthead{ padding-top:22px; }
+  .masthead-row{
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:24px; flex-wrap:wrap; padding-bottom:16px;
+  }
+  .brand{ display:flex; align-items:baseline; gap:12px; }
+  .brand .word{ font-family:var(--serif); font-size:30px; letter-spacing:.2px; }
+  .brand .word .dot{ color:var(--copper); }
+  .brand .tamil{ font-family:var(--tamil); font-size:22px; color:var(--ink-muted); }
+  nav.main{ display:flex; gap:26px; font-family:var(--mono); font-size:12.5px;
+    letter-spacing:.06em; text-transform:uppercase; }
+  nav.main a{ position:relative; padding-bottom:3px; color:var(--ink); }
+  nav.main a::after{ content:""; position:absolute; left:0; right:100%; bottom:0;
+    height:1.5px; background:var(--copper); transition:right .25s ease; }
+  nav.main a:hover::after, nav.main a:focus-visible::after{ right:0; }
+
+  /* ---- Hero -------------------------------------------------- */
+  .hero{ padding:74px 0 70px; max-width:880px; }
+  .eyebrow{ font-family:var(--mono); font-size:12.5px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--copper); margin:0 0 22px; }
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(38px, 6vw, 64px); line-height:1.04;
+    letter-spacing:-.5px; margin:0 0 26px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--copper-deep); }
+  .hero .sub{ font-size:clamp(17px,2.3vw,20px); max-width:620px; color:#2c261f; margin:0; }
+  .hero .stance{ font-family:var(--mono); font-size:13px; color:var(--ink-muted);
+    margin-top:26px; letter-spacing:.02em; }
+
+  /* ---- Section scaffolding ----------------------------------- */
+  .section{ padding:14px 0 8px; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin:0 0 26px; }
+  .section-head .kicker{ font-family:var(--mono); font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink-muted); }
+  .section-head .line{ flex:1; height:1px; background:var(--line); transform:translateY(-3px); }
+
+  /* ---- Editorial cards --------------------------------------- */
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .card{ background:var(--paper); padding:30px 30px 34px; transition:background .2s ease; }
+  .card:hover{ background:var(--paper-2); }
+  .card .meta{ font-family:var(--mono); font-size:11.5px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--copper); margin-bottom:14px;
+    display:flex; gap:10px; align-items:center; }
+  .card .meta .sep{ width:14px; height:1px; background:var(--line); }
+  .card .meta .muted{ color:var(--ink-muted); }
+  .card h3{ font-family:var(--serif); font-weight:400; font-size:25px; line-height:1.18;
+    letter-spacing:-.2px; margin:0 0 12px; }
+  .card p{ margin:0; font-size:15.5px; color:#39322a; }
+  .card .more{ display:inline-block; margin-top:18px; font-family:var(--mono);
+    font-size:12.5px; color:var(--copper); border-bottom:1.5px solid transparent; padding-bottom:2px; }
+  .card:hover .more{ border-color:var(--copper); }
+
+  /* ---- The Room ---------------------------------------------- */
+  .room{ margin-top:66px; background:var(--ink); color:var(--paper);
+    border-radius:2px; padding:clamp(34px,5vw,58px); position:relative; overflow:hidden; }
+  .room::before{ content:""; position:absolute; left:0; right:0; top:0; height:9px;
+    background-image: repeating-linear-gradient(90deg, var(--copper) 0 1px, transparent 1px 65px); }
+  .room .kicker{ font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--copper); margin:8px 0 18px; }
+  .room h2{ font-family:var(--serif); font-weight:400; font-size:clamp(28px,4vw,40px);
+    line-height:1.1; margin:0 0 18px; max-width:18ch; }
+  .room p{ max-width:54ch; color:#D9D1C2; margin:0 0 28px; font-size:16.5px; }
+  .cta{ display:inline-flex; align-items:center; gap:10px; font-family:var(--mono);
+    font-size:13.5px; letter-spacing:.04em; background:var(--copper); color:#fff;
+    padding:14px 22px; border-radius:2px; transition:background .2s ease; }
+  .cta:hover, .cta:focus-visible{ background:var(--copper-deep); }
+  .cta .arrow{ transition:transform .2s ease; }
+  .cta:hover .arrow{ transform:translateX(4px); }
+  .room .boundary{ margin-top:26px; padding-top:22px; border-top:1px solid rgba(255,255,255,.14);
+    font-family:var(--mono); font-size:12.5px; color:#A89C88; max-width:60ch; line-height:1.7; }
+
+  /* ---- Footer ------------------------------------------------ */
+  footer{ margin-top:70px; padding-bottom:48px; }
+  .foot-row{ display:flex; justify-content:space-between; align-items:baseline;
+    gap:20px; flex-wrap:wrap; padding-top:18px; }
+  .foot-brand{ font-family:var(--serif); font-size:22px; }
+  .foot-brand .dot{ color:var(--copper); }
+  .foot-links{ display:flex; gap:22px; font-family:var(--mono); font-size:12px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--ink-muted); }
+  .foot-links a:hover{ color:var(--copper); }
+  .foot-note{ font-family:var(--mono); font-size:11.5px; color:var(--ink-muted);
+    margin-top:18px; max-width:60ch; line-height:1.7; }
+
+  /* ---- Load animation (restrained) --------------------------- */
+  @keyframes rise{ from{ opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+  .anim{ opacity:0; animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+  .d1{ animation-delay:.05s } .d2{ animation-delay:.15s } .d3{ animation-delay:.25s } .d4{ animation-delay:.35s }
+  @media (prefers-reduced-motion: reduce){ .anim{ animation:none; opacity:1; } }
+
+  /* ---- Focus visibility -------------------------------------- */
+  a:focus-visible, .cta:focus-visible{ outline:2px solid var(--copper); outline-offset:3px; border-radius:1px; }
+
+  /* ---- Responsive -------------------------------------------- */
+  @media (max-width:720px){
+    nav.main{ gap:16px; font-size:11px; }
+    .grid{ grid-template-columns:1fr; }
+    .hero{ padding:54px 0 50px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-row">
+      <div class="brand">
+        <span class="word">Porul<span class="dot">.</span>in</span>
+        <span class="tamil">பொருள்</span>
+      </div>
+      <nav class="main" aria-label="Primary">
+        <a href="#">Stories</a>
+        <a href="#">Intelligence</a>
+        <a href="#">The Room</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+      </nav>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="calibration" aria-hidden="true"><span class="minor"></span><span class="major"></span></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow anim d1">Tamil Nadu · CNC &amp; Precision Engineering</p>
+    <h1 class="anim d2">The shops that machine Tamil Nadu — and the people who <em>source from them</em>.</h1>
+    <p class="sub anim d3">Porul.in tells the stories of the state's precision engineering shops and reads the signals the industry runs on. Not a directory. Not daily noise. A room worth being in.</p>
+    <p class="stance anim d4">— Stories of the makers. Intelligence for the buyers. One narrow industry, taken seriously.</p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <span class="kicker">Latest stories</span>
+      <span class="line"></span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="meta"><span>Company story</span><span class="sep"></span><span class="muted">Coimbatore · 7 min</span></div>
+        <h3>How a Coimbatore turning shop earned a German buyer's trust — and kept it for nine years.</h3>
+        <p>Precision was the easy part. The harder discipline was everything that happened after the first order shipped.</p>
+        <span class="more">Read the story →</span>
+      </article>
+      <article class="card">
+        <div class="meta"><span>Company story</span><span class="sep"></span><span class="muted">Hosur · 6 min</span></div>
+        <h3>The Hosur supplier that bought a 5-axis machine before the EV orders arrived.</h3>
+        <p>A bet on capability ahead of demand. Why it paid off, and what it cost while the floor sat waiting.</p>
+        <span class="more">Read the story →</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" style="margin-top:54px;">
+    <div class="section-head">
+      <span class="kicker">Intelligence &amp; the digest</span>
+      <span class="line"></span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="meta"><span>Sector intelligence</span><span class="sep"></span><span class="muted">Materials · 5 min</span></div>
+        <h3>Why SS316 lead times in Coimbatore quietly stretched this quarter.</h3>
+        <p>What's behind the delay, who it hits first, and what serious buyers are doing about their schedules.</p>
+        <span class="more">Read the analysis →</span>
+      </article>
+      <article class="card">
+        <div class="meta"><span>Porul digest</span><span class="sep"></span><span class="muted">Weekly signal</span></div>
+        <h3>What the room watched this week.</h3>
+        <p>The patterns worth noticing from the network — demand shifts, material notes, capacity signals. The signal, never the names.</p>
+        <span class="more">Read the digest →</span>
+      </article>
+    </div>
+
+    <div class="room">
+      <p class="kicker">The Room</p>
+      <h2>A small, curated network — kept dense, not large.</h2>
+      <p>Porul.in runs a reviewed network of procurement people and serious shops in Tamil Nadu precision engineering. We care about who is in the room, not how many. Entry is by request, and every request is read.</p>
+      <a class="cta" href="#">Request entry <span class="arrow">→</span></a>
+      <p class="boundary">Porul.in is a room for information and relationships — not sourcing or matchmaking. We tell, explain, and convene. We don't quote, match, or fulfil.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="calibration" aria-hidden="true"><span class="minor"></span><span class="major"></span></div>
+    <div class="foot-row">
+      <div class="foot-brand">Porul<span class="dot">.</span>in</div>
+      <div class="foot-links">
+        <a href="#">Stories</a>
+        <a href="#">Intelligence</a>
+        <a href="#">The Room</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+      </div>
+    </div>
+    <p class="foot-note">Tamil Nadu precision engineering — the stories and the signals. An independent publication.</p>
+  </div>
+</footer>
+
+</body>
+</html>

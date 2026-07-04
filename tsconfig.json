@@ -1,0 +1,11 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    // The alias keeps imports stable as the site gains collections and pages in
+    // later approved stages, without introducing a framework-specific runtime.
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}

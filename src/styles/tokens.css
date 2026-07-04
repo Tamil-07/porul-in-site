@@ -1,0 +1,19 @@
+:root {
+  --paper: #F7F6F2; /* warm off-white surface from the approved v3 system */
+  --paper-2: #FFFFFF;
+  --ink: #111114; /* near-black keeps the industrial tone without pure black glare */
+  --ink-2: #16161A;
+  --muted: #5F6068; /* tuned darker than the prototype so body-adjacent text clears contrast */
+  --line: #E4E2DA; /* hairlines preserve the machined, quiet editorial feel */
+  --spark: #F0420D; /* molten accent, used sparingly as the brand signal */
+  --spark-2: #FF5A24;
+  --glow: rgba(240, 66, 13, 0.18);
+  --cham: 20px; /* signature 45-degree machined corner shared across components */
+
+  --display: "Clash Display", sans-serif;
+  --body: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tamil: "Noto Sans Tamil", "Satoshi", system-ui, sans-serif;
+
+  --maxw: 1240px;
+  --gut: clamp(20px, 5vw, 56px);
+}

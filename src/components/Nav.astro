@@ -1,0 +1,120 @@
+---
+const links = [
+  { href: "/stories/", label: "Stories" },
+  { href: "/intelligence/", label: "Intelligence" },
+  { href: "/the-room/", label: "The Room" },
+  { href: "/about/", label: "About" },
+  { href: "/ta/", label: "தமிழ்" }
+];
+---
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary navigation">
+    <a class="logo" href="/" aria-label="Porul.in home">
+      <span class="logo__word">Porul<span>.</span>in</span>
+      <span class="logo__tamil" lang="ta">பொருள்</span>
+    </a>
+    <div class="nav__links" aria-label="Primary sections">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+    <a class="nav__cta cham" href="/the-room/">Request entry <span aria-hidden="true">→</span></a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 246, 242, 0.84);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+    gap: 24px;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 11px;
+    min-width: max-content;
+  }
+
+  .logo__word {
+    font-family: var(--display);
+    font-size: 23px;
+    font-weight: 700;
+  }
+
+  .logo__word span {
+    color: var(--spark);
+  }
+
+  .logo__tamil {
+    color: var(--muted);
+    font-family: var(--tamil);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: var(--ink);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .nav__links a {
+    opacity: 0.82;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav__links a:hover {
+    opacity: 1;
+  }
+
+  .nav__cta {
+    --cham: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-width: max-content;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 14px;
+    font-weight: 700;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav__cta:hover {
+    background: var(--spark);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 860px) {
+    .nav__links {
+      display: none;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .logo__tamil {
+      display: none;
+    }
+
+    .nav__cta {
+      padding-inline: 15px;
+    }
+  }
+</style>

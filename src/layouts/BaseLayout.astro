@@ -1,0 +1,33 @@
+---
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+
+const {
+  title = "Porul.in — Tamil Nadu precision engineering",
+  description = "An independent publication covering Tamil Nadu precision engineering."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <!-- The display weights are preloaded because the v3 identity depends on
+      them for the first viewport; all font files are local to avoid runtime
+      CDN dependencies and preserve the zero-recurring-cost rule. -->
+    <link rel="preload" href="/fonts/clash-display-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/clash-display-700.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
