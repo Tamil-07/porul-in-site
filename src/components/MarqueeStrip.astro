@@ -1,0 +1,87 @@
+---
+const items = [
+  "Coimbatore",
+  "Tiruppur",
+  "Hosur",
+  "Erode",
+  "Tiruchirappalli",
+  "CNC Turning",
+  "5-Axis Milling",
+  "Tooling",
+  "Precision Grinding",
+  "Job Work"
+];
+---
+
+<section class="strip" aria-label="Tamil Nadu precision engineering places and processes">
+  <div class="strip__track">
+    <ul class="strip__list">
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+    <ul class="strip__list" aria-hidden="true">
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .strip {
+    margin-top: clamp(48px, 7vw, 84px);
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .strip__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 26s linear infinite;
+  }
+
+  .strip:hover .strip__track {
+    animation-play-state: paused;
+  }
+
+  .strip__list {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+
+  .strip__list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    padding: 16px 30px;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    opacity: 0.62;
+  }
+
+  .strip__list li::after {
+    content: "◆";
+    color: var(--spark);
+    font-size: 8px;
+    opacity: 0.8;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .strip__track {
+      transform: none;
+      animation: none;
+    }
+  }
+</style>

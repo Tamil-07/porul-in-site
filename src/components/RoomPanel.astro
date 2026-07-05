@@ -1,0 +1,149 @@
+<section class="room-section">
+  <div class="wrap">
+    <div class="room cham">
+      <div class="room__grid" aria-hidden="true"></div>
+      <div class="room__inner">
+        <p class="room__kicker">The Room — reviewed entry</p>
+        <h2>Kept dense.<br />Not large.</h2>
+        <p>
+          A reviewed network of procurement people and serious shops in Tamil Nadu precision engineering. We care about who is in the room, not how many. Entry is by request, and every request is read.
+        </p>
+        <a class="room__cta cham" href="/the-room/">Request entry <span aria-hidden="true">→</span></a>
+        <p class="room__note"><strong>The boundary.</strong> Porul.in is a room for information and relationships — not sourcing or matchmaking. We tell, explain, and convene. We don't quote, match, or fulfil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .room-section {
+    margin-top: clamp(64px, 9vw, 110px);
+  }
+
+  .room {
+    --cham: 34px;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(40px, 6vw, 80px);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .room::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50% 60% at 85% 15%, rgba(240, 66, 13, 0.28), transparent 60%);
+    opacity: 0.5;
+  }
+
+  .room__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(70% 70% at 80% 20%, #000, transparent);
+  }
+
+  .room__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+
+  .room__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    margin: 0 0 22px;
+    color: var(--spark-2);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .room__kicker::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--spark);
+    animation: pulse 2.4s infinite;
+  }
+
+  h2 {
+    margin: 0 0 20px;
+    font-family: var(--display);
+    font-size: clamp(28px, 4.4vw, 52px);
+    font-weight: 700;
+    line-height: 1.02;
+  }
+
+  p {
+    max-width: 52ch;
+    margin: 0 0 34px;
+    color: #C7C7CE;
+    font-size: clamp(15px, 1.6vw, 18px);
+  }
+
+  .room__cta {
+    --cham: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 16px 26px;
+    background: var(--spark);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .room__cta:hover {
+    background: var(--spark-2);
+    transform: translateY(-2px);
+  }
+
+  .room__cta span {
+    transition: transform 0.2s ease;
+  }
+
+  .room__cta:hover span {
+    transform: translateX(5px);
+  }
+
+  .room__note {
+    max-width: 60ch;
+    margin-top: 34px;
+    margin-bottom: 0;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    color: #9A9AA2;
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+
+  strong {
+    color: var(--paper);
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(240, 66, 13, 0.5);
+    }
+
+    70% {
+      box-shadow: 0 0 0 9px rgba(240, 66, 13, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(240, 66, 13, 0);
+    }
+  }
+</style>

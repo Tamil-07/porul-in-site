@@ -33,3 +33,27 @@ This file starts the running log required by the PRD. Each entry records the cho
 **Why:** The founder asked for Stage 1 only. Building hero, marquee, cards, and Room panel belongs to Stage 2 after approval.
 
 **Rejected alternative:** Porting visible v3 homepage sections now. That would cross the explicit stage gate in §10.
+
+## 2026-07-04 — Homepage Pulls Only Non-Draft Content
+
+**Decision:** The Stage 2 homepage reads `stories` and `intelligence` through Astro content collections, filters out `draft: true`, sorts by `publishDate`, and renders at most three cards.
+
+**Why:** The PRD forbids fake scale and dummy cards. Draft seed entries validate schemas without creating a public impression that Porul.in has published reporting before the founder supplies it.
+
+**Rejected alternative:** Hard-coding the v3 prototype's sample cards. Those were useful design references but would present invented stories as real editorial inventory.
+
+## 2026-07-04 — Honest Empty States
+
+**Decision:** Empty story and intelligence sections stay visible with plain editorial empty states instead of placeholder cards.
+
+**Why:** The homepage still needs the approved Stage 2 section rhythm, but R2 requires honesty when there is no publishable content.
+
+**Rejected alternative:** Hiding the sections entirely or showing dummy entries. Hiding would make the page feel structurally unfinished; dummy entries would violate the PRD.
+
+## 2026-07-04 — Marquee As A Duplicated List
+
+**Decision:** Rebuild the v3 marquee as two clean `<ul>` lists, with the duplicate marked `aria-hidden`.
+
+**Why:** The prototype had malformed nested `.item` spans. List markup is easier to maintain, accessible to assistive technology, and still gives the same continuous industrial strip.
+
+**Rejected alternative:** Copying the prototype markup directly. That would preserve a known bug from §5.4.

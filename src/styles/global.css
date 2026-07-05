@@ -76,43 +76,71 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-.shell {
-  padding: clamp(64px, 10vw, 128px) 0;
+.section {
+  padding: clamp(56px, 8vw, 96px) 0 0;
 }
 
-.shell__eyebrow {
+.button {
+  --cham: 13px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 24px;
-  color: var(--spark);
-  font-size: 13px;
+  gap: 9px;
+  padding: 12px 20px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.shell__eyebrow::before {
-  content: "";
-  width: 30px;
-  height: 2px;
+.button--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button--dark:hover {
   background: var(--spark);
+  transform: translateY(-1px);
 }
 
-.shell h1 {
-  max-width: 11ch;
-  margin: 0 0 24px;
-  font-family: var(--display);
-  font-size: clamp(44px, 8vw, 86px);
-  font-weight: 700;
-  line-height: 0.98;
+.button--ghost {
+  border: 1.5px solid var(--ink);
 }
 
-.shell p {
-  max-width: 56ch;
-  margin: 0;
-  color: #33333A;
-  font-size: clamp(17px, 1.6vw, 20px);
+.button--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button .arrow {
+  transition: transform 0.2s ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(4px);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.empty-state {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  color: #4A4A52;
+  padding: 22px;
+  font-size: 14px;
+  grid-column: 1 / -1;
+  --cham: 18px;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

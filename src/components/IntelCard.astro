@@ -1,0 +1,135 @@
+---
+interface Props {
+  title: string;
+  dek: string;
+  category: string;
+  readingMinutes: number;
+  slug: string;
+  sponsored?: boolean;
+}
+
+const { title, dek, category, readingMinutes, slug, sponsored = false } = Astro.props;
+const label = category === "digest" ? "Porul digest" : "Sector intel";
+---
+
+<article class="card cham">
+  <a href={`/intelligence/${slug}/`} aria-label={`Read the analysis: ${title}`}>
+    <div class="thumb">
+      <span class="pill cham">{sponsored ? "Sponsored profile" : label}</span>
+    </div>
+    <div class="body">
+      <p class="meta">{category} · {readingMinutes} min</p>
+      <h3>{title}</h3>
+      <p>{dek}</p>
+      <span class="read">Read the analysis <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .card {
+    --cham: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -22px rgba(17, 17, 20, 0.4);
+  }
+
+  a {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+
+  .thumb {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 72% 28%, rgba(240, 66, 13, 0.28), transparent 32%),
+      linear-gradient(150deg, #1d1e22, #2a2b30);
+  }
+
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(135deg, #000, transparent 78%);
+  }
+
+  .pill {
+    --cham: 8px;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    z-index: 2;
+    padding: 6px 11px;
+    background: var(--spark);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px 22px 24px;
+  }
+
+  .meta {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.16;
+  }
+
+  .body > p:not(.meta) {
+    margin: 0;
+    color: #4A4A52;
+    font-size: 14px;
+  }
+
+  .read {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 18px;
+    color: var(--spark);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .read span {
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover .read span {
+    transform: translateX(4px);
+  }
+</style>

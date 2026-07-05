@@ -1,0 +1,291 @@
+<section class="hero" aria-labelledby="home-title">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">Tamil Nadu · CNC &amp; Precision Engineering</p>
+        <h1 id="home-title" class="hero__title">
+          <span class="line"><span>The shops that</span></span>
+          <span class="line"><span><span class="mark">machine</span> Tamil&nbsp;Nadu</span></span>
+          <span class="line"><span class="light">— and who sources&nbsp;them.</span></span>
+        </h1>
+        <p class="hero__sub">
+          Porul.in tells the stories of the state's precision engineering shops and reads the signals the industry runs on. Not a directory. Not noise. A room worth being in.
+        </p>
+        <div class="hero__cta">
+          <a class="button button--dark cham" href="/stories/">Read the stories <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="button button--ghost cham" href="/the-room/">Request entry <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <figure class="shot" aria-labelledby="hero-photo-caption">
+        <div class="shot__glow"></div>
+        <div class="shot__frame cham">
+          <div class="shot__scan" aria-hidden="true"></div>
+          <!-- REPLACE: real licensed photography -->
+          <svg class="shot__figure" viewBox="0 0 320 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder silhouette of a Tamil Nadu precision shop owner">
+            <defs>
+              <linearGradient id="hero-silhouette" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3a3b41" />
+                <stop offset="1" stop-color="#0e0e11" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#hero-silhouette)" d="M126 96c-8-30 12-58 44-58 30 0 50 22 52 50 1 14-2 24-2 33 6 2 10 6 9 13-1 6-6 9-11 9-2 13-10 24-22 30v22c34 6 64 22 84 46 16 19 24 44 26 73v36H44v-30c2-34 12-63 33-84 18-18 42-30 70-36v-23c-12-6-20-17-22-30-3-16-1-23-1-37z" />
+            <path fill="#1a1b1f" d="M120 92c0-34 26-58 58-58 18 0 33 7 43 19-12-8-26-12-41-12-32 0-56 24-56 56 0 10 1 17 3 25-5-9-7-19-7-30z" />
+            <path fill="#0e0e11" d="M150 150c14 8 38 8 52 0-4 10-15 17-26 17s-22-7-26-17z" />
+            <rect x="150" y="120" width="56" height="9" rx="4" fill="#0e0e11" opacity=".6" />
+          </svg>
+          <span class="tag tag--one cham"><span class="dot"></span> Coimbatore · CNC turning</span>
+          <span class="tag tag--two cham"><span class="mono">Tamil Nadu</span> · precision</span>
+        </div>
+        <figcaption id="hero-photo-caption" class="shot__caption">Photography: real Tamil Nadu shop owners &amp; machinists — treated boldly.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: clamp(48px, 8vw, 96px) 0 0;
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(28px, 5vw, 64px);
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 26px;
+    color: var(--spark);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hero__eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: var(--spark);
+  }
+
+  .hero__title {
+    margin: 0 0 26px;
+    font-family: var(--display);
+    font-size: clamp(40px, 6.4vw, 82px);
+    font-weight: 700;
+    line-height: 0.98;
+  }
+
+  .line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .line > span {
+    display: block;
+    transform: translateY(110%);
+    animation: title-up 0.9s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+  }
+
+  .line:nth-child(2) > span {
+    animation-delay: 0.08s;
+  }
+
+  .line:nth-child(3) > span {
+    animation-delay: 0.16s;
+  }
+
+  .mark {
+    color: var(--spark);
+  }
+
+  .light {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .hero__sub {
+    max-width: 46ch;
+    margin: 0 0 34px;
+    color: #33333A;
+    font-size: clamp(16px, 1.5vw, 18.5px);
+    opacity: 0;
+    animation: fade-in 0.8s 0.5s forwards;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    opacity: 0;
+    animation: fade-in 0.8s 0.62s forwards;
+  }
+
+  .shot {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    opacity: 0;
+    animation: fade-in 1s 0.35s forwards;
+  }
+
+  .shot__glow {
+    position: absolute;
+    inset: -12%;
+    z-index: 0;
+    background: radial-gradient(60% 55% at 70% 30%, var(--glow), transparent 70%);
+    filter: blur(8px);
+  }
+
+  .shot__frame {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(150deg, #1b1c20, #27282d 55%, #1b1c20);
+  }
+
+  .shot__frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(240, 66, 13, 0.14));
+    mix-blend-mode: screen;
+  }
+
+  .shot__figure {
+    position: absolute;
+    right: -4%;
+    bottom: 0;
+    z-index: 1;
+    height: 96%;
+    opacity: 0.92;
+  }
+
+  .shot__scan {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--spark-2), transparent);
+    animation: scan 4.5s ease-in-out infinite;
+  }
+
+  .tag {
+    --cham: 9px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    background: rgba(20, 20, 24, 0.82);
+    backdrop-filter: blur(6px);
+    color: #EDEDEA;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .tag--one {
+    top: 18px;
+    left: 18px;
+  }
+
+  .tag--two {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--spark);
+  }
+
+  .mono {
+    color: #A7A7AD;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .shot__caption {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    color: var(--muted);
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+  }
+
+  @keyframes title-up {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes scan {
+    0%,
+    100% {
+      top: 6%;
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.9;
+    }
+
+    50% {
+      top: 92%;
+      opacity: 0.7;
+    }
+
+    60% {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .shot {
+      order: -1;
+      max-height: 440px;
+      aspect-ratio: 16 / 12;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .line > span {
+      transform: none;
+    }
+
+    .hero__sub,
+    .hero__cta,
+    .shot {
+      opacity: 1;
+    }
+  }
+</style>

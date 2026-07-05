@@ -1,0 +1,141 @@
+---
+interface Props {
+  title: string;
+  dek: string;
+  location: string;
+  readingMinutes: number;
+  slug: string;
+  sponsored?: boolean;
+}
+
+const { title, dek, location, readingMinutes, slug, sponsored = false } = Astro.props;
+---
+
+<article class="card cham">
+  <a href={`/stories/${slug}/`} aria-label={`Read the story: ${title}`}>
+    <div class="thumb">
+      <span class="pill cham">{sponsored ? "Sponsored profile" : "Company story"}</span>
+      <!-- REPLACE: real licensed photography -->
+      <svg class="fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder profile silhouette for a company story">
+        <path fill="#26272c" d="M150 70c-6-22 9-42 32-42 22 0 36 16 37 36 1 10-1 17-1 24 14 3 26 12 34 26 9 16 12 36 13 60v8H70v-8c1-30 10-54 30-70 12-10 28-16 47-20v-14c-9-4-15-12-17-21-2-12 0-16-1-25z" />
+      </svg>
+    </div>
+    <div class="body">
+      <p class="meta">{location} · {readingMinutes} min</p>
+      <h3>{title}</h3>
+      <p>{dek}</p>
+      <span class="read">Read the story <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .card {
+    --cham: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -22px rgba(17, 17, 20, 0.4);
+  }
+
+  a {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+
+  .thumb {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: linear-gradient(150deg, #1d1e22, #2a2b30);
+  }
+
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(240, 66, 13, 0.16));
+    mix-blend-mode: screen;
+  }
+
+  .fig {
+    position: absolute;
+    right: -6%;
+    bottom: 0;
+    height: 104%;
+    opacity: 0.9;
+  }
+
+  .pill {
+    --cham: 8px;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    z-index: 2;
+    padding: 6px 11px;
+    background: rgba(247, 246, 242, 0.92);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px 22px 24px;
+  }
+
+  .meta {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.16;
+  }
+
+  .body > p:not(.meta) {
+    margin: 0;
+    color: #4A4A52;
+    font-size: 14px;
+  }
+
+  .read {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 18px;
+    color: var(--spark);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .read span {
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover .read span {
+    transform: translateX(4px);
+  }
+</style>
