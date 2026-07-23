@@ -137,8 +137,91 @@ button:focus-visible {
   --cham: 18px;
 }
 
+.page-intro {
+  padding: clamp(56px, 8vw, 96px) 0 0;
+}
+
+.page-intro__kicker {
+  margin: 0 0 18px;
+  color: var(--spark);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.page-intro h1 {
+  max-width: 13ch;
+  margin: 0 0 22px;
+  font-family: var(--display);
+  font-size: clamp(42px, 7vw, 82px);
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+.page-intro__dek {
+  max-width: 60ch;
+  margin: 0;
+  color: #33333A;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.65;
+}
+
+.page-band {
+  padding: clamp(48px, 7vw, 80px) 0 0;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.38fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+
+.panel {
+  --cham: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  padding: 22px;
+}
+
+.panel h2,
+.panel h3 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 22px;
+  line-height: 1.16;
+}
+
+.panel p,
+.panel li {
+  color: #4A4A52;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.panel p {
+  margin: 0 0 14px;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
 @media (max-width: 900px) {
   .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .page-grid {
     grid-template-columns: 1fr;
   }
 }

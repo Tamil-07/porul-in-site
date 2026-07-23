@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from "astro:content";
+import ArticleEndNote from "@/components/ArticleEndNote.astro";
+import ArticleHeader from "@/components/ArticleHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Prose from "@/components/Prose.astro";
+
+export async function getStaticPaths() {
+  const stories = await getCollection("stories", ({ data }) => !data.draft);
+  return stories.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const kicker = `Company story · ${entry.data.location} · ${entry.data.readingMinutes} min`;
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.dek}
+  article={{
+    headline: entry.data.title,
+    publishDate: entry.data.publishDate,
+    updatedDate: entry.data.updatedDate,
+    image: entry.data.heroImage?.src,
+    inLanguage: "en",
+    section: "Company stories"
+  }}
+  breadcrumbs={[
+    { name: "Home", path: "/" },
+    { name: "Stories", path: "/stories/" },
+    { name: entry.data.title, path: `/stories/${entry.data.slug}/` }
+  ]}
+>
+  <article class="wrap">
+    <ArticleHeader kicker={kicker} title={entry.data.title} dek={entry.data.dek} sponsored={entry.data.sponsored} />
+    {
+      entry.data.heroImage && (
+        <img
+          class="article-image cham"
+          src={entry.data.heroImage.src}
+          width={entry.data.heroImage.width}
+          height={entry.data.heroImage.height}
+          alt={entry.data.heroImageAlt}
+          loading="eager"
+        />
+      )
+    }
+    <Prose>
+      <Content />
+    </Prose>
+    <ArticleEndNote />
+  </article>
+</BaseLayout>
+
+<style>
+  .article-image {
+    --cham: 22px;
+    display: block;
+    width: min(100%, 960px);
+    height: auto;
+    margin: 0 0 36px;
+  }
+</style>

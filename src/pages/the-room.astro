@@ -1,0 +1,131 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// A direct email preserves the human review flow without adding a form backend.
+const entryEmail = "mailto:hello@porul.in?subject=Porul.in%20Room%20entry%20request";
+---
+
+<BaseLayout title="The Room — Porul.in" description="A reviewed network for procurement professionals and serious Tamil Nadu precision engineering shops.">
+  <section class="room-page">
+    <div class="wrap">
+      <div class="room-page__panel cham">
+        <div class="room-page__grid" aria-hidden="true"></div>
+        <div class="room-page__content">
+          <p class="room-page__kicker">The Room — reviewed entry</p>
+          <h1>Kept dense.<br />Not large.</h1>
+          <p class="lead">A reviewed network of procurement professionals and serious shops in Tamil Nadu precision engineering. Entry is requested, read by a human, and judged on fit.</p>
+          <div class="room-page__columns">
+            <section>
+              <h2>Who it is for</h2>
+              <p>Procurement people who value signal over noise, and serious shops that understand credibility is built through conduct, not claims.</p>
+            </section>
+            <section>
+              <h2>What happens next</h2>
+              <p>A human reads every request. If the fit is clear, the founder follows up directly. There is no form backend and no automated approval.</p>
+            </section>
+            <section>
+              <h2>The boundary</h2>
+              <p>We tell, explain, and convene. We don't quote, match, source, broker, or fulfil.</p>
+            </section>
+          </div>
+          <div class="contact-actions" aria-label="Request entry contact paths">
+            <a class="button button--dark cham" href={entryEmail}>Email hello@porul.in <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .room-page {
+    padding: clamp(56px, 8vw, 96px) 0 0;
+  }
+
+  .room-page__panel {
+    --cham: 34px;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(40px, 6vw, 80px);
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .room-page__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50% 60% at 85% 15%, rgba(240, 66, 13, 0.28), transparent 60%);
+    opacity: 0.55;
+  }
+
+  .room-page__grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(70% 70% at 80% 20%, #000, transparent);
+  }
+
+  .room-page__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .room-page__kicker {
+    margin: 0 0 22px;
+    color: var(--spark-2);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 20px;
+    font-family: var(--display);
+    font-size: clamp(38px, 7vw, 82px);
+    line-height: 0.98;
+  }
+
+  .lead {
+    max-width: 58ch;
+    margin: 0 0 38px;
+    color: #D8D8DE;
+    font-size: clamp(17px, 1.8vw, 21px);
+    line-height: 1.65;
+  }
+
+  .room-page__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .room-page__columns section {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-top: 18px;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-family: var(--display);
+    font-size: 22px;
+  }
+
+  .room-page__columns p {
+    margin: 0;
+    color: #B9B9C1;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .room-page__columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

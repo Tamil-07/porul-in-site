@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import IntelCard from "@/components/IntelCard.astro";
+
+const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+---
+
+<BaseLayout lang="ta" title="தமிழ் — Porul.in" description="தமிழில் Porul.in கட்டுரைகள்.">
+  <section class="page-intro">
+    <div class="wrap">
+      <p class="page-intro__kicker">பொருள் · தமிழ்</p>
+      <h1>தமிழில் தொழில் குறிப்புகள்.</h1>
+      <p class="page-intro__dek">Tamil Nadu precision engineering பற்றிய founder-written தமிழ் கட்டுரைகள் இங்கே வெளியாகும்.</p>
+    </div>
+  </section>
+
+  <section class="page-band" aria-label="Published Tamil articles">
+    <div class="wrap">
+      <div class="cards">
+        {
+          articles.length > 0 ? (
+            articles.map((item) => (
+              <IntelCard
+                title={item.data.title}
+                dek={item.data.dek}
+                category={item.data.category}
+                readingMinutes={item.data.readingMinutes}
+                slug={item.data.slug}
+                sponsored={item.data.sponsored}
+                basePath="/ta"
+                readLabel="கட்டுரையைப் படிக்க"
+              />
+            ))
+          ) : (
+            <p class="empty-state cham">தமிழ் கட்டுரைகள் founder எழுதி ஒப்புதல் அளித்த பிறகு மட்டுமே வெளியாகும்.</p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found — Porul.in"
+  description="The requested Porul.in page could not be found."
+  canonicalPath="/404/"
+  noindex={true}
+>
+  <section class="not-found">
+    <div class="wrap not-found__inner">
+      <div class="not-found__code" aria-hidden="true">404</div>
+      <div class="not-found__copy">
+        <p class="not-found__kicker">Outside the drawing</p>
+        <h1>This page is not in the current run.</h1>
+        <p>The address may have changed, or the page may never have been published.</p>
+        <div class="contact-actions">
+          <a class="button button--dark cham" href="/">Return home <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="button button--ghost cham" href="/stories/">Read the stories</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding: clamp(64px, 10vw, 128px) 0 clamp(40px, 7vw, 88px);
+  }
+
+  .not-found__inner {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.55fr) minmax(0, 1fr);
+    gap: clamp(32px, 7vw, 96px);
+    align-items: center;
+  }
+
+  .not-found__code {
+    border-top: 8px solid var(--spark);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(96px, 18vw, 220px);
+    font-weight: 700;
+    line-height: 0.86;
+  }
+
+  .not-found__kicker {
+    margin: 0 0 16px;
+    color: var(--spark);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 11ch;
+    margin: 0 0 20px;
+    font-family: var(--display);
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 0.98;
+  }
+
+  .not-found__copy > p:last-of-type {
+    max-width: 48ch;
+    margin: 0;
+    color: #4A4A52;
+    font-size: 17px;
+  }
+
+  @media (max-width: 720px) {
+    .not-found__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .not-found__code {
+      max-width: 3ch;
+    }
+  }
+</style>

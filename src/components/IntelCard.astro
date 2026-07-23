@@ -6,14 +6,16 @@ interface Props {
   readingMinutes: number;
   slug: string;
   sponsored?: boolean;
+  basePath?: string;
+  readLabel?: string;
 }
 
-const { title, dek, category, readingMinutes, slug, sponsored = false } = Astro.props;
+const { title, dek, category, readingMinutes, slug, sponsored = false, basePath = "/intelligence", readLabel = "Read the analysis" } = Astro.props;
 const label = category === "digest" ? "Porul digest" : "Sector intel";
 ---
 
 <article class="card cham">
-  <a href={`/intelligence/${slug}/`} aria-label={`Read the analysis: ${title}`}>
+  <a href={`${basePath}/${slug}/`} aria-label={`${readLabel}: ${title}`}>
     <div class="thumb">
       <span class="pill cham">{sponsored ? "Sponsored profile" : label}</span>
     </div>
@@ -21,7 +23,7 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
       <p class="meta">{category} · {readingMinutes} min</p>
       <h3>{title}</h3>
       <p>{dek}</p>
-      <span class="read">Read the analysis <span aria-hidden="true">→</span></span>
+      <span class="read">{readLabel} <span aria-hidden="true">→</span></span>
     </div>
   </a>
 </article>

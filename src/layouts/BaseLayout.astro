@@ -1,21 +1,34 @@
 ---
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
+import Seo from "@/components/Seo.astro";
 import "@/styles/global.css";
 
 const {
   title = "Porul.in — Tamil Nadu precision engineering",
-  description = "An independent publication covering Tamil Nadu precision engineering."
+  description = "An independent publication covering Tamil Nadu precision engineering.",
+  lang = "en",
+  canonicalPath,
+  article,
+  breadcrumbs = [],
+  noindex = false
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
+    <Seo
+      title={title}
+      description={description}
+      lang={lang}
+      canonicalPath={canonicalPath}
+      article={article}
+      breadcrumbs={breadcrumbs}
+      noindex={noindex}
+    />
     <!-- The display weights are preloaded because the v3 identity depends on
       them for the first viewport; all font files are local to avoid runtime
       CDN dependencies and preserve the zero-recurring-cost rule. -->
