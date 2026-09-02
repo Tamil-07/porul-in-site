@@ -6,19 +6,38 @@ interface Props {
   readingMinutes: number;
   slug: string;
   sponsored?: boolean;
+  heroImage?: string;
+  heroImageAlt?: string;
 }
 
-const { title, dek, location, readingMinutes, slug, sponsored = false } = Astro.props;
+const {
+  title,
+  dek,
+  location,
+  readingMinutes,
+  slug,
+  sponsored = false,
+  heroImage,
+  heroImageAlt = ""
+} = Astro.props;
 ---
 
 <article class="card cham">
   <a href={`/stories/${slug}/`} aria-label={`Read the story: ${title}`}>
     <div class="thumb">
       <span class="pill cham">{sponsored ? "Sponsored profile" : "Company story"}</span>
-      <!-- REPLACE: real licensed photography -->
-      <svg class="fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder profile silhouette for a company story">
-        <path fill="#26272c" d="M150 70c-6-22 9-42 32-42 22 0 36 16 37 36 1 10-1 17-1 24 14 3 26 12 34 26 9 16 12 36 13 60v8H70v-8c1-30 10-54 30-70 12-10 28-16 47-20v-14c-9-4-15-12-17-21-2-12 0-16-1-25z" />
-      </svg>
+      {
+        heroImage ? (
+          <img class="thumb-image" src={heroImage} alt={heroImageAlt} loading="lazy" />
+        ) : (
+          <>
+            <!-- REPLACE: real licensed photography -->
+            <svg class="fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder profile silhouette for a company story">
+              <path fill="#26272c" d="M150 70c-6-22 9-42 32-42 22 0 36 16 37 36 1 10-1 17-1 24 14 3 26 12 34 26 9 16 12 36 13 60v8H70v-8c1-30 10-54 30-70 12-10 28-16 47-20v-14c-9-4-15-12-17-21-2-12 0-16-1-25z" />
+            </svg>
+          </>
+        )
+      }
     </div>
     <div class="body">
       <p class="meta">{location} · {readingMinutes} min</p>
@@ -72,6 +91,15 @@ const { title, dek, location, readingMinutes, slug, sponsored = false } = Astro.
     bottom: 0;
     height: 104%;
     opacity: 0.9;
+  }
+
+  .thumb-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 64% 72%;
+    filter: contrast(1.03) saturate(0.88);
   }
 
   .pill {

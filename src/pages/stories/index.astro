@@ -30,6 +30,8 @@ const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort
                 readingMinutes={story.data.readingMinutes}
                 slug={story.data.slug}
                 sponsored={story.data.sponsored}
+                heroImage={story.data.heroImage?.src}
+                heroImageAlt={story.data.heroImageAlt}
               />
             ))
           ) : (
