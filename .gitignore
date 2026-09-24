@@ -11,3 +11,5 @@ node_modules/
 # involve machine-specific secrets or callback values.
 .env
 .env.*
+.DS_Store
+.firecrawl/

@@ -1,0 +1,125 @@
+---
+interface Props {
+  author?: "Porul.in";
+  authorRole?: "Editorial";
+  publishDate: Date;
+  updatedDate?: Date;
+  lang?: "en" | "ta";
+}
+
+const {
+  author = "Porul.in",
+  authorRole = "Editorial",
+  publishDate,
+  updatedDate,
+  lang = "en"
+} = Astro.props;
+
+const locale = lang === "ta" ? "ta-IN" : "en-IN";
+const formatDate = (date: Date) => new Intl.DateTimeFormat(locale, {
+  day: "numeric",
+  month: "long",
+  year: "numeric"
+}).format(date);
+---
+
+<div class="editorial-meta" aria-label="Article details">
+  <div class="editorial-meta__byline">
+    <span class="editorial-meta__mark" aria-hidden="true">P</span>
+    <span><strong>{author}</strong><small>{authorRole}</small></span>
+  </div>
+  <dl class="editorial-meta__dates">
+    <div>
+      <dt>Published</dt>
+      <dd><time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time></dd>
+    </div>
+    {
+      updatedDate && (
+        <div>
+          <dt>Updated</dt>
+          <dd><time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></dd>
+        </div>
+      )
+    }
+  </dl>
+</div>
+
+<style>
+  .editorial-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-8);
+    max-width: var(--measure-wide);
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border-default);
+  }
+
+  .editorial-meta__byline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .editorial-meta__mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    background: var(--surface-inverse);
+    color: var(--text-inverse);
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .editorial-meta__byline strong,
+  .editorial-meta__byline small {
+    display: block;
+    line-height: 1.35;
+  }
+
+  .editorial-meta__byline strong {
+    font-size: 14px;
+  }
+
+  .editorial-meta__byline small,
+  dt {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .editorial-meta__dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-8);
+    margin: 0;
+  }
+
+  .editorial-meta__dates div {
+    display: grid;
+    gap: 2px;
+  }
+
+  dt,
+  dd {
+    margin: 0;
+  }
+
+  dd {
+    font-size: 13px;
+    font-weight: 650;
+  }
+
+  @media (max-width: 599px) {
+    .editorial-meta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+interface Source {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  sources?: Source[];
+}
+
+const { sources = [] } = Astro.props;
+---
+
+{
+  sources.length > 0 && (
+    <section class="sources" aria-labelledby="article-sources">
+      <p class="sources__kicker">Evidence</p>
+      <h2 id="article-sources">Sources</h2>
+      <ol>
+        {sources.map((source) => (
+          <li><a href={source.url}>{source.label}<span aria-hidden="true"> ↗</span></a></li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
+<style>
+  .sources {
+    max-width: var(--measure-reading);
+    margin: var(--space-12) 0 var(--space-8);
+    padding: var(--space-6) 0 0;
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .sources__kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--action-primary);
+    font-size: var(--type-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 var(--space-4);
+    font-family: var(--display);
+    font-size: var(--type-heading-md);
+    line-height: 1.15;
+  }
+
+  ol {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    padding-left: var(--space-2);
+    color: var(--text-default);
+    font-size: var(--type-body-sm);
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 4px;
+  }
+
+  a:hover {
+    color: var(--action-primary);
+    text-decoration-color: currentColor;
+  }
+</style>

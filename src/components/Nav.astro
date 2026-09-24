@@ -1,11 +1,16 @@
 ---
 const links = [
+  { href: "/#work", label: "MSME support" },
+  { href: "/gem-services/", label: "GeM services" },
   { href: "/stories/", label: "Stories" },
   { href: "/intelligence/", label: "Intelligence" },
   { href: "/the-room/", label: "The Room" },
   { href: "/about/", label: "About" },
   { href: "/ta/", label: "தமிழ்" }
 ];
+
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => href === "/#work" ? currentPath === "/" : currentPath === href || currentPath.startsWith(href);
 ---
 
 <header class="site-header">
@@ -15,17 +20,55 @@ const links = [
       <span class="logo__tamil" lang="ta">பொருள்</span>
     </a>
     <div class="nav__links" aria-label="Primary sections">
-      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+      {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>)}
     </div>
-    <a class="nav__cta cham" href="/the-room/">Request entry <span aria-hidden="true">→</span></a>
+    <div class="nav__actions">
+      <details class="nav__menu" data-mobile-menu>
+        <summary class="nav__summary" aria-label="Open primary navigation" title="Menu">
+          <span class="nav__menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </summary>
+        <div class="nav__menu-panel cham">
+          {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>)}
+        </div>
+      </details>
+    </div>
   </nav>
 </header>
+
+<script>
+  // The native disclosure remains usable without JavaScript; this small layer
+  // only closes it after selection or Escape so keyboard focus stays predictable.
+  document.querySelectorAll<HTMLDetailsElement>("[data-mobile-menu]").forEach((menu) => {
+    const summary = menu.querySelector<HTMLElement>("summary");
+
+    menu.addEventListener("toggle", () => {
+      summary?.setAttribute("aria-label", menu.open ? "Close primary navigation" : "Open primary navigation");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => menu.removeAttribute("open"));
+    });
+
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.removeAttribute("open");
+        summary?.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (menu.open && event.target instanceof Node && !menu.contains(event.target)) {
+        menu.removeAttribute("open");
+      }
+    });
+  });
+</script>
 
 <style>
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: var(--z-header);
     border-bottom: 1px solid var(--line);
     background: rgba(247, 246, 242, 0.84);
     backdrop-filter: blur(12px);
@@ -43,6 +86,8 @@ const links = [
     display: inline-flex;
     align-items: baseline;
     gap: 11px;
+    min-height: 44px;
+    justify-content: center;
     min-width: max-content;
   }
 
@@ -66,13 +111,16 @@ const links = [
   .nav__links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     color: var(--ink);
     font-size: 14.5px;
     font-weight: 600;
   }
 
   .nav__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     opacity: 0.82;
     transition: opacity 0.2s ease;
   }
@@ -81,40 +129,123 @@ const links = [
     opacity: 1;
   }
 
-  .nav__cta {
-    --cham: 13px;
-    display: inline-flex;
+  .nav__links a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--spark);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+    opacity: 1;
+  }
+
+  .nav__actions {
+    display: flex;
     align-items: center;
-    gap: 9px;
-    min-width: max-content;
-    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  .nav__menu {
+    position: relative;
+    display: none;
+  }
+
+  .nav__summary {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nav__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav__menu-icon {
+    display: grid;
+    width: 18px;
+    gap: 4px;
+  }
+
+  .nav__menu-icon span {
+    display: block;
+    height: 2px;
     background: var(--ink);
-    color: var(--paper);
-    font-size: 14px;
-    font-weight: 700;
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  .nav__cta:hover {
-    background: var(--spark);
-    transform: translateY(-1px);
+  .nav__menu[open] .nav__menu-icon span:first-child {
+    transform: translateY(6px) rotate(45deg);
   }
 
-  @media (max-width: 860px) {
+  .nav__menu[open] .nav__menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__menu[open] .nav__menu-icon span:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .nav__menu-panel {
+    --cham: 16px;
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    display: grid;
+    width: min(300px, calc(100vw - 40px));
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    box-shadow: 0 18px 40px rgba(17, 17, 20, 0.14);
+  }
+
+  .nav__menu-panel a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    font-weight: 650;
+  }
+
+  .nav__menu-panel a:last-child {
+    border-bottom: 0;
+  }
+
+  .nav__menu-panel a:hover,
+  .nav__menu-panel a[aria-current="page"] {
+    background: #F0EFE9;
+    color: var(--spark);
+  }
+
+  @media (max-width: 1100px) {
     .nav__links {
       display: none;
+    }
+
+    .nav__menu {
+      display: block;
     }
   }
 
   @media (max-width: 520px) {
+    .nav {
+      gap: 10px;
+    }
+
     .logo__tamil {
       display: none;
     }
 
-    .nav__cta {
-      padding-inline: 15px;
+  }
+
+  @media (max-width: 360px) {
+    .logo__word {
+      font-size: 20px;
     }
+
   }
 </style>

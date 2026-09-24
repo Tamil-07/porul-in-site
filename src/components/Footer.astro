@@ -1,27 +1,51 @@
 ---
+import { whatsappDisplay, whatsappUrl } from "@/data/contact";
 const year = new Date().getFullYear();
 const links = [
+  { href: "/#work", label: "MSME support" },
+  { href: "/gem-services/", label: "GeM services" },
+  { href: "/enquire/", label: "Service enquiry" },
+  { href: "/privacy/", label: "Enquiry privacy" },
   { href: "/stories/", label: "Stories" },
   { href: "/intelligence/", label: "Intelligence" },
   { href: "/the-room/", label: "The Room" },
   { href: "/about/", label: "About" },
+  { href: "/ta/", label: "தமிழ்" },
   { href: "/sponsor/", label: "Sponsor" },
   { href: "/rss.xml", label: "RSS" }
 ];
+
+// Google's documented deeplink preserves the static architecture and avoids
+// loading the Preferred Sources JavaScript library on every Porul.in page.
+const preferredSourceUrl = "https://www.google.com/preferences/source?q=porul.in";
 ---
 
 <footer class="footer">
   <div class="wrap footer__inner">
     <div>
       <a class="footer__brand" href="/" aria-label="Porul.in home">Porul<span>.</span>in</a>
-      <p>An independent publication covering Tamil Nadu precision engineering.</p>
+      <p>An extended back office for Tamil Nadu MSMEs. Practical support, company stories and sector intelligence.</p>
+      <a
+        class="preferred-source cham"
+        href={preferredSourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Add Porul.in as a preferred source in Google Search (opens in a new tab)"
+      >
+        <span aria-hidden="true">+</span> Add as a preferred source on Google
+      </a>
     </div>
     <nav class="footer__links" aria-label="Footer navigation">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
       <a href="mailto:hello@porul.in">hello@porul.in</a>
+      <a href={whatsappUrl()}>WhatsApp: {whatsappDisplay}</a>
       <a href="https://www.linkedin.com/company/porul-in/" rel="me noopener noreferrer">LinkedIn</a>
     </nav>
-    <p class="footer__fine">© {year} Porul.in. Built as a static site so the domain is the only recurring bill.</p>
+    <div class="footer__fine">
+      <p>© {year} Porul.in. Independent of GeM and government procurement portals.</p>
+      <p>Created by <a href="https://enmiya.com/">Enmiya</a></p>
+      <a href="/sitemap-index.xml">Sitemap</a>
+    </div>
   </div>
 </footer>
 
@@ -56,6 +80,31 @@ const links = [
     font-size: 13.5px;
   }
 
+  .preferred-source {
+    --cham: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin-top: 18px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  .preferred-source span {
+    color: var(--spark);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .preferred-source:hover {
+    border-color: var(--ink);
+  }
+
   .footer__links {
     display: flex;
     justify-content: flex-end;
@@ -66,13 +115,33 @@ const links = [
     font-weight: 600;
   }
 
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
   .footer__links a:hover {
     color: var(--ink);
   }
 
   .footer__fine {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
     grid-column: 1 / -1;
     padding-top: 6px;
+  }
+
+  .footer__fine a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--muted);
+    font-size: 13.5px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   @media (max-width: 760px) {

@@ -1,0 +1,90 @@
+---
+interface Props {
+  reportingNote: string;
+  verificationNote?: string;
+  sponsored?: boolean;
+}
+
+const { reportingNote, verificationNote, sponsored = false } = Astro.props;
+---
+
+<aside class="reporting-note cham" aria-labelledby="reporting-note-title">
+  <p class="reporting-note__kicker">Reporting record</p>
+  <h2 id="reporting-note-title">How this story was reported</h2>
+  <dl>
+    <div>
+      <dt>Source basis</dt>
+      <dd>{reportingNote}</dd>
+    </div>
+    {
+      verificationNote && (
+        <div>
+          <dt>Verification</dt>
+          <dd>{verificationNote}</dd>
+        </div>
+      )
+    }
+    <div>
+      <dt>Commercial status</dt>
+      <dd>{sponsored ? "Sponsored and clearly labelled." : "Independent editorial; not sponsored."}</dd>
+    </div>
+  </dl>
+</aside>
+
+<style>
+  .reporting-note {
+    --cham: var(--cham-md);
+    max-width: var(--measure-reading);
+    margin: 0 0 var(--space-8);
+    padding: var(--space-6);
+    border: 1px solid var(--border-default);
+    background: var(--surface-subtle);
+  }
+
+  .reporting-note__kicker {
+    margin: 0 0 var(--space-2);
+    color: var(--action-primary);
+    font-size: var(--type-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 var(--space-5);
+    font-family: var(--display);
+    font-size: var(--type-heading-md);
+    line-height: 1.15;
+  }
+
+  dl {
+    display: grid;
+    margin: 0;
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: minmax(110px, 0.32fr) minmax(0, 1fr);
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  dt,
+  dd {
+    margin: 0;
+    font-size: var(--type-body-sm);
+  }
+
+  dt {
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  @media (max-width: 599px) {
+    dl div {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+  }
+</style>

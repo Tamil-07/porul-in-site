@@ -1,0 +1,41 @@
+---
+interface Props {
+  text?: string;
+}
+
+const { text } = Astro.props;
+---
+
+{text && (
+  <aside class="takeaway" aria-labelledby="key-takeaway">
+    <p class="takeaway__label" id="key-takeaway">Key takeaway</p>
+    <p>{text}</p>
+  </aside>
+)}
+
+<style>
+  .takeaway {
+    max-width: var(--measure-reading);
+    margin: 0 0 var(--space-8);
+    padding: var(--space-5) 0 var(--space-5) var(--space-5);
+    border-left: 3px solid var(--action-primary);
+  }
+
+  .takeaway__label {
+    margin: 0 0 var(--space-2);
+    color: var(--action-primary);
+    font-size: var(--type-meta);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .takeaway p:last-child {
+    margin: 0;
+    color: var(--text-strong);
+    font-family: var(--display);
+    font-size: var(--type-heading-sm);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+</style>

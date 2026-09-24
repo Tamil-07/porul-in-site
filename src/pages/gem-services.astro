@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { gemService, gemFaqs } from "@/data/gem";
+import { whatsappUrl } from "@/data/contact";
+import "@/styles/services.css";
+const breadcrumbs = [{ name: "Home", path: "/" }, { name: "GeM services", path: gemService.path }];
+---
+<BaseLayout title="GeM Registration Support in Tamil Nadu" description="GeM seller registration, product listing and catalogue support for Tamil Nadu MSMEs. Enquire with Porul.in for a clear scope and quote." service={gemService} faqs={gemFaqs} breadcrumbs={breadcrumbs}>
+  <div class="service-page">
+    <section class="service-intro">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>GeM services</span></nav>
+        <p class="eyebrow">Porul.in / MSME services</p>
+        <h1>GeM registration support for Tamil Nadu MSMEs.</h1>
+        <p class="intro-copy">Get help setting up your seller account, preparing product listings and understanding your next step on the Government e-Marketplace.</p>
+        <div class="actions"><a class="button button--dark" href="/enquire/?service=registration">Get GeM support <span aria-hidden="true">→</span></a><a href={whatsappUrl("Hello Porul, I need help with GeM portal work.")}>Chat on WhatsApp</a><a href="#services">See what we can help with</a></div>
+        <p class="fine">Independent assistance from Porul.in. Registration and transactions take place on <a href="https://gem.gov.in/">the official GeM portal</a>. Porul is not affiliated with GeM or the government.</p>
+      </div>
+    </section>
+    <section class="service-band" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <h2 id="services-title">Start with what is pending.</h2>
+        <div class="service-grid">
+          <article><h3>Seller registration</h3><p>For businesses starting on GeM or working through an incomplete profile. We help organise the information needed and guide account setup and profile corrections.</p><a href="/enquire/?service=registration">Discuss account setup →</a></article>
+          <article><h3>Products &amp; catalogues</h3><p>For products waiting to be listed or catalogues returned for correction. We help with category fit, specifications, product information and the issues raised in a rejection.</p><a href="/enquire/?service=catalogue">Get catalogue help →</a></article>
+          <article><h3>A specific GeM bid</h3><p>Already have a bid in mind? Send its official link and deadline. We review eligibility, the documents involved and the time available before confirming an assignment.</p><a href="/enquire/?service=bid">Discuss a GeM bid →</a></article>
+        </div>
+      </div>
+    </section>
+    <section class="service-band" aria-labelledby="process-title">
+      <div class="wrap service-split">
+        <div><p class="eyebrow">A clear scope before we start</p><h2 id="process-title">Tell us the task. Get a written quote.</h2><p>Shreepriya handles GeM portal work through Porul.in. Your enquiry helps us understand what you sell, where you are stuck and what support you need.</p><p>Fees depend on the account, catalogue or bid work involved. We agree deliverables, your responsibilities and payment milestones before starting. Portal approvals and contract awards are not guaranteed.</p></div>
+        <ol class="service-steps"><li><strong>Share the essentials.</strong> Your business, product or service, current GeM status and any deadline.</li><li><strong>Confirm the work.</strong> We review the request and send the scope, fee and information needed.</li><li><strong>Work through it together.</strong> Your business keeps control of its account, declarations and final approvals.</li></ol>
+      </div>
+    </section>
+    <section class="service-band" aria-labelledby="prepare-title">
+      <div class="wrap service-split">
+        <div><h2 id="prepare-title">New to GeM?</h2><p>Seller registration, product listing and bid participation are separate steps. Getting an account ready does not automatically qualify a business for every tender.</p><a href="/guides/gem-seller-registration/">Read the GeM registration guide →</a></div>
+        <div><h2>Tamil Nadu tenders</h2><p>Have an opportunity on <a href="https://tntenders.gov.in/nicgep/app">Tamil Nadu eProcurement</a>? Share the tender link and deadline. We will confirm whether we can support the assignment after reviewing it.</p><a href="/enquire/?service=tn-tender">Enquire about a TN tender →</a></div>
+      </div>
+    </section>
+    <section class="service-band" aria-labelledby="faq-title"><div class="wrap"><h2 id="faq-title">GeM support: your questions answered</h2>{gemFaqs.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
+    <section class="service-band" aria-labelledby="contact-title"><div class="wrap"><h2 id="contact-title">What is holding up your GeM account?</h2><p>Send the task you need help with. We will review it before quoting.</p><div class="actions"><a class="button button--dark" href="/enquire/">Discuss your requirement →</a><a href="mailto:hello@porul.in?subject=GeM%20service%20enquiry">hello@porul.in</a></div><p class="fine">Service information updated <time datetime="2026-09-24">24 September 2026</time>. For platform instructions, see <a href="https://elearning.gem.gov.in/course/index.php?categoryid=2">GeM's official seller courses</a>.</p></div></section>
+  </div>
+</BaseLayout>

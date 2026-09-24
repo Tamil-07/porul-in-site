@@ -1,0 +1,41 @@
+/* Service and enquiry routes share a compact reading and action hierarchy. */
+.service-page { padding-bottom: var(--space-16); }
+.service-page section { scroll-margin-top: 100px; }
+.service-intro { padding-block: var(--space-12); border-bottom: 1px solid var(--border-default); }
+.service-page h1 { font: 600 48px/1.1 var(--display); max-width: 22ch; margin: var(--space-4) 0 var(--space-6); letter-spacing: 0; text-wrap: balance; }
+.service-page h2 { font: 600 30px/1.2 var(--display); margin: 0 0 var(--space-5); letter-spacing: 0; text-wrap: balance; }
+.service-page h3 { font: 600 22px/1.3 var(--display); margin: 0 0 var(--space-3); }
+.service-page p, .service-page li { max-width: var(--measure-reading); }
+.service-page p { color: var(--text-default); }
+.service-page a:not(.button) { text-decoration: underline; text-underline-offset: 4px; }
+.service-page .eyebrow { font-size: var(--type-body-sm); color: var(--action-primary); font-weight: 700; margin: 0; }
+.service-page .intro-copy { font-size: 20px; max-width: 58ch; }
+.service-page .fine { font-size: var(--type-body-sm); color: var(--text-muted); }
+.service-page .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-block: var(--space-6); }
+.service-page .button { border-radius: 0; cursor: pointer; font-family: inherit; border: 1px solid var(--border-strong); }
+.service-band { padding-block: var(--space-12); border-bottom: 1px solid var(--border-subtle); }
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); }
+.service-grid > article { border-top: 2px solid var(--action-primary); padding-top: var(--space-5); }
+.service-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-12); }
+.service-steps { padding-left: var(--space-6); }
+.service-steps li { margin-bottom: var(--space-4); padding-left: var(--space-2); }
+.service-page details { border-top: 1px solid var(--border-default); padding-block: var(--space-3); }
+.service-page summary { cursor: pointer; padding-block: var(--space-3); font-weight: 700; min-height: 48px; }
+.service-page details p { margin-top: var(--space-2); }
+.service-page .breadcrumbs { font-size: var(--type-body-sm); display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.service-page input, .service-page select, .service-page textarea { width: 100%; min-width: 0; font: inherit; min-height: 48px; padding: var(--space-3); color: var(--text-strong); border: 1px solid var(--border-strong); background: var(--surface-raised); border-radius: 0; }
+.service-page textarea { resize: vertical; }
+.enquiry-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.enquiry-fields label { display: grid; gap: var(--space-2); font-weight: 600; }
+.enquiry-fields .full { grid-column: 1 / -1; }
+.enquiry-result { padding-top: var(--space-6); border-top: 2px solid var(--border-strong); }
+#draft-title { scroll-margin-top: 100px; }
+.service-page [hidden] { display: none !important; }
+.service-page :is(a, h1, h2, h3, p, label) { overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .service-grid, .service-split, .enquiry-fields { grid-template-columns: 1fr; }
+  .service-page h1 { font-size: 36px; }
+  .service-page h2 { font-size: 26px; }
+  .service-page .intro-copy { font-size: 18px; }
+  .service-intro, .service-band { padding-block: var(--space-8); }
+}

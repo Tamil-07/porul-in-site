@@ -13,7 +13,7 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
     <div class="wrap">
       <p class="page-intro__kicker">பொருள் · தமிழ்</p>
       <h1>தமிழில் தொழில் குறிப்புகள்.</h1>
-      <p class="page-intro__dek">Tamil Nadu precision engineering பற்றிய founder-written தமிழ் கட்டுரைகள் இங்கே வெளியாகும்.</p>
+      <p class="page-intro__dek">Tamil Nadu precision engineering பற்றிய Porul.in தமிழ் கட்டுரைகள் இங்கே வெளியாகும். இது Porul.in-இன் நேரடி தமிழ் பகுதி.</p>
     </div>
   </section>
 
@@ -28,6 +28,8 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
                 dek={item.data.dek}
                 category={item.data.category}
                 readingMinutes={item.data.readingMinutes}
+                publishDate={item.data.publishDate}
+                updatedDate={item.data.updatedDate}
                 slug={item.data.slug}
                 sponsored={item.data.sponsored}
                 basePath="/ta"
@@ -35,7 +37,7 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
               />
             ))
           ) : (
-            <p class="empty-state cham">தமிழ் கட்டுரைகள் founder எழுதி ஒப்புதல் அளித்த பிறகு மட்டுமே வெளியாகும்.</p>
+            <p class="empty-state cham" role="status">தமிழ் கட்டுரைகள் இன்னும் வெளியிடப்படவில்லை. இந்தப் பகுதி செயல்பாட்டில் உள்ளது; மதிப்பாய்வு செய்யப்பட்ட கட்டுரைகள் மட்டும் இங்கே வெளியாகும்.</p>
           )
         }
       </div>

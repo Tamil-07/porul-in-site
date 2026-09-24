@@ -1,11 +1,21 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-// A direct email preserves the human review flow without adding a form backend.
-const entryEmail = "mailto:hello@porul.in?subject=Porul.in%20Room%20entry%20request";
+// A structured mailto keeps applications human-reviewed while giving the
+// founder enough context to separate genuine applicants from sourcing mail.
+const applicationSubject = encodeURIComponent("Application to The Room at Porul.in");
+const applicationBody = encodeURIComponent(`Please answer these four questions:
+
+1. Your name and role:
+2. Your company or organisation:
+3. Your connection to Tamil Nadu precision engineering:
+4. Why would The Room be useful to you?
+
+The Room is an editorial network. This is not vendor registration, an RFQ, a sourcing request, or a sales enquiry.`);
+const entryEmail = `mailto:hello@porul.in?subject=${applicationSubject}&body=${applicationBody}`;
 ---
 
-<BaseLayout title="The Room — Porul.in" description="A reviewed network for procurement professionals and serious Tamil Nadu precision engineering shops.">
+<BaseLayout title="Apply to The Room — Porul.in" description="Apply to a reviewed editorial network for procurement professionals and Tamil Nadu precision-engineering operators.">
   <section class="room-page">
     <div class="wrap">
       <div class="room-page__panel cham">
@@ -13,23 +23,28 @@ const entryEmail = "mailto:hello@porul.in?subject=Porul.in%20Room%20entry%20requ
         <div class="room-page__content">
           <p class="room-page__kicker">The Room — reviewed entry</p>
           <h1>Kept dense.<br />Not large.</h1>
-          <p class="lead">A reviewed network of procurement professionals and serious shops in Tamil Nadu precision engineering. Entry is requested, read by a human, and judged on fit.</p>
+          <p class="lead">A small, reviewed room for people working in Tamil Nadu CNC and precision engineering. Every application is read by a human and judged on fit.</p>
           <div class="room-page__columns">
             <section>
               <h2>Who it is for</h2>
               <p>Procurement people who value signal over noise, and serious shops that understand credibility is built through conduct, not claims.</p>
             </section>
             <section>
+              <h2>Member benefits</h2>
+              <p>A weekly digest, and early access to Porul.in sector intelligence before public publication.</p>
+            </section>
+            <section>
               <h2>What happens next</h2>
-              <p>A human reads every request. If the fit is clear, the founder follows up directly. There is no form backend and no automated approval.</p>
+              <p>A human reads every application. If the fit is clear, the founder follows up directly. There is no automated approval.</p>
             </section>
             <section>
               <h2>The boundary</h2>
               <p>We tell, explain, and convene. We don't quote, match, source, broker, or fulfil.</p>
             </section>
           </div>
-          <div class="contact-actions" aria-label="Request entry contact paths">
-            <a class="button button--dark cham" href={entryEmail}>Email hello@porul.in <span class="arrow" aria-hidden="true">→</span></a>
+          <p class="application-boundary"><strong>Before you apply:</strong> this is not vendor registration, an RFQ, a sourcing request, or a sales-enquiry channel.</p>
+          <div class="contact-actions" aria-label="The Room application contact path">
+            <a class="button button--dark cham" href={entryEmail}>Apply to The Room <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -101,13 +116,27 @@ const entryEmail = "mailto:hello@porul.in?subject=Porul.in%20Room%20entry%20requ
 
   .room-page__columns {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 
   .room-page__columns section {
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     padding-top: 18px;
+  }
+
+  .application-boundary {
+    max-width: 68ch;
+    margin: 28px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    color: #D8D8DE;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .application-boundary strong {
+    color: var(--paper);
   }
 
   h2 {

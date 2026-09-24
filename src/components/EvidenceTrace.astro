@@ -1,0 +1,134 @@
+---
+interface Props {
+  reportingNote?: string;
+  verificationNote?: string;
+  sponsored?: boolean;
+}
+
+const { reportingNote, verificationNote, sponsored = false } = Astro.props;
+---
+
+<details class="trace" data-evidence-trace>
+  <summary>
+    <span class="trace__index" aria-hidden="true">01—03</span>
+    <span>Trace this story's evidence</span>
+    <span class="trace__toggle" aria-hidden="true">+</span>
+  </summary>
+  <div class="trace__body">
+    <div>
+      <span>Source basis</span>
+      <p>{reportingNote ?? "The reporting basis is stated on the article page."}</p>
+    </div>
+    <div>
+      <span>Verification</span>
+      <p>{verificationNote ?? "Verification limits are stated with the story."}</p>
+    </div>
+    <div>
+      <span>Commercial status</span>
+      <p>{sponsored ? "Sponsored and visibly labelled." : "Independent editorial; not sponsored."}</p>
+    </div>
+  </div>
+</details>
+
+<style>
+  .trace {
+    border-top: 1px solid var(--border-inverse);
+    border-bottom: 1px solid var(--border-inverse);
+    color: var(--text-inverse);
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    min-height: 52px;
+    gap: var(--space-3);
+    cursor: pointer;
+    list-style: none;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .trace__index {
+    color: #F5A083;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .trace__toggle {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid var(--border-inverse);
+    font-size: 18px;
+    font-weight: 400;
+    transition: transform var(--motion-standard) var(--ease-standard);
+  }
+
+  .trace[open] .trace__toggle {
+    transform: rotate(45deg);
+  }
+
+  .trace__body {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border-inverse);
+  }
+
+  .trace__body div {
+    position: relative;
+    padding: var(--space-5) var(--space-5) var(--space-6) 0;
+  }
+
+  .trace__body div + div {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--border-inverse);
+  }
+
+  .trace__body span {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: #F5A083;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    color: #D0D0D5;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 599px) {
+    .trace__body {
+      grid-template-columns: 1fr;
+    }
+
+    .trace__body div {
+      padding: var(--space-4) 0;
+    }
+
+    .trace__body div + div {
+      padding-left: 0;
+      border-top: 1px solid var(--border-inverse);
+      border-left: 0;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .trace,
+    .trace__body,
+    .trace__body div + div,
+    .trace__toggle {
+      border-color: CanvasText;
+    }
+  }
+</style>

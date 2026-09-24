@@ -7,7 +7,12 @@ export default defineConfig({
   site: "https://porul.in",
   output: "static",
   trailingSlash: "always",
-  // Admin is a private editing surface in Stage 5; excluding it here keeps the
-  // public sitemap policy correct before that static route is added.
-  integrations: [sitemap({ filter: (page) => !new URL(page).pathname.startsWith("/admin/") })]
+  // Only canonical public documents belong in the sitemap. Drafts are excluded
+  // by getStaticPaths; the build audit also rejects any noindex document here.
+  integrations: [sitemap({
+    filter: (page) => {
+      const path = new URL(page).pathname;
+      return path !== "/admin" && !path.startsWith("/admin/") && !["/404/", "/404.html"].includes(path);
+    }
+  })]
 });

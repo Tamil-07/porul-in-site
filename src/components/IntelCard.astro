@@ -4,23 +4,27 @@ interface Props {
   dek: string;
   category: string;
   readingMinutes: number;
+  publishDate?: Date;
+  updatedDate?: Date;
   slug: string;
   sponsored?: boolean;
   basePath?: string;
   readLabel?: string;
 }
 
-const { title, dek, category, readingMinutes, slug, sponsored = false, basePath = "/intelligence", readLabel = "Read the analysis" } = Astro.props;
+const { title, dek, category, readingMinutes, publishDate, updatedDate, slug, sponsored = false, basePath = "/intelligence", readLabel = "Read the analysis" } = Astro.props;
 const label = category === "digest" ? "Porul digest" : "Sector intel";
+const date = updatedDate ?? publishDate;
+const dateLabel = date ? new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(date) : undefined;
 ---
 
-<article class="card cham">
+<article class="card">
   <a href={`${basePath}/${slug}/`} aria-label={`${readLabel}: ${title}`}>
-    <div class="thumb">
-      <span class="pill cham">{sponsored ? "Sponsored profile" : label}</span>
-    </div>
     <div class="body">
-      <p class="meta">{category} · {readingMinutes} min</p>
+      <div class="card__topline">
+        <span class="pill">{sponsored ? "Sponsored profile" : label}</span>
+        <p class="meta">{category}{dateLabel && <> · {updatedDate ? "Updated " : ""}{dateLabel}</>} · {readingMinutes} min</p>
+      </div>
       <h3>{title}</h3>
       <p>{dek}</p>
       <span class="read">{readLabel} <span aria-hidden="true">→</span></span>
@@ -30,10 +34,9 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
 
 <style>
   .card {
-    --cham: 18px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--paper-2);
+    border-top: 2px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-raised);
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease;
@@ -50,38 +53,11 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
     flex-direction: column;
   }
 
-  .thumb {
-    position: relative;
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 72% 28%, rgba(240, 66, 13, 0.28), transparent 32%),
-      linear-gradient(150deg, #1d1e22, #2a2b30);
-  }
-
-  .thumb::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-    background-size: 36px 36px;
-    mask-image: linear-gradient(135deg, #000, transparent 78%);
-  }
-
   .pill {
-    --cham: 8px;
-    position: absolute;
-    top: 13px;
-    left: 13px;
-    z-index: 2;
-    padding: 6px 11px;
-    background: var(--spark);
-    color: #fff;
-    font-size: 11px;
+    color: var(--action-primary);
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
@@ -89,11 +65,21 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 22px 22px 24px;
+    min-height: 290px;
+    padding: var(--space-6);
+  }
+
+  .card__topline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
   .meta {
-    margin: 0 0 12px;
+    margin: 0;
     color: var(--muted);
     font-size: 12px;
     font-weight: 700;
@@ -102,9 +88,10 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
   }
 
   h3 {
-    margin: 0 0 10px;
+    max-width: 20ch;
+    margin: 0 0 var(--space-3);
     font-family: var(--display);
-    font-size: 20px;
+    font-size: var(--type-heading-md);
     font-weight: 600;
     line-height: 1.16;
   }
@@ -133,5 +120,21 @@ const label = category === "digest" ? "Porul digest" : "Sector intel";
 
   .card:hover .read span {
     transform: translateX(4px);
+  }
+
+  .card:active {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 599px) {
+    .body {
+      min-height: 0;
+      padding: var(--space-5) 0 var(--space-6);
+    }
+
+    .card__topline {
+      display: grid;
+      margin-bottom: var(--space-5);
+    }
   }
 </style>

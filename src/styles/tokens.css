@@ -5,7 +5,7 @@
   --ink-2: #16161A;
   --muted: #5F6068; /* tuned darker than the prototype so body-adjacent text clears contrast */
   --line: #E4E2DA; /* hairlines preserve the machined, quiet editorial feel */
-  --spark: #F0420D; /* molten accent, used sparingly as the brand signal */
+  --spark: #CE3508; /* darker molten accent clears AA contrast on paper and behind white button text */
   --spark-2: #FF5A24;
   --glow: rgba(240, 66, 13, 0.18);
   --cham: 20px; /* signature 45-degree machined corner shared across components */
@@ -16,4 +16,62 @@
 
   --maxw: 1240px;
   --gut: clamp(20px, 5vw, 56px);
+
+  /* Semantic aliases: components should depend on roles, not palette names. */
+  --surface-page: var(--paper);
+  --surface-raised: var(--paper-2);
+  --surface-subtle: #F0EFE9;
+  --surface-inverse: var(--ink);
+  --text-strong: var(--ink);
+  --text-default: #33333A;
+  --text-muted: var(--muted);
+  --text-inverse: var(--paper);
+  --text-disabled: #85868E;
+  --action-primary: var(--spark);
+  --action-primary-hover: #AA2B07;
+  --action-primary-pressed: #872205;
+  --action-on-primary: #FFFFFF;
+  --border-subtle: var(--line);
+  --border-default: #CFCDC4;
+  --border-strong: #8C8B85;
+  --border-inverse: rgba(255, 255, 255, 0.24);
+  --focus-ring: #8E2709;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  --type-display-xl: clamp(44px, 7vw, 84px);
+  --type-display-lg: clamp(38px, 5.2vw, 68px);
+  --type-heading-lg: clamp(28px, 3.6vw, 44px);
+  --type-heading-md: clamp(22px, 2.5vw, 30px);
+  --type-heading-sm: 18px;
+  --type-body-lg: clamp(17px, 1.45vw, 20px);
+  --type-body-md: 16px;
+  --type-body-sm: 14px;
+  --type-meta: 12px;
+  --measure-narrow: 46ch;
+  --measure-reading: 68ch;
+  --measure-wide: 82ch;
+
+  --cham-sm: 10px;
+  --cham-md: 18px;
+  --cham-lg: 28px;
+  --motion-fast: 120ms;
+  --motion-standard: 180ms;
+  --motion-deliberate: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --shadow-low: 0 14px 34px -26px rgba(17, 17, 20, 0.5);
+  --shadow-overlay: 0 20px 48px rgba(17, 17, 20, 0.16);
+  --z-header: 50;
+  --z-overlay: 100;
 }

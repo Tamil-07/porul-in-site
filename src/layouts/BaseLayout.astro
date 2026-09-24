@@ -5,13 +5,15 @@ import Seo from "@/components/Seo.astro";
 import "@/styles/global.css";
 
 const {
-  title = "Porul.in — Tamil Nadu precision engineering",
-  description = "An independent publication covering Tamil Nadu precision engineering.",
+  title = "Porul.in — MSME Back-Office Support in Tamil Nadu",
+  description = "An extended back office for Tamil Nadu MSMEs, with GeM registration and catalogue support available.",
   lang = "en",
   canonicalPath,
   article,
   breadcrumbs = [],
-  noindex = false
+  noindex = false,
+  service,
+  faqs = []
 } = Astro.props;
 ---
 
@@ -28,6 +30,8 @@ const {
       article={article}
       breadcrumbs={breadcrumbs}
       noindex={noindex}
+      service={service}
+      faqs={faqs}
     />
     <!-- The display weights are preloaded because the v3 identity depends on
       them for the first viewport; all font files are local to avoid runtime

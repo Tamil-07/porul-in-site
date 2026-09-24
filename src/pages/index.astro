@@ -1,70 +1,152 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/Hero.astro";
+import { whatsappUrl } from "@/data/contact";
 import IntelCard from "@/components/IntelCard.astro";
-import MarqueeStrip from "@/components/MarqueeStrip.astro";
-import RoomPanel from "@/components/RoomPanel.astro";
-import SectionHead from "@/components/SectionHead.astro";
-import StoryCard from "@/components/StoryCard.astro";
+import EvidenceTrace from "@/components/EvidenceTrace.astro";
 
 const byRecent = (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime();
+const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort(byRecent);
+const intelligence = (await getCollection("intelligence", ({ data }) => !data.draft)).sort(byRecent).slice(0, 2);
+const lead = stories[0]?.data;
 
-const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort(byRecent).slice(0, 3);
-const intelligence = (await getCollection("intelligence", ({ data }) => !data.draft)).sort(byRecent).slice(0, 3);
+// These are enquiry categories, not a claim that every service is staffed.
+// Only GeM delivery has been confirmed by the founder.
+const needs = [
+  { title: "Government orders", text: "GeM registration, product catalogues or a tender you want to understand.", href: "/gem-services/", action: "Explore GeM support", status: "GeM support available" },
+  { title: "Presenting your business", text: "A company profile, product information, website or marketing requirement.", href: "/enquire/?service=marketing", action: "Discuss business presentation" },
+  { title: "Certification & audits", text: "An ISO or IATF requirement, a buyer's checklist or preparation that needs organising.", href: "/enquire/?service=certification", action: "Discuss certification needs" },
+  { title: "Expos & exhibitions", text: "An event on your calendar and the business material you need to prepare.", href: "/enquire/?service=exhibitions", action: "Discuss exhibition needs" },
+  { title: "Compliance coordination", text: "Documents to organise or follow-ups to coordinate with your existing professional.", href: "/enquire/?service=compliance", action: "Discuss coordination needs" }
+];
 ---
-
-<BaseLayout>
+<BaseLayout title="Porul.in — MSME Back-Office Support in Tamil Nadu" description="Bring your MSME's paperwork, business profiles and market-access tasks to Porul. GeM registration and catalogue support available in Tamil Nadu.">
   <Hero />
-  <MarqueeStrip />
 
-  <section class="section" aria-labelledby="latest-stories">
+  <section class="home-band" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <SectionHead headingId="latest-stories" kicker="01 — Latest stories" title="The shops, told properly." href="/stories/" linkLabel="All stories" />
-      <div class="cards">
-        {
-          stories.length > 0 ? (
-            stories.map((story) => (
-              <StoryCard
-                title={story.data.title}
-                dek={story.data.dek}
-                location={story.data.location}
-                readingMinutes={story.data.readingMinutes}
-                slug={story.data.slug}
-                sponsored={story.data.sponsored}
-              />
-            ))
-          ) : (
-            <p class="empty-state cham">Stories are published as they are reported — no treadmill.</p>
-          )
-        }
+      <p class="kicker">Start with the work</p>
+      <h2 id="work-title">What is on your desk?</h2>
+      <p class="section-intro"><strong>Available now: GeM registration and catalogue support.</strong> For other requirements, tell us what you need. We review each one before confirming whether we can help.</p>
+      <ol class="needs">
+        {needs.map((need, index) => <li>
+          <span class="need-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          <div><h3>{need.title}</h3><p>{need.text}</p></div>
+          <div class="need-action"><span class:list={["availability", { "availability--live": need.status }]}>{need.status ?? "Share your requirement"}</span><a href={need.href}>{need.action} <span aria-hidden="true">→</span></a></div>
+        </li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="home-band available" aria-labelledby="gem-title">
+    <div class="wrap two-col">
+      <div>
+        <p class="kicker">Available now / Government procurement</p>
+        <h2 id="gem-title">Start selling on GeM.<br />Get help with the portal work.</h2>
+        <p>Shreepriya handles GeM registration and catalogue work through Porul. Bring us your current stage and the task you need completed.</p>
+        <p class="fine">Independent assistance, not a government service. Approval and orders are not guaranteed. Tamil Nadu tender enquiries need a separate capability and scope review.</p>
+        <a class="text-link" href="/gem-services/">GeM services, scope &amp; FAQs <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="available-tasks">
+        <a href="/enquire/?service=registration"><span><strong>Seller registration</strong><small>Get help setting up your GeM seller profile.</small></span><span aria-hidden="true">→</span></a>
+        <a href="/enquire/?service=catalogue"><span><strong>Product catalogues</strong><small>Get help listing products or correcting a catalogue.</small></span><span aria-hidden="true">→</span></a>
+        <a href="/enquire/?service=bid"><span><strong>A specific bid</strong><small>Share the bid and deadline for a scope review.</small></span><span aria-hidden="true">→</span></a>
+        <a href="/enquire/?service=tn-tender"><span><strong>A Tamil Nadu tender</strong><small>Check whether we can support your requirement.</small></span><span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="latest-intelligence">
+  <section class="home-band" aria-labelledby="process-title">
     <div class="wrap">
-      <SectionHead headingId="latest-intelligence" kicker="02 — Intelligence &amp; the digest" title="The signals buyers act on." href="/intelligence/" linkLabel="All intelligence" />
-      <div class="cards">
-        {
-          intelligence.length > 0 ? (
-            intelligence.map((item) => (
-              <IntelCard
-                title={item.data.title}
-                dek={item.data.dek}
-                category={item.data.category}
-                readingMinutes={item.data.readingMinutes}
-                slug={item.data.slug}
-                sponsored={item.data.sponsored}
-              />
-            ))
-          ) : (
-            <p class="empty-state cham">Intelligence is published when there is something durable to say.</p>
-          )
-        }
-      </div>
+      <p class="kicker">One task at a time</p>
+      <h2 id="process-title">A clear scope before a commitment.</h2>
+      <ol class="steps">
+        <li><span class="need-number">01</span><h3>Tell us what is pending.</h3><p>The work, where you are stuck and any deadline. No passwords or sensitive documents at this stage.</p></li>
+        <li><span class="need-number">02</span><h3>We assess the requirement.</h3><p>We confirm whether we can take it on and what information or specialist input is needed.</p></li>
+        <li><span class="need-number">03</span><h3>Agree the work and fee.</h3><p>Scope, responsibilities and fees are agreed before work starts. An enquiry is not a purchase.</p></li>
+      </ol>
     </div>
   </section>
 
-  <RoomPanel />
+  <section class="home-band reporting" aria-labelledby="reporting-title">
+    <div class="wrap">
+      <p class="kicker">From the publication</p>
+      <h2 id="reporting-title">Understand the businesses. Follow the signals.</h2>
+      <p class="section-intro">Our company stories and sector intelligence continue. Paid support does not buy editorial coverage or endorsement.</p>
+      {/* Published reporting is separate from service proof; a featured company is not a testimonial. */}
+      {lead && <article class="reported-story">
+        {lead.heroImage && <figure><Image src={lead.heroImage} alt={lead.heroImageAlt} widths={[480, 720, 960]} sizes="(max-width: 767px) calc(100vw - 40px), 45vw" format="webp" quality={84} loading="lazy" /><figcaption>{lead.heroImageAlt}</figcaption></figure>}
+        <div>
+          <p class="story-label">{lead.sponsored ? "Sponsored profile" : "Company story"} · {lead.location}</p>
+          <h3><a href={`/stories/${lead.slug}/`}>{lead.title}</a></h3>
+          <p>{lead.dek}</p>
+          <a class="text-link" href={`/stories/${lead.slug}/`}>Read the story <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="story-evidence"><EvidenceTrace reportingNote={lead.reportingNote} verificationNote={lead.verificationNote} sponsored={lead.sponsored} /></div>
+      </article>}
+      {intelligence.length > 0 && <div class="intel-grid">{intelligence.map(item => <IntelCard title={item.data.title} dek={item.data.dek} category={item.data.category} readingMinutes={item.data.readingMinutes} publishDate={item.data.publishDate} updatedDate={item.data.updatedDate} slug={item.data.slug} sponsored={item.data.sponsored} />)}</div>}
+      <nav class="publication-links" aria-label="Publication"><a href="/stories/">All stories →</a><a href="/intelligence/">Sector intelligence →</a><a href="/ta/" lang="ta">தமிழ் →</a><a href="/about/#editorial-standards">Editorial standards →</a></nav>
+    </div>
+  </section>
+
+  <section class="home-band closing" aria-labelledby="enquiry-title">
+    <div class="wrap">
+      <p class="kicker">Your next step</p>
+      <h2 id="enquiry-title">Tell us about one task you need off your desk.</h2>
+      <p>Not sure where it fits? Start with the problem.</p>
+      <a class="button button--dark" href="/enquire/">Tell us what's pending <span aria-hidden="true">→</span></a>
+      <p class="fine"><a href={whatsappUrl()}>Chat on WhatsApp</a> or email <a href="mailto:hello@porul.in">hello@porul.in</a>.</p>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .home-band { padding: 48px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
+  .kicker { margin: 0 0 12px; color: var(--action-primary); font-size: 13px; font-weight: 700; }
+  h2, h3 { font-family: var(--display); letter-spacing: 0; }
+  h2 { max-width: 30ch; margin: 0 0 16px; font-size: 36px; line-height: 1.15; font-weight: 600; }
+  h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; }
+  p { color: var(--text-default); }
+  .section-intro { max-width: 76ch; margin: 0 0 28px; }
+  .needs, .steps { margin: 0; padding: 0; list-style: none; }
+  .needs li { display: grid; grid-template-columns: 36px minmax(0, 1fr) minmax(220px, .55fr); align-items: start; gap: 20px; padding: 24px 0; border-top: 1px solid var(--border-default); }
+  .needs p { max-width: 58ch; margin: 0; font-size: 15px; }
+  .need-number { color: var(--action-primary); font-size: 13px; font-weight: 700; }
+  .need-action { display: grid; gap: 6px; }
+  .availability { color: var(--muted); font-size: 12px; }
+  .availability--live { color: var(--action-primary); font-weight: 700; }
+  .need-action a, .text-link, .publication-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+  .available { background: var(--surface-raised); }
+  .available p { max-width: 58ch; }
+  .fine { color: var(--muted); font-size: 14px; }
+  .available-tasks a { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 88px; padding: 18px 0; border-top: 1px solid var(--border-default); }
+  .available-tasks strong, .available-tasks small { display: block; }
+  .available-tasks small { margin-top: 4px; color: var(--text-muted); font-size: 14px; }
+  .available-tasks a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 28px; }
+  .steps li { border-top: 1px solid var(--border-default); padding-top: 20px; }
+  .steps h3 { margin-top: 12px; }
+  .steps p { margin-bottom: 0; font-size: 15px; }
+  .reported-story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
+  .reported-story figure { margin: 0; }
+  .reported-story :global(img) { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: var(--surface-raised); }
+  .reported-story figcaption { margin-top: 8px; color: var(--text-muted); font-size: 12px; }
+  .reported-story h3 { font-size: 28px; }
+  .story-label { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+  .story-evidence { grid-column: 1 / -1; background: var(--surface-inverse); padding: 0 20px; }
+  .intel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+  .publication-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 24px; }
+  .closing { background: var(--surface-raised); }
+  .closing .fine a { text-decoration: underline; }
+  @media (max-width: 767px) {
+    .home-band { padding: 32px 0; }
+    h2 { font-size: 28px; }
+    .needs li { grid-template-columns: 24px minmax(0, 1fr); gap: 12px; }
+    .need-action { grid-column: 2; }
+    .two-col, .steps, .reported-story, .intel-grid { grid-template-columns: 1fr; gap: 24px; }
+    .reported-story h3 { font-size: 24px; }
+  }
+</style>

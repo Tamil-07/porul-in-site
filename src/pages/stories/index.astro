@@ -28,8 +28,12 @@ const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort
                 dek={story.data.dek}
                 location={story.data.location}
                 readingMinutes={story.data.readingMinutes}
+                publishDate={story.data.publishDate}
+                updatedDate={story.data.updatedDate}
                 slug={story.data.slug}
                 sponsored={story.data.sponsored}
+                heroImage={story.data.heroImage?.src}
+                heroImageAlt={story.data.heroImageAlt}
               />
             ))
           ) : (

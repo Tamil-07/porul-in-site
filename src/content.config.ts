@@ -10,6 +10,8 @@ const editorialBase = (image: () => ReturnType<import("astro:content").ImageFunc
   title: z.string(),
   slug: z.string(),
   dek: z.string(),
+  author: z.literal("Porul.in").default("Porul.in"),
+  authorRole: z.literal("Editorial").default("Editorial"),
   publishDate: z.date(),
   updatedDate: z.date().optional(),
   heroImage: image().optional(),
@@ -28,7 +30,9 @@ const stories = defineCollection({
   schema: ({ image }) => z.object({
     ...editorialBase(image),
     location: z.string(),
-    company: z.string()
+    company: z.string(),
+    reportingNote: z.string().optional(),
+    verificationNote: z.string().optional()
   })
 });
 
@@ -38,6 +42,7 @@ const intelligence = defineCollection({
     ...editorialBase(image),
     location: z.string(),
     category: z.enum(intelligenceCategories),
+    keyTakeaway: z.string().optional(),
     sources: z.array(sourceSchema).optional()
   })
 });
@@ -48,6 +53,7 @@ const tamil = defineCollection({
     ...editorialBase(image),
     location: z.string(),
     category: z.enum(intelligenceCategories),
+    keyTakeaway: z.string().optional(),
     sources: z.array(sourceSchema).optional(),
     lang: z.literal("ta").default("ta")
   })

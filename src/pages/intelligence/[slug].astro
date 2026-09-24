@@ -4,6 +4,8 @@ import ArticleEndNote from "@/components/ArticleEndNote.astro";
 import ArticleHeader from "@/components/ArticleHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Prose from "@/components/Prose.astro";
+import KeyTakeaway from "@/components/KeyTakeaway.astro";
+import SourceList from "@/components/SourceList.astro";
 
 export async function getStaticPaths() {
   const intelligence = await getCollection("intelligence", ({ data }) => !data.draft);
@@ -36,7 +38,16 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
   ]}
 >
   <article class="wrap">
-    <ArticleHeader kicker={kicker} title={entry.data.title} dek={entry.data.dek} sponsored={entry.data.sponsored} />
+    <ArticleHeader
+      kicker={kicker}
+      title={entry.data.title}
+      dek={entry.data.dek}
+      sponsored={entry.data.sponsored}
+      author={entry.data.author}
+      authorRole={entry.data.authorRole}
+      publishDate={entry.data.publishDate}
+      updatedDate={entry.data.updatedDate}
+    />
     {
       entry.data.heroImage && (
         <img
@@ -49,9 +60,11 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
         />
       )
     }
+    <KeyTakeaway text={entry.data.keyTakeaway} />
     <Prose>
       <Content />
     </Prose>
+    <SourceList sources={entry.data.sources} />
     <ArticleEndNote />
   </article>
 </BaseLayout>

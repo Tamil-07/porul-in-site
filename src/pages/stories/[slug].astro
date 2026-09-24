@@ -4,6 +4,7 @@ import ArticleEndNote from "@/components/ArticleEndNote.astro";
 import ArticleHeader from "@/components/ArticleHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Prose from "@/components/Prose.astro";
+import ReportingNote from "@/components/ReportingNote.astro";
 
 export async function getStaticPaths() {
   const stories = await getCollection("stories", ({ data }) => !data.draft);
@@ -36,16 +37,38 @@ const kicker = `Company story · ${entry.data.location} · ${entry.data.readingM
   ]}
 >
   <article class="wrap">
-    <ArticleHeader kicker={kicker} title={entry.data.title} dek={entry.data.dek} sponsored={entry.data.sponsored} />
+    <ArticleHeader
+      kicker={kicker}
+      title={entry.data.title}
+      dek={entry.data.dek}
+      sponsored={entry.data.sponsored}
+      author={entry.data.author}
+      authorRole={entry.data.authorRole}
+      publishDate={entry.data.publishDate}
+      updatedDate={entry.data.updatedDate}
+    />
     {
       entry.data.heroImage && (
-        <img
-          class="article-image cham"
-          src={entry.data.heroImage.src}
-          width={entry.data.heroImage.width}
-          height={entry.data.heroImage.height}
-          alt={entry.data.heroImageAlt}
-          loading="eager"
+        <figure class="article-media">
+          <div class="article-image cham">
+            <img
+              src={entry.data.heroImage.src}
+              width={entry.data.heroImage.width}
+              height={entry.data.heroImage.height}
+              alt={entry.data.heroImageAlt}
+              loading="eager"
+            />
+          </div>
+          <figcaption>Image supplied by Orbit Laser Cutting and cropped from the company's profile.</figcaption>
+        </figure>
+      )
+    }
+    {
+      entry.data.reportingNote && (
+        <ReportingNote
+          reportingNote={entry.data.reportingNote}
+          verificationNote={entry.data.verificationNote}
+          sponsored={entry.data.sponsored}
         />
       )
     }
@@ -57,11 +80,32 @@ const kicker = `Company story · ${entry.data.location} · ${entry.data.readingM
 </BaseLayout>
 
 <style>
+  .article-media {
+    width: min(100%, 960px);
+    margin: 0 0 36px;
+  }
+
   .article-image {
     --cham: 22px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--surface-raised);
+  }
+
+  .article-image img {
     display: block;
-    width: min(100%, 960px);
-    height: auto;
-    margin: 0 0 36px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% 100%;
+    filter: saturate(0.78) contrast(1.05);
+    transform: scale(1.45);
+    transform-origin: 62% 100%;
+  }
+
+  figcaption {
+    margin-top: var(--space-2);
+    color: var(--text-muted);
+    font-size: 12px;
   }
 </style>

@@ -1,33 +1,248 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Prose from "@/components/Prose.astro";
 ---
 
-<BaseLayout title="About — Porul.in" description="Who runs Porul.in and the editorial standards behind the publication.">
-  <section class="page-intro">
-    <div class="wrap">
-      <p class="page-intro__kicker">About Porul.in</p>
-      <h1>An independent publication for Tamil Nadu precision engineering.</h1>
-      <p class="page-intro__dek">Porul.in exists to tell durable company stories, read sector signals, and convene a reviewed room without becoming a directory, marketplace, or sourcing desk.</p>
+<BaseLayout title="About Porul: MSME Support and Editorial Standards" description="An extended back office for Tamil Nadu MSMEs, with GeM support available now. Read how Porul separates paid services from independent reporting.">
+  <section class="about-intro">
+    <div class="wrap about-intro__grid">
+      <div>
+        <p class="about-intro__kicker">About Porul.in</p>
+        <h1>Practical support. Accountable reporting.</h1>
+      </div>
+      <div class="about-intro__dek"><p>Porul.in is building an extended back office for Tamil Nadu MSMEs: a place to bring the paperwork, business information and preparation behind your next opportunity.</p><p>GeM seller registration and catalogue support is available now, with Shreepriya handling the portal work. Other requirements are reviewed before we confirm whether we can help.</p><p>We also publish company stories and sourced sector intelligence. Paying for a service does not buy editorial coverage or endorsement.</p><a class="button button--dark" href="/gem-services/">Explore GeM services →</a></div>
     </div>
   </section>
 
-  <section class="page-band">
-    <div class="wrap page-grid">
-      <Prose>
-        <h2>Who Runs It</h2>
-        <p>Porul.in is founder-led. The founder has final approval on every stage of the website and on the editorial standards that protect the publication's credibility.</p>
-        <h2>Why It Exists</h2>
-        <p>Tamil Nadu precision engineering deserves a serious public record: company stories that age well, sector intelligence that procurement people can use, and clear boundaries around what Porul.in does not do.</p>
-        <h2>Editorial Standards</h2>
-        <p>Reporting is real, sponsorship is disclosed, and scale is never invented. Featured companies do not pay for coverage unless marked Sponsored.</p>
-        <p>Porul.in does not broker, match, source, quote, or fulfil. Those boundaries are public because credibility is the product.</p>
-      </Prose>
-      <aside class="panel cham">
-        <h2>Contact</h2>
-        <p>Editorial, Room, and sponsorship enquiries are read directly by the founder.</p>
-        <p><a href="mailto:hello@porul.in">hello@porul.in</a></p>
-      </aside>
+  <section class="standards" id="editorial-standards" aria-labelledby="standards-heading">
+    <div class="wrap standards__grid">
+      <header class="standards__intro">
+        <p class="standards__kicker">Public standard</p>
+        <h2 id="standards-heading">How the editorial work is handled</h2>
+        <p>Published articles use the institutional byline <strong>Porul.in</strong> and role <strong>Editorial</strong>. The byline does not imply a larger newsroom or an expertise claim.</p>
+      </header>
+
+      <div class="standards__list">
+        <section>
+          <p class="standards__number">01</p>
+          <h3>How claims are sourced</h3>
+          <p>Policy, scheme, eligibility, limit and deadline claims use current official primary sources. Those sources are listed on the article. Company claims are attributed to the company or to the specific material it supplied.</p>
+        </section>
+        <section>
+          <p class="standards__number">02</p>
+          <h3>What is independently verified</h3>
+          <p>Porul.in states what it checked independently and what it did not. Reviewing a document is described as document review; it is not presented as an audit, site visit, customer confirmation or performance verification.</p>
+        </section>
+        <section>
+          <p class="standards__number">03</p>
+          <h3>How supplied material is labelled</h3>
+          <p>Company-supplied profiles, certifications, images and statements are labelled in the reporting record, captions or article text. Supplied material is not presented as independent observation.</p>
+        </section>
+        <section>
+          <p class="standards__number">04</p>
+          <h3>How sponsorship is disclosed</h3>
+          <p>Sponsored work is marked in text on cards and article pages. Sponsorship cannot buy editorial opinion, an undisclosed endorsement, ranking, sourcing, introductions or access to The Room.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="corrections" id="corrections" aria-labelledby="corrections-heading">
+    <div class="wrap corrections__grid">
+      <div>
+        <p class="standards__kicker">Corrections</p>
+        <h2 id="corrections-heading">A visible route to challenge the record.</h2>
+      </div>
+      <div>
+        <p>Send a correction request to <a href="mailto:hello@porul.in?subject=Correction%20request">hello@porul.in</a> with the article link, the claim in question and supporting evidence.</p>
+        <p><strong>Response expectation:</strong> every correction request is reviewed and answered with either the change made or the reason no change was made. When a material error is corrected, the article carries an updated date and a visible note describing the change.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="boundary" aria-labelledby="boundary-heading">
+    <div class="wrap boundary__inner cham">
+      <p class="standards__kicker">The boundary</p>
+      <h2 id="boundary-heading">Services and editorial have distinct purposes.</h2>
+      <p>GeM assistance is a paid service with an agreed scope. Stories remain editorial work, with sourcing and sponsorship disclosures. Porul is not affiliated with GeM or the government and does not guarantee approvals or contract awards. Service, editorial and correction enquiries reach hello@porul.in.</p>
+      <div class="boundary__actions">
+        <a class="button button--dark cham" href="mailto:hello@porul.in?subject=Editorial%20enquiry">Editorial enquiry</a>
+        <a class="button button--ghost cham" href="mailto:hello@porul.in?subject=Correction%20request">Request a correction</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .about-intro {
+    padding: clamp(var(--space-12), 8vw, var(--space-24)) 0 var(--space-16);
+  }
+
+  .about-intro__grid,
+  .standards__grid,
+  .corrections__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(var(--space-8), 7vw, var(--space-20));
+    align-items: start;
+  }
+
+  .about-intro__kicker,
+  .standards__kicker {
+    margin: 0 0 var(--space-3);
+    color: var(--action-primary);
+    font-size: var(--type-meta);
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--display);
+  }
+
+  h1 {
+    max-width: 12ch;
+    margin: 0;
+    font-size: var(--type-display-lg);
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  .about-intro__dek {
+    max-width: 52ch;
+    margin: var(--space-8) 0 0;
+    color: var(--text-default);
+    font-size: var(--type-body-lg);
+  }
+
+  .standards {
+    padding: var(--space-16) 0;
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-raised);
+    scroll-margin-top: 90px;
+  }
+
+  .standards__intro {
+    position: sticky;
+    top: 118px;
+  }
+
+  .standards__intro h2,
+  .corrections h2,
+  .boundary h2 {
+    max-width: 13ch;
+    margin: 0;
+    font-size: var(--type-heading-lg);
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .standards__intro > p:last-child {
+    max-width: 50ch;
+    margin: var(--space-5) 0 0;
+    color: var(--text-default);
+    font-size: var(--type-body-sm);
+  }
+
+  .standards__list {
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .standards__list section {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .standards__number {
+    grid-row: 1 / span 2;
+    margin: 3px 0 0;
+    color: var(--action-primary);
+    font-size: var(--type-meta);
+    font-weight: 700;
+  }
+
+  .standards__list h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--type-heading-sm);
+  }
+
+  .standards__list section > p:last-child,
+  .corrections__grid > div:last-child p,
+  .boundary__inner > p:not(.standards__kicker) {
+    max-width: 64ch;
+    margin: 0;
+    color: var(--text-default);
+    font-size: var(--type-body-sm);
+    line-height: 1.75;
+  }
+
+  .corrections {
+    padding: var(--space-16) 0;
+    scroll-margin-top: 90px;
+  }
+
+  .corrections__grid > div:last-child {
+    display: grid;
+    gap: var(--space-4);
+    padding-top: var(--space-2);
+  }
+
+  .corrections a {
+    color: var(--action-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .boundary {
+    padding: 0 0 clamp(var(--space-16), 8vw, var(--space-24));
+  }
+
+  .boundary__inner {
+    --cham: var(--cham-lg);
+    padding: clamp(var(--space-8), 6vw, var(--space-16));
+    border: 1px solid var(--border-default);
+    background: var(--surface-subtle);
+  }
+
+  .boundary__inner > p:not(.standards__kicker) {
+    margin-top: var(--space-5);
+  }
+
+  .boundary__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  @media (max-width: 767px) {
+    .about-intro__grid,
+    .standards__grid,
+    .corrections__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-intro__dek {
+      margin-top: 0;
+    }
+
+    .standards__intro {
+      position: static;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .boundary__actions {
+      display: grid;
+    }
+
+    .boundary__actions .button {
+      width: 100%;
+    }
+  }
+</style>

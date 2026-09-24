@@ -4,9 +4,16 @@ interface Props {
   title: string;
   dek: string;
   sponsored?: boolean;
+  author?: "Porul.in";
+  authorRole?: "Editorial";
+  publishDate: Date;
+  updatedDate?: Date;
+  lang?: "en" | "ta";
 }
 
-const { kicker, title, dek, sponsored = false } = Astro.props;
+import EditorialMeta from "@/components/EditorialMeta.astro";
+
+const { kicker, title, dek, sponsored = false, author = "Porul.in", authorRole = "Editorial", publishDate, updatedDate, lang = "en" } = Astro.props;
 ---
 
 <header class="article-head">
@@ -14,6 +21,7 @@ const { kicker, title, dek, sponsored = false } = Astro.props;
   {sponsored && <span class="sponsored-pill cham">Sponsored profile</span>}
   <h1>{title}</h1>
   <p class="article-head__dek">{dek}</p>
+  <EditorialMeta author={author} authorRole={authorRole} publishDate={publishDate} updatedDate={updatedDate} lang={lang} />
 </header>
 
 <style>

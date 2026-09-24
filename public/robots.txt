@@ -6,6 +6,28 @@ User-agent: GPTBot
 Allow: /
 Disallow: /admin/
 
+# ChatGPT search discovery is separate from GPTBot training access.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+# User-directed retrieval is distinct from automatic indexing or training.
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
 User-agent: PerplexityBot
 Allow: /
 Disallow: /admin/

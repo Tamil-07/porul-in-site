@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "npm run check:discovery",
+    "check:discovery": "node scripts/check-discovery.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,5 +15,9 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "fast-xml-parser": "5.10.1",
+    "parse5": "7.3.0"
   }
 }

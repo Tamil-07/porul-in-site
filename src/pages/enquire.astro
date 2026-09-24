@@ -1,0 +1,99 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { whatsappDisplay, whatsappUrl } from "@/data/contact";
+import "@/styles/services.css";
+---
+<BaseLayout title="Discuss Your MSME Back-Office Requirement" description="Tell Porul.in about your MSME paperwork, profile, certification or GeM requirement. We review the scope before confirming support." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Enquire", path: "/enquire/" }]}>
+  <div class="service-page">
+    <section class="service-intro"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Enquire</span></nav><h1>Tell us what you need help with.</h1><p class="intro-copy">Start with one pending task. We will review the requirement and confirm whether we can help before discussing the scope and fee.</p><p><a href={whatsappUrl()}>WhatsApp {whatsappDisplay}</a> or email <a href="mailto:hello@porul.in?subject=MSME%20support%20enquiry">hello@porul.in</a>. You can also prepare a message below, then send it through WhatsApp or your email app.</p></div></section>
+    <section class="service-band"><div class="wrap service-split">
+      <div>
+        <!-- Hidden until the handler is attached: a script failure must never
+             submit personal details through a GET request or imply delivery. -->
+        <form id="enquiry-form" hidden>
+          <div class="enquiry-fields">
+            <label>Your name<input name="name" autocomplete="name" required maxlength="100" /></label>
+            <label>Business name<input name="business" autocomplete="organization" required maxlength="120" /></label>
+            <label>Email (optional)<input type="email" name="email" autocomplete="email" maxlength="150" /></label>
+            <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="25" /></label>
+            <label class="full">What do you need?<select name="service" required><option value="">Select a requirement</option><option value="registration">GeM seller registration</option><option value="catalogue">Product listing or catalogue correction</option><option value="bid">A specific GeM bid</option><option value="tn-tender">A Tamil Nadu tender scope review</option><option value="marketing">Business profile, website or marketing</option><option value="certification">Certification or audit preparation</option><option value="exhibitions">Expo or exhibition preparation</option><option value="compliance">Compliance coordination</option><option value="other">Another task / help choosing the next step</option></select></label>
+            <label class="full" id="gem-status-field" hidden>Current GeM status<select name="status" disabled><option value="">Select your status</option><option>Not registered yet</option><option>Registration is incomplete</option><option>Registered, need catalogue help</option><option>Registered, need bid assistance</option><option>Not sure / not applicable</option></select></label>
+            <label class="full">Products, problem and any deadline<textarea name="details" rows="5" required maxlength="700" aria-describedby="details-help"></textarea></label>
+          </div>
+          <p id="details-help" class="fine">For a tender, include the official link or ID and closing date. Do not include passwords, OTPs, DSC PINs or identity and bank documents.</p>
+          <p class="fine">These details stay in this page until you open WhatsApp, open your email app or copy the message. Read our <a href="/privacy/">enquiry privacy notice</a>.</p>
+          <div class="actions"><button class="button button--dark" type="submit">Prepare enquiry →</button></div>
+        </form>
+        <noscript><p>To enquire, email your name, business, product or service and the help you need to <a href="mailto:hello@porul.in">hello@porul.in</a>. Include the bid link and deadline where relevant.</p></noscript>
+        <section id="enquiry-result" class="enquiry-result" hidden aria-labelledby="draft-title">
+          <h2 id="draft-title" tabindex="-1">Your message is ready to review.</h2>
+          <p><strong>Not sent yet.</strong> Open WhatsApp or your email app, review the message and send it. Preparing or copying it does not contact Porul.</p>
+          <label for="enquiry-message">Your enquiry</label><textarea id="enquiry-message" rows="12" readonly></textarea>
+          <div class="actions"><a id="open-whatsapp" class="button button--dark">Open WhatsApp →</a><a id="open-email" class="button button--ghost">Open email app →</a><button id="copy-enquiry" type="button" class="button button--ghost">Copy enquiry</button></div>
+          <p id="copy-status" role="status" class="fine"></p>
+          <p class="fine">No email app? Copy the message into your webmail and send it to <a href="mailto:hello@porul.in">hello@porul.in</a>. If you edit the form above, prepare the enquiry again.</p>
+        </section>
+      </div>
+      <aside><h2>What happens next</h2><p>Once your message reaches us, Porul reviews the requirement. GeM registration and catalogue support is available, with Shreepriya handling the portal work. Other requirements need a capability and scope review before we can offer support.</p><p>No payment is collected on this page. Sharing a requirement does not book a service. Certification, statutory advice and audit work require appropriately qualified professionals; we do not promise those services here.</p><p><a href="/gem-services/">Review GeM services and FAQs</a></p></aside>
+    </div></section>
+  </div>
+</BaseLayout>
+<script>
+  import { whatsappUrl } from "@/data/contact";
+  const form = document.querySelector<HTMLFormElement>("#enquiry-form");
+  const result = document.querySelector<HTMLElement>("#enquiry-result");
+  const message = document.querySelector<HTMLTextAreaElement>("#enquiry-message");
+  const emailLink = document.querySelector<HTMLAnchorElement>("#open-email");
+  const whatsappLink = document.querySelector<HTMLAnchorElement>("#open-whatsapp");
+  const copyStatus = document.querySelector<HTMLElement>("#copy-status");
+  if (form && result && message && emailLink && whatsappLink) {
+    const service = form.elements.namedItem("service") as HTMLSelectElement;
+    // Accept only known service keys; never place query text into HTML or an email header.
+    const selected = new URLSearchParams(location.search).get("service");
+    if (selected && Array.from(service.options).some(option => option.value === selected)) service.value = selected;
+    const status = form.elements.namedItem("status") as HTMLSelectElement;
+    const statusField = document.querySelector<HTMLElement>("#gem-status-field");
+    // Generic enquiries must not require GeM information or retain a stale status in the draft.
+    const syncStatus = () => {
+      const needsStatus = ["registration", "catalogue", "bid"].includes(service.value);
+      status.disabled = !needsStatus;
+      status.required = needsStatus;
+      if (statusField) statusField.hidden = !needsStatus;
+    };
+    syncStatus();
+    service.addEventListener("change", syncStatus);
+    const requiredText = ["name", "business", "details"].map(key => form.elements.namedItem(key) as HTMLInputElement | HTMLTextAreaElement);
+    const validateText = () => requiredText.forEach(field => field.setCustomValidity(field.value.trim() ? "" : "Please enter a value, not only spaces."));
+    requiredText.forEach(field => field.addEventListener("input", validateText));
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      validateText();
+      if (!form.reportValidity()) return;
+      const values = new FormData(form);
+      const read = (key: string) => String(values.get(key) ?? "").trim();
+      const label = service.selectedOptions[0].textContent ?? "MSME support";
+      const subject = `Porul service enquiry: ${label}`;
+      const body = ["Hello Porul,", "", `Name: ${read("name")}`, `Business: ${read("business")}`, `Email: ${read("email") || "Not supplied"}`, `Phone: ${read("phone") || "Not supplied"}`, `Service: ${label}`, ...(status.disabled ? [] : [`GeM status: ${read("status")}`]), "", "Requirement:", read("details"), "", "Please review my requirement and confirm scope and fees."].join("\n");
+      message.value = body;
+      emailLink.href = `mailto:hello@porul.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // A normal link opens a draft only after a deliberate click; no WhatsApp SDK or automatic send.
+      whatsappLink.href = whatsappUrl(body);
+      result.hidden = false;
+      if (copyStatus) copyStatus.textContent = "";
+      const heading = document.querySelector<HTMLElement>("#draft-title");
+      heading?.focus();
+      heading?.scrollIntoView({ block: "start" });
+    });
+    document.querySelector("#copy-enquiry")?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(message.value);
+        if (copyStatus) copyStatus.textContent = "Copied. Paste into WhatsApp or email, review and send to Porul.";
+      } catch {
+        message.focus();
+        message.select();
+        if (copyStatus) copyStatus.textContent = "Automatic copying is unavailable. The message is selected so you can copy it manually.";
+      }
+    });
+    form.hidden = false;
+  }
+</script>
