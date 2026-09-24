@@ -11,3 +11,9 @@ node_modules/
 # involve machine-specific secrets or callback values.
 .env
 .env.*
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
