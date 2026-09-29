@@ -22,7 +22,7 @@ interface Props {
   article?: ArticleSeo;
   breadcrumbs?: BreadcrumbSeo[];
   noindex?: boolean;
-  service?: { name: string; description: string; path: string; email: string };
+  service?: { name: string; description: string; path: string; email: string; serviceType?: string; areaServed?: string[] };
   faqs?: { question: string; answer: string }[];
 }
 
@@ -80,7 +80,8 @@ const graph: Record<string, unknown>[] = [
       url: whatsappUrl(),
       email: "hello@porul.in"
     },
-    description: "An extended back office for Tamil Nadu MSMEs, with GeM registration and catalogue support available.",
+    alternateName: ["Porul", "பொருள்"],
+    description: "MSME benefits reviews for manufacturing businesses in Tamil Nadu and Karnataka, with GeM registration and catalogue support also available.",
     sameAs: ["https://www.linkedin.com/company/porul-in/"]
   },
   {
@@ -88,7 +89,7 @@ const graph: Record<string, unknown>[] = [
     "@id": websiteId,
     name: "Porul.in",
     url: site.toString(),
-    description: "MSME back-office support, company stories and sector intelligence.",
+    description: "MSME benefits reviews, GeM support, company stories and sector intelligence.",
     publisher: { "@id": organizationId },
     inLanguage: ["en", "ta"]
   },
@@ -108,15 +109,16 @@ const graph: Record<string, unknown>[] = [
 // Service and FAQ entities describe visible content, without implying a local
 // office, government affiliation, reviews or a price that has not been agreed.
 if (service) {
+  const areas = (service.areaServed ?? ["Tamil Nadu"]).map(name => ({ "@type": "State", name, containedInPlace: { "@type": "Country", name: "India" } }));
   graph.push({
     "@type": "Service",
     "@id": `${canonicalUrl}#service`,
     name: service.name,
     description: service.description,
     url: new URL(service.path, site).toString(),
-    serviceType: "GeM seller registration and product catalogue assistance",
+    serviceType: service.serviceType ?? "GeM seller registration and product catalogue assistance",
     provider: { "@id": organizationId },
-    areaServed: { "@type": "State", name: "Tamil Nadu", containedInPlace: { "@type": "Country", name: "India" } },
+    areaServed: areas.length === 1 ? areas[0] : areas,
     availableChannel: { "@type": "ServiceChannel", serviceUrl: new URL("/enquire/", site).toString() }
   });
 }
@@ -169,6 +171,8 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <title>{resolvedTitle}</title>
 <meta name="description" content={resolvedDescription} />
 <link rel="canonical" href={canonicalUrl} />
+<link rel="describedby" href="/llms.txt" type="text/plain" />
+{!noindex && <link rel="alternate" type="text/markdown" href={new URL("index.md", canonicalUrl)} />}
 <link rel="sitemap" type="application/xml" href={new URL("/sitemap-index.xml", site)} />
 <link rel="alternate" type="application/rss+xml" title="Porul.in RSS" href={new URL("/rss.xml", site)} />
 <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
@@ -182,7 +186,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta property="og:image" content={socialImageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Porul.in — An extended back office for Tamil Nadu MSMEs" />
+<meta property="og:image:alt" content="Porul.in — MSME benefits reviews and GeM support" />
 {article && <meta property="article:published_time" content={new Date(article.publishDate).toISOString()} />}
 {article && <meta property="article:modified_time" content={new Date(article.updatedDate ?? article.publishDate).toISOString()} />}
 
@@ -190,6 +194,6 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta name="twitter:title" content={resolvedTitle} />
 <meta name="twitter:description" content={resolvedDescription} />
 <meta name="twitter:image" content={socialImageUrl} />
-<meta name="twitter:image:alt" content="Porul.in — An extended back office for Tamil Nadu MSMEs" />
+<meta name="twitter:image:alt" content="Porul.in — MSME benefits reviews and GeM support" />
 
 <script type="application/ld+json" set:html={jsonLd} />

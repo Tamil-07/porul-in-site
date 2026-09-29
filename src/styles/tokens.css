@@ -51,6 +51,8 @@
   --space-24: 96px;
 
   --type-display-xl: clamp(44px, 7vw, 84px);
+  --type-hero: 34px;
+  --status-mark-size: 10px;
   --type-display-lg: clamp(38px, 5.2vw, 68px);
   --type-heading-lg: clamp(28px, 3.6vw, 44px);
   --type-heading-md: clamp(22px, 2.5vw, 30px);
@@ -75,3 +77,6 @@
   --z-header: 50;
   --z-overlay: 100;
 }
+@media (min-width: 375px) { :root { --type-hero: 38px; } }
+@media (min-width: 600px) { :root { --type-hero: 50px; } }
+@media (min-width: 1024px) { :root { --type-hero: 64px; } }

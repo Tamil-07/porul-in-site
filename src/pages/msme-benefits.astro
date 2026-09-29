@@ -1,0 +1,29 @@
+---
+// One substantive benefits-service page; cities describe enquiry coverage, not offices.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { benefitsFaqs, benefitsService } from "@/data/benefits";
+import "@/styles/services.css";
+const breadcrumbs = [{ name: "Home", path: "/" }, { name: "MSME benefits", path: benefitsService.path }];
+---
+<BaseLayout title="MSME Benefits Review for Manufacturers" description="MSME benefits reviews for manufacturing units in Coimbatore, Hosur, Chennai and Karnataka. See Porul's scope, limits and enquiry steps." service={benefitsService} faqs={benefitsFaqs} breadcrumbs={breadcrumbs}>
+  <div class="service-page">
+    <section class="service-intro"><div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>MSME benefits</span></nav>
+      <p class="eyebrow">Porul.in / MSME services</p>
+      <h1>MSME benefits review for manufacturing businesses.</h1>
+      <p class="intro-copy">Started production, bought machinery or planning an expansion? Porul reviews central and state schemes that may apply to your unit in Tamil Nadu or Karnataka, then explains the conditions and next steps to check.</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits <span aria-hidden="true">→</span></a><a href="#scope">See what a review can clarify</a></div>
+      <p class="fine">An enquiry is not an eligibility decision. The relevant authority decides eligibility and approval. Porul confirms the scope and any fee before an assessment begins.</p>
+    </div></section>
+    <section class="service-band" id="scope" aria-labelledby="scope-title"><div class="wrap service-split">
+      <div><h2 id="scope-title">What the review can clarify</h2><p>We look at potentially relevant central and state schemes, their published conditions and exclusions, information still needed, and practical next steps. Official sources and the date checked should be visible in the agreed work.</p><p>We confirm what your assessment will cover before it starts. This is a scope description, not a sample assessment or a promise that a scheme applies.</p></div>
+      <div><h2>What it does not include</h2><p>A benefits assessment does not include filing applications, dealing with departments, appeals or arranging loans. Additional work needs a separate capability and scope review. No subsidy, approval or payment is guaranteed.</p><p>For a separate portal need, see <a href="/gem-services/">GeM registration and catalogue support</a>.</p></div>
+    </div></section>
+    <section class="service-band" aria-labelledby="location-title"><div class="wrap service-split">
+      <div><h2 id="location-title">Your unit's location matters</h2><p>Manufacturers in <strong>Coimbatore, Hosur and Chennai</strong> can enquire about a benefits review for their Tamil Nadu units. Porul also reviews enquiries from manufacturing units elsewhere in Tamil Nadu and in Karnataka.</p><p>District, activity, production stage and the timing of machinery purchases can change which rules need checking. We do not assume that a scheme applies just because a unit is in one of these cities.</p></div>
+      <div><h2>What to share first</h2><p>Tell us what you manufacture, your district and state, and whether your unit is planned, producing or expanding. If production has started or machinery has been purchased, the timing may matter. The <a href="/enquire/?service=benefits">enquiry form</a> asks for these details without requesting investment amounts or sensitive documents.</p><p>Do not send identity numbers, bank documents, passwords or OTPs in an initial enquiry. Read the <a href="/privacy/">enquiry privacy notice</a>.</p></div>
+    </div></section>
+    <section class="service-band" aria-labelledby="faq-title"><div class="wrap"><h2 id="faq-title">Questions before you enquire</h2>{benefitsFaqs.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
+    <section class="service-band" aria-labelledby="contact-title"><div class="wrap"><h2 id="contact-title">Start with your manufacturing unit.</h2><p>Describe your activity, location and stage. Porul will review the requirement and confirm the assessment scope and any fee before work begins.</p><div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><a href="/contact/">Other ways to contact Porul</a></div></div></section>
+  </div>
+</BaseLayout>

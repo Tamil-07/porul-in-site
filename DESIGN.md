@@ -1,5 +1,15 @@
 # Porul.in Design Foundation
 
+## Current landing direction — approved for release, 2026-09-28
+
+This section supersedes the historical landing IA below. Benefits-first v3 is the release direction; do not reopen it as reading-first or “pending work”. Keep warm paper, ink, accessible copper, local Clash/Satoshi/Tamil fonts and precision-editorial structure. Remove grain and header blur; Tamil identity remains visible at 320px. No new decorative art, metrics or testimonials.
+
+Order: short benefits hero and dominant enquiry CTA → two service records (benefits, then GeM) → illustrative assessment outline → process/accountability → FAQ → clearly separated service guide and editorial reading list → Tamil and secondary Room → final benefits enquiry. Other services are a single scope-review line. The expandable assessment outline is a native, keyboard-accessible way to inspect what a review can clarify, not evidence of a delivered client assessment.
+
+Hero type is a semantic `--type-hero` role: 34px at 320, 38px at 375–599, 50px at medium widths, 64px expanded. Explanatory text stays before the CTA. The desktop service key is supplementary; mobile service records carry the same status meaning. Filled and outlined status marks always have explicit text labels. Shared sections use existing spacing/type tokens; body text stays at least 16px, metadata may be 14px. Primary actions and disclosure controls remain at least 44px high.
+
+The enquiry composer stays local and never announces successful submission. Benefits fields adapt to business stage; changing a draft invalidates its send links until prepared again. Hide the form until its handler is attached, preserve direct contact without JavaScript, and never persist form data in browser storage.
+
 **2026-09-24 service expansion:** The founder approved a GeM service and enquiry journey. The homepage now prioritises GeM support while retaining the editorial lead story and established visual identity. Service pages use compact, unframed sections, direct answers and an email enquiry composer. The older homepage reading priority below is historical. See DECISIONS.md.
 
 **Status:** Approved and implemented locally for the Phase 1 landing page on 2026-09-03. Live deployment is not part of this pass.

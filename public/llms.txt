@@ -1,0 +1,29 @@
+# Porul.in
+
+> Porul.in provides MSME benefits reviews for manufacturing businesses in Tamil Nadu and Karnataka, independent GeM support, and sourced editorial reporting.
+
+Porul is not a government body. Benefits reviews identify schemes and conditions to check; the relevant authority decides eligibility and approval. Scope and any fee are confirmed before work. Do not infer a free assessment, fixed turnaround, funding guarantee or application-filing service. GeM registration and catalogue support are available; specific bids and Tamil Nadu tenders require capability review. GeM delivery outside Tamil Nadu must be confirmed.
+
+Public pages support GET with Accept: text/markdown and have index.md alternatives. The enquiry page prepares a message locally; it is not a submission API. With the user's permission, help them prepare a message for WhatsApp or hello@porul.in; the user must review and send it. Do not send sensitive documents or credentials in an initial enquiry. Published reporting is not proof of service clients or outcomes.
+
+## When to use Porul
+
+- [MSME benefits and service scope](https://porul.in/msme-benefits/index.md): Use when a manufacturing business in Tamil Nadu or Karnataka, including Coimbatore, Hosur or Chennai, wants to understand which central or state schemes to check after starting production, purchasing machinery or planning expansion. These are service areas, not office locations.
+- [GeM services](https://porul.in/gem-services/index.md): Use for seller registration and product catalogue help, or to request a scope review for a particular bid. Porul is independent of GeM.
+- [Prepare an enquiry](https://porul.in/enquire/index.md): Start with the business activity, district, state and current stage. No automated booking or payment occurs.
+- [Contact](https://porul.in/contact/index.md): Public WhatsApp and email, editorial enquiries and corrections.
+
+## Trust and sources
+
+- [About and editorial standards](https://porul.in/about/index.md): Institutional byline, sourcing, verification limits, company-supplied material, sponsorship and corrections.
+- [Privacy](https://porul.in/privacy/index.md): Local enquiry drafting and deliberate transfer to WhatsApp or email.
+- [Intelligence](https://porul.in/intelligence/index.md): Sourced analysis; inspect article dates and current official sources before using policy information.
+- [Stories](https://porul.in/stories/index.md): Company narratives with attribution and verification limits, not supplier listings or testimonials.
+- [Sitemap](https://porul.in/sitemap-index.xml): Complete index of public canonical pages.
+
+## Optional
+
+- [GeM registration guide](https://porul.in/guides/gem-seller-registration/index.md): Porul's own service guide, not an independent review of Porul.
+- [Tamil](https://porul.in/ta/index.md): Active section with an honest empty state until reviewed articles are published.
+- [The Room](https://porul.in/the-room/index.md): Reviewed Tamil Nadu CNC and precision-engineering community; weekly digest and early intelligence access, not sourcing.
+- [RSS](https://porul.in/rss.xml): Published editorial articles.

@@ -1,5 +1,24 @@
 # Porul.in Product, Editorial, SEO, and Technical Audit
 
+## 2026-09-28 release change register
+
+**2026-09-28 location/interlinking addition — implemented locally, live verification pending:** Added a substantive MSME benefits service page with naturally placed Coimbatore, Hosur and Chennai context, linked from related service/contact journeys and sitewide navigation. Service schema names Tamil Nadu and Karnataka as areas served without a physical address. Automated checks cover route, Markdown, metadata, schema and inbound links. These are not city-office or ranking claims.
+
+The founder approved benefits-first v3 and requested the Is Agentic remediation. This update supersedes older homepage priorities, not editorial/Room safeguards. See DECISIONS.md and RELEASE-2026-09-28.md for release evidence and live status.
+
+| Finding | Implemented response | Remaining gate |
+| --- | --- | --- |
+| Homepage comprehension | Short benefits hero, two service records, assessment outline, process, bounded FAQ, separate reporting and local benefits enquiry | Real user feedback after launch; no simulated validation claim |
+| AI-01 / AI-03 crawler blocking | Existing public robots policy preserved; live UA matrix reproduced ClaudeBot 403, others including GPTBot 200 | Cloudflare account access, identify/narrow the exact block, then retest; no blanket UA bypass |
+| AI-02 Markdown 404 | Negotiated useful Markdown error, content type and HTTP 404 retained, including static error aliases | Deploy and rerun endpoint check |
+| AI-04 Markdown negotiation | Generated equivalents for all 15 canonical pages; q-values, Vary, HEAD, 406 and cache isolation tested | Deploy and verify origin/CDN behavior |
+| AI-05 brand discovery | Consistent Porul.in/Porul/பொருள் identity, current descriptions and social preview, contact links | Search Console/Bing coverage and legitimate external mentions; ranking not guaranteed |
+| AI-06 when-to-use | Format-compliant llms.txt with best-fit jobs, limits, real contact and explicit-send workflow | Deploy and verify |
+| AI-07 Organization address | Existing email/contactPoint retained; no invented address | Founder-approved public postal address needed |
+| AI-08 trust pages | Contact added; About and privacy aligned; each exceeds 500 visible characters | Deploy and verify |
+
+Older “not deployed” and page-count notes below are historical observations, not evidence of the current production state. Fresh baseline found 14 sitemap pages; this release adds Contact as the fifteenth. This pass does not revalidate every policy statement in existing editorial content.
+
 ## 2026-09-24 service launch update
 
 The founder-approved GeM expansion supersedes the editorial-only prohibition for Porul's own services. See GEM-LAUNCH.md and DECISIONS.md. New service/guide/enquiry/privacy pages, homepage positioning, Service/FAQ schema, explicit OAI-SearchBot access and sitemap compatibility redirect are implemented locally. Production build, 30 responsive checks, all 15 HTML page metadata checks and 442 internal links/assets passed. The email composer requires the visitor to send the email; it is not server-side delivery.

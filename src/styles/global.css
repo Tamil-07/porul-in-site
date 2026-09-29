@@ -19,20 +19,17 @@ body {
   color: var(--text-strong);
   font-family: var(--body);
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
-/* The grain is inline CSS, not an asset request, so the page keeps its v3 depth
-   without adding network cost or maintenance. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Plain paper keeps the approved v3 layout free of decorative overlays. */
+.kicker { margin: 0 0 var(--space-3); color: var(--action-primary); font-size: var(--type-body-sm); font-weight: 700; }
+.text-link { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.text-link:hover { color: var(--action-primary-hover); }
+.status { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--type-body-sm); font-weight: 700; }
+.status::before { content: ""; flex: none; width: var(--status-mark-size); height: var(--status-mark-size); }
+.status--available::before { background: var(--action-primary); }
+.status--review::before { border: 2px solid var(--text-strong); }
+[lang="ta"] { font-family: var(--tamil); }
 
 a {
   color: inherit;

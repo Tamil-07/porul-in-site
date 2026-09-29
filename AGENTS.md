@@ -1,5 +1,15 @@
 # Porul.in Agent Instructions
 
+## Current founder-approved release: 2026-09-28
+
+The founder approved shipping the benefits-first v3 direction and requested the Is Agentic fixes. This supersedes the September 24 “extended back office / pending work” homepage and the older reading-first priority. Lead with “Find out which MSME benefits could apply.” and “Discuss MSME benefits”; manufacturing businesses in Tamil Nadu and Karnataka are the benefits-review audience. GeM remains second, with its existing routes and delivery boundaries. English leads; the Tamil signature stays visible on phones. Preserve editorial independence and The Room's four questions.
+
+Do not invent a free assessment, price, response time, assessor credentials, office address, eligibility outcome or application-filing capability. Confirm scope and any fee before an assessment. The assessment preview is illustrative. Additional work requires separate capability review. Simulated owner reviews are hypotheses, not user research or validation.
+
+The founder approved natural search copy for Coimbatore, Hosur and Chennai as Tamil Nadu benefits-review service areas. Keep one substantive `/msme-benefits/` page and contextual links from related routes. Do not imply an office or create near-identical city pages. Geographic wording must match the real Tamil Nadu/Karnataka review scope; search visibility is not guaranteed.
+
+Static Astro HTML remains the content source. The approved agent-readiness work adds build-generated Markdown and a small Cloudflare Worker for Accept negotiation, not a submission API or SSR product. Run `npm run build` and `node scripts/check-endpoints.mjs <origin>`; verify the deployment, not just local files. Do not bypass WAF/security on the strength of a spoofable User-Agent. A missing public business address must remain missing until supplied.
+
 ## Latest founder correction: back-office identity, 2026-09-24
 
 The homepage leads with Porul as an extended back office for Tamil Nadu MSMEs, not a GeM-only business. This supersedes the primary homepage GeM action described below. Keep GeM as the first available service, with Shreepriya handling portal work and dedicated search/service pages intact. Other business-presentation, certification, exhibition and compliance needs are enquiry categories subject to capability review, not advertised delivery commitments. Keep the broader brand consistent across shared metadata and contact paths. The WhatsApp spending poll is exploratory, multi-select evidence, not a validated demand ranking. See the latest DECISIONS.md entry.

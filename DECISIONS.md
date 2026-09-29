@@ -1,5 +1,31 @@
 # Decisions
 
+## 2026-09-28 — City relevance without a public office address
+
+**Founder direction:** Do not show a physical workspace or invent an address. Improve relevance for searches from Coimbatore, Hosur and Chennai MSMEs, and make the site interlink coherently.
+
+**Implementation decision:** Add one substantive `/msme-benefits/` page explaining Porul's real benefits-review scope for manufacturers in Tamil Nadu and Karnataka. Mention the three Tamil Nadu cities only as examples of unit locations. Link it from the homepage, site navigation/footer, About, Contact, Enquire and the separate GeM service page. Use Service `areaServed` for the approved states; do not add LocalBusiness or PostalAddress schema. Preserve the dominant homepage enquiry action and distinct GeM journey.
+
+**Limit:** This improves crawlable relevance and navigation, not guaranteed local rankings. No location-specific eligibility, office, subsidy amount or deadline is asserted; no near-duplicate city doorway pages are created. Live impact requires deployment and indexation checks.
+
+## 2026-09-28 — Benefits-first release and agent-readable representations
+
+**Authority:** The founder confirmed benefits-review delivery, approved the shorter v3 hero and asked to ship the best available version while improving over time. They also explicitly requested the eight Is Agentic fixes. This supersedes the September 24 back-office homepage and older reading-first landing priority. No real owner sessions occurred; simulation is not validation.
+
+**Journey:** Manufacturing business in Tamil Nadu/Karnataka → understand benefits review and limits → /enquire/?service=benefits → local draft → user explicitly sends via WhatsApp/email. GeM remains a separate secondary offer, with all prior enquiry intents retained. No payment, API submission, local storage or automatic sending. Stage-specific fields collect non-sensitive context; hidden answers are excluded and editing invalidates a previous draft.
+
+**Trust and limits:** Keep institutional attribution, source lists and dates, separate service content from editorial records, and add a Contact page linked sitewide. No postal address, fixed fee/free review, response SLA, credentials or unapproved application-filing service is invented. Exact commercial deliverables and responsibility are confirmed before engagement; the sample outline is explicitly illustrative.
+
+**Design:** Port the approved content hierarchy into existing Astro components and tokens, preserving English-first/Tamil identity, paper/ink/copper and restrained rules. Remove grain/blur and the homepage company capability image. Keep native disclosures and current Room application questions intact.
+
+**Architecture:** Static Astro output remains authoritative. Build-time conversion extracts public main content into Markdown, preserving sources, dates and disclosures. A small Cloudflare Worker negotiates HTML/Markdown using Accept quality/specificity, sends Vary: Accept, retains genuine 404s, supports HEAD and returns 406 for unsupported document media types. Static assets remain untouched. Each underlying representation has a distinct asset path; negotiated responses use private/no-cache to avoid shared-cache mixing. Generated paths are sitemap-allowlisted; research/drafts are not exported. Explicit Markdown URLs carry noindex and a canonical-page reference.
+
+**Discovery:** Add llms.txt according to its published format and link it from document heads. Strengthen consistent Porul.in identity and About/Contact/privacy paths. These are access and clarity improvements, not guarantees of Google/AI rankings or an audit score. PostalAddress remains unresolved. No fabricated listings or press mentions.
+
+**Security evidence:** Live probes on September 28 found ClaudeBot 403 with a Cloudflare response; GPTBot and nine-name matrix peers otherwise received 200. Header spoofing tests do not establish verified-crawler reachability. robots.txt already permits these agents. WAF remediation requires account access and identification of the specific blocking rule, not a UA-wide security skip.
+
+**Release gate:** Local build, regression suite, HTTP endpoint matrix and responsive/browser verification must pass before deployment. Cloudflare login was unavailable at the initial check; the current deployment status and verification evidence are recorded in RELEASE-2026-09-28.md. Do not infer that local completion means production is updated.
+
 ## 2026-09-24 - Discovery audit and Enmiya credit
 
 **Request:** Verify complete sitemap coverage, improve AI-agent friendliness and credit Enmiya in the footer.

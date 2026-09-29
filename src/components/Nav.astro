@@ -1,6 +1,6 @@
 ---
 const links = [
-  { href: "/#work", label: "MSME support" },
+  { href: "/msme-benefits/", label: "MSME benefits" },
   { href: "/gem-services/", label: "GeM services" },
   { href: "/stories/", label: "Stories" },
   { href: "/intelligence/", label: "Intelligence" },
@@ -10,7 +10,7 @@ const links = [
 ];
 
 const currentPath = Astro.url.pathname;
-const isCurrent = (href: string) => href === "/#work" ? currentPath === "/" : currentPath === href || currentPath.startsWith(href);
+const isCurrent = (href: string) => currentPath === href || currentPath.startsWith(href);
 ---
 
 <header class="site-header">
@@ -70,8 +70,7 @@ const isCurrent = (href: string) => href === "/#work" ? currentPath === "/" : cu
     top: 0;
     z-index: var(--z-header);
     border-bottom: 1px solid var(--line);
-    background: rgba(247, 246, 242, 0.84);
-    backdrop-filter: blur(12px);
+    background: var(--surface-page);
   }
 
   .nav {
@@ -153,7 +152,7 @@ const isCurrent = (href: string) => href === "/#work" ? currentPath === "/" : cu
     width: 44px;
     height: 44px;
     place-items: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border-strong);
     background: var(--paper-2);
     cursor: pointer;
     list-style: none;
@@ -236,9 +235,7 @@ const isCurrent = (href: string) => href === "/#work" ? currentPath === "/" : cu
       gap: 10px;
     }
 
-    .logo__tamil {
-      display: none;
-    }
+    .logo__tamil { font-size: 14px; }
 
   }
 

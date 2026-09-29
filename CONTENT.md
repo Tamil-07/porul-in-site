@@ -1,5 +1,15 @@
 # Porul.in Content System
 
+## Current approved public offer — 2026-09-28
+
+The founder confirmed delivery of MSME benefits reviews and approved release of the v3 direction. This supersedes older homepage audience and back-office copy below. Lead with manufacturing businesses in Tamil Nadu and Karnataka seeking central/state scheme conditions and next steps. Primary CTA: “Discuss MSME benefits”. GeM registration and catalogue help is secondary; preserve dedicated GeM pages. Karnataka GeM delivery is not confirmed.
+
+Keep the shorter approved hero: “Find out which MSME benefits could apply.” An enquiry is not an eligibility decision; the authority decides eligibility and approval. Assessment scope and any fee are confirmed before starting. The four-part assessment outline is illustrative, not a promised standard deliverable. No free-review, turnaround, amount, qualification or scheme-deadline claim is approved. Application filing, department follow-ups, appeals and loans are outside the assessment; additional work needs separate capability review.
+
+Coimbatore, Hosur and Chennai may be named naturally as Tamil Nadu manufacturing-unit locations within the benefits-review service area. They are not Porul office locations. The dedicated benefits page explains the offer and limits; related pages link to it with descriptive text. Do not make thin city variants or stuff city names into unrelated editorial content.
+
+Services and editorial are separate. Company features are not testimonials or evidence of clients. The Room and Tamil boundaries remain unchanged. Do not publish the client's private WhatsApp facts or use their address in Porul schema. Contact is hello@porul.in and the existing founder-confirmed WhatsApp number; no physical address has been supplied. `llms.txt`, Markdown and schema must describe the same visible offer, not contain hidden promotional instructions.
+
 **2026-09-24 service expansion:** Porul now offers independent GeM assistance for Tamil Nadu MSMEs. Shreepriya is the founder-confirmed person handling GeM work, without invented credentials. Public service copy may describe registration and catalogue help and invite scoped bid enquiries. TN tender enquiries are for capability review. Service fees do not purchase editorial coverage. This supersedes the editorial-only positioning below for Porul's own services. Quotes replace unapproved package prices. Service guides identify their commercial purpose and link official sources; do not present them as independent reviews of Porul.
 
 **Status:** Approved Phase 1 editorial foundation as of 2026-09-03. Content workflow and live edge configuration remain separate operational decisions.

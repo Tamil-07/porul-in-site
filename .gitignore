@@ -2,6 +2,7 @@
 # it would create noise without improving deploy reliability.
 dist/
 .astro/
+.generated/
 
 # Dependency folders are restored from package-lock.json during each build,
 # keeping the repository small and reproducible.

@@ -1,5 +1,13 @@
 # Porul.in
 
+## Current release and workflow — September 2026
+
+The canonical repository is `/Users/tamiliniyan/Documents/New project`. Current product and design decisions are in AGENTS.md, DESIGN.md, CONTENT.md and DECISIONS.md; the older stage descriptions below are historical. Porul now leads with MSME benefits reviews for manufacturing businesses in Tamil Nadu/Karnataka, with GeM support and separate editorial publishing.
+
+Run `npm run build` to generate static Astro HTML, Markdown equivalents, the sitemap and RSS, then execute discovery and regression tests. `npm run preview` runs the Cloudflare Worker locally; `node scripts/check-endpoints.mjs http://127.0.0.1:8787` checks its actual responses. `npm run deploy` publishes to the existing configured Cloudflare Worker after authentication. Do not deploy just `dist` to a static-only host: same-URL Markdown negotiation depends on `worker/index.mjs` and `assets.run_worker_first`.
+
+Astro's existing adapter remains installed, but the deployment entry is the small representation worker, not the generated SSR bundle. No database, KV binding, form backend or runtime content conversion is used. Generated `.generated/` data and Markdown files must be regenerated on every build. See RELEASE-2026-09-28.md for verification, deployment status and remaining account-level work.
+
 Porul.in is a curated network and credibility engine for Tamil Nadu CNC machining and precision engineering. The public website exists to prove credibility, publish evergreen company stories and sector intelligence, and later support light utility without becoming a directory, marketplace, RFQ portal, or lead-generation machine.
 
 ## Local Development

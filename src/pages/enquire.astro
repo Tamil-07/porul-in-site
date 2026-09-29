@@ -3,9 +3,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { whatsappDisplay, whatsappUrl } from "@/data/contact";
 import "@/styles/services.css";
 ---
-<BaseLayout title="Discuss Your MSME Back-Office Requirement" description="Tell Porul.in about your MSME paperwork, profile, certification or GeM requirement. We review the scope before confirming support." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Enquire", path: "/enquire/" }]}>
+<BaseLayout title="Discuss MSME Benefits or GeM Support" description="Tell Porul what you manufacture, your location and stage. Prepare a WhatsApp or email enquiry about MSME benefits or GeM support. Nothing is sent automatically." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Enquire", path: "/enquire/" }]}>
   <div class="service-page">
-    <section class="service-intro"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Enquire</span></nav><h1>Tell us what you need help with.</h1><p class="intro-copy">Start with one pending task. We will review the requirement and confirm whether we can help before discussing the scope and fee.</p><p><a href={whatsappUrl()}>WhatsApp {whatsappDisplay}</a> or email <a href="mailto:hello@porul.in?subject=MSME%20support%20enquiry">hello@porul.in</a>. You can also prepare a message below, then send it through WhatsApp or your email app.</p></div></section>
+    <section class="service-intro"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Enquire</span></nav><h1>Tell us about your business.</h1><p class="intro-copy">For MSME benefits, start with what you manufacture, your location and your stage. We confirm the scope and any fee before an assessment begins.</p><p><a href={whatsappUrl()}>WhatsApp {whatsappDisplay}</a> or email <a href="mailto:hello@porul.in?subject=MSME%20support%20enquiry">hello@porul.in</a>. You can also prepare a message below, then send it through WhatsApp or your email app.</p></div></section>
     <section class="service-band"><div class="wrap service-split">
       <div>
         <!-- Hidden until the handler is attached: a script failure must never
@@ -16,9 +16,17 @@ import "@/styles/services.css";
             <label>Business name<input name="business" autocomplete="organization" required maxlength="120" /></label>
             <label>Email (optional)<input type="email" name="email" autocomplete="email" maxlength="150" /></label>
             <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="25" /></label>
-            <label class="full">What do you need?<select name="service" required><option value="">Select a requirement</option><option value="registration">GeM seller registration</option><option value="catalogue">Product listing or catalogue correction</option><option value="bid">A specific GeM bid</option><option value="tn-tender">A Tamil Nadu tender scope review</option><option value="marketing">Business profile, website or marketing</option><option value="certification">Certification or audit preparation</option><option value="exhibitions">Expo or exhibition preparation</option><option value="compliance">Compliance coordination</option><option value="other">Another task / help choosing the next step</option></select></label>
+            <label class="full">What do you need?<select name="service" required><option value="">Select a requirement</option><option value="benefits">MSME benefits review</option><option value="registration">GeM seller registration</option><option value="catalogue">Product listing or catalogue correction</option><option value="bid">A specific GeM bid</option><option value="tn-tender">A Tamil Nadu tender scope review</option><option value="marketing">Business profile, website or marketing</option><option value="certification">Certification or audit preparation</option><option value="exhibitions">Expo or exhibition preparation</option><option value="compliance">Compliance coordination</option><option value="other">Another task / help choosing the next step</option></select></label>
+            <div id="benefits-fields" class="full enquiry-fields" hidden>
+              <label>District / town<input name="district" maxlength="100" disabled /></label>
+              <label>State<select name="state" disabled><option value="">Select a state</option><option>Tamil Nadu</option><option>Karnataka</option><option>Another state — scope review needed</option></select></label>
+              <label class="full">Business stage<select name="stage" disabled><option value="">Select your stage</option><option value="planning">Planning a manufacturing unit</option><option value="producing">Production has started</option><option value="expanding">Expanding an existing unit</option></select></label>
+              <label>Udyam registration (optional)<select name="udyam" disabled><option value="">Not supplied</option><option>Done</option><option>Not done</option><option>Not sure</option></select></label>
+              <label id="production-field" hidden>Production start month (optional)<input type="month" name="production" disabled /></label>
+              <label class="full" id="machinery-field" hidden>Machinery stage (optional)<select name="machinery" disabled><option value="">Not supplied</option><option>Planning a purchase</option><option>Already purchased</option><option>Both existing and planned machinery</option><option>Not sure</option></select></label>
+            </div>
             <label class="full" id="gem-status-field" hidden>Current GeM status<select name="status" disabled><option value="">Select your status</option><option>Not registered yet</option><option>Registration is incomplete</option><option>Registered, need catalogue help</option><option>Registered, need bid assistance</option><option>Not sure / not applicable</option></select></label>
-            <label class="full">Products, problem and any deadline<textarea name="details" rows="5" required maxlength="700" aria-describedby="details-help"></textarea></label>
+            <label class="full"><span id="details-label">Products, requirement and any deadline</span><textarea name="details" rows="5" required maxlength="700" aria-describedby="details-help"></textarea></label>
           </div>
           <p id="details-help" class="fine">For a tender, include the official link or ID and closing date. Do not include passwords, OTPs, DSC PINs or identity and bank documents.</p>
           <p class="fine">These details stay in this page until you open WhatsApp, open your email app or copy the message. Read our <a href="/privacy/">enquiry privacy notice</a>.</p>
@@ -34,12 +42,13 @@ import "@/styles/services.css";
           <p class="fine">No email app? Copy the message into your webmail and send it to <a href="mailto:hello@porul.in">hello@porul.in</a>. If you edit the form above, prepare the enquiry again.</p>
         </section>
       </div>
-      <aside><h2>What happens next</h2><p>Once your message reaches us, Porul reviews the requirement. GeM registration and catalogue support is available, with Shreepriya handling the portal work. Other requirements need a capability and scope review before we can offer support.</p><p>No payment is collected on this page. Sharing a requirement does not book a service. Certification, statutory advice and audit work require appropriately qualified professionals; we do not promise those services here.</p><p><a href="/gem-services/">Review GeM services and FAQs</a></p></aside>
+      <aside><h2>What happens next</h2><p>Once your message reaches us, Porul reviews the requirement and confirms scope and any fee. Benefits reviews cover manufacturing businesses in Tamil Nadu and Karnataka. An enquiry is not an eligibility decision. Application filing, department follow-ups, appeals and arranging loans are not included in an assessment.</p><p>GeM registration and catalogue support is available, with Shreepriya handling the portal work. Other requirements need a capability and scope review.</p><p>No payment is collected on this page. Sharing a requirement does not book a service. Do not share financial amounts, identity numbers, bank documents, passwords or OTPs in this initial enquiry.</p><p><a href="/msme-benefits/">Review MSME benefits scope and FAQs</a></p><p><a href="/gem-services/">Review GeM services and FAQs</a></p></aside>
     </div></section>
   </div>
 </BaseLayout>
 <script>
   import { whatsappUrl } from "@/data/contact";
+  import { benefitsLines, fieldState } from "@/lib/enquiry.mjs";
   const form = document.querySelector<HTMLFormElement>("#enquiry-form");
   const result = document.querySelector<HTMLElement>("#enquiry-result");
   const message = document.querySelector<HTMLTextAreaElement>("#enquiry-message");
@@ -53,17 +62,40 @@ import "@/styles/services.css";
     if (selected && Array.from(service.options).some(option => option.value === selected)) service.value = selected;
     const status = form.elements.namedItem("status") as HTMLSelectElement;
     const statusField = document.querySelector<HTMLElement>("#gem-status-field");
+    const stage = form.elements.namedItem("stage") as HTMLSelectElement;
     // Generic enquiries must not require GeM information or retain a stale status in the draft.
     const syncStatus = () => {
       const needsStatus = ["registration", "catalogue", "bid"].includes(service.value);
       status.disabled = !needsStatus;
       status.required = needsStatus;
       if (statusField) statusField.hidden = !needsStatus;
+      const fields = fieldState(service.value, stage.value);
+      const benefits = document.querySelector<HTMLElement>("#benefits-fields");
+      if (benefits) benefits.hidden = !fields.benefits;
+      benefits?.querySelectorAll<HTMLInputElement | HTMLSelectElement>("input, select").forEach(field => {
+        field.disabled = !fields.benefits;
+        field.required = fields.benefits && ["district", "state", "stage"].includes(field.name);
+      });
+      for (const key of ["production", "machinery"]) {
+        const field = form.elements.namedItem(key) as HTMLInputElement;
+        const visible = fields[key];
+        field.disabled = !visible;
+        const wrapper = document.querySelector<HTMLElement>(`#${key}-field`);
+        if (wrapper) wrapper.hidden = !visible;
+      }
+      const label = document.querySelector("#details-label");
+      if (label) label.textContent = fields.benefits ? "What do you manufacture, and what would you like to understand?" : "Products, requirement and any deadline";
+      // Editing a prepared draft invalidates its send links until prepared again.
+      result.hidden = true;
+      emailLink.removeAttribute("href");
+      whatsappLink.removeAttribute("href");
     };
     syncStatus();
     service.addEventListener("change", syncStatus);
-    const requiredText = ["name", "business", "details"].map(key => form.elements.namedItem(key) as HTMLInputElement | HTMLTextAreaElement);
-    const validateText = () => requiredText.forEach(field => field.setCustomValidity(field.value.trim() ? "" : "Please enter a value, not only spaces."));
+    stage.addEventListener("change", syncStatus);
+    form.addEventListener("input", () => { result.hidden = true; emailLink.removeAttribute("href"); whatsappLink.removeAttribute("href"); });
+    const requiredText = ["name", "business", "details", "district"].map(key => form.elements.namedItem(key) as HTMLInputElement | HTMLTextAreaElement);
+    const validateText = () => requiredText.forEach(field => field.setCustomValidity(field.disabled || field.value.trim() ? "" : "Please enter a value, not only spaces."));
     requiredText.forEach(field => field.addEventListener("input", validateText));
     form.addEventListener("submit", event => {
       event.preventDefault();
@@ -73,7 +105,7 @@ import "@/styles/services.css";
       const read = (key: string) => String(values.get(key) ?? "").trim();
       const label = service.selectedOptions[0].textContent ?? "MSME support";
       const subject = `Porul service enquiry: ${label}`;
-      const body = ["Hello Porul,", "", `Name: ${read("name")}`, `Business: ${read("business")}`, `Email: ${read("email") || "Not supplied"}`, `Phone: ${read("phone") || "Not supplied"}`, `Service: ${label}`, ...(status.disabled ? [] : [`GeM status: ${read("status")}`]), "", "Requirement:", read("details"), "", "Please review my requirement and confirm scope and fees."].join("\n");
+      const body = ["Hello Porul,", "", `Name: ${read("name")}`, `Business: ${read("business")}`, `Email: ${read("email") || "Not supplied"}`, `Phone: ${read("phone") || "Not supplied"}`, `Service: ${label}`, ...benefitsLines(Object.fromEntries(values)), ...(status.disabled ? [] : [`GeM status: ${read("status")}`]), "", "Requirement:", read("details"), "", "Please review my requirement and confirm scope and any fee before work begins."].join("\n");
       message.value = body;
       emailLink.href = `mailto:hello@porul.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       // A normal link opens a draft only after a deliberate click; no WhatsApp SDK or automatic send.
