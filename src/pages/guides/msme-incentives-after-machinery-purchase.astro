@@ -1,0 +1,66 @@
+---
+// This service guide explains why purchase and production dates need scheme-specific review.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArticleEndNote from "@/components/ArticleEndNote.astro";
+import "@/styles/services.css";
+
+const title = "Machinery Bought? MSME Incentive Timing";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Guides", path: "/guides/" },
+  { name: "Machinery purchase timing", path: "/guides/msme-incentives-after-machinery-purchase/" }
+];
+---
+<BaseLayout title={title} description="Bought machinery or started production? Check the dates, state policy and scheme rules that may affect MSME incentive applications." article={{ headline: title, publishDate: "2026-09-29", section: "MSME benefits service guides" }} breadcrumbs={breadcrumbs}>
+  <article class="service-page">
+    <header class="service-intro"><div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span>Machinery purchase timing</span></nav>
+      <p class="eyebrow">Service guide / Manufacturing MSMEs</p>
+      <h1>Already bought machinery or started production?</h1>
+      <p class="intro-copy">You can still ask for an MSME benefits review. A purchase alone does not answer whether an incentive applies. The scheme, state, project type and dates of ordering, investment and commercial production all need checking.</p>
+      <p class="fine">By Porul.in · <time datetime="2026-09-29">29 September 2026</time> · Official sources checked 29 September 2026</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss your unit's dates →</a><a href="#timeline">Build a simple timeline</a></div>
+    </div></header>
+
+    <section class="service-band" id="timeline"><div class="wrap">
+      <h2>Build a timeline before drawing a conclusion</h2>
+      <p>Write down the dates below for the project you want reviewed. An approximate month is enough for an initial Porul enquiry; keep the supporting records for the later agreed assessment or official application.</p>
+      <ol class="service-steps">
+        <li><strong>Project and registration:</strong> unit location, activity, Udyam registration or update, and any project approval.</li>
+        <li><strong>Investment:</strong> machinery order, loan sanction if any, supplier invoice, payment and installation.</li>
+        <li><strong>Production:</strong> trial run, commercial production and first sale invoice, where applicable.</li>
+        <li><strong>Earlier support:</strong> any incentive already claimed for the same machinery or project.</li>
+      </ol>
+      <p>Do not use the invoice date alone as an eligibility test. Some rules look at effective project steps, some at commercial production, and some at the kind of investment or prior approval.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap service-split">
+      <div><h2>Tamil Nadu: check the applicable incentive and order</h2><p>The <a href="https://msmeonline.tn.gov.in/incentives/index.php">Tamil Nadu MSME incentives portal</a> provides the official application route and scheme material. Its government orders distinguish dates such as placing a plant and machinery order, loan sanction and the start of commercial production. Check the current order for your incentive, product, district and project type before relying on a deadline or spending amount.</p><p>A unit in Coimbatore, Hosur or Chennai may face different scheme conditions depending on its activity and location. None of those city names by itself establishes eligibility.</p></div>
+      <div><h2>Karnataka: production date can start the filing clock</h2><p>Karnataka's <a href="https://investkarnataka.co.in/wp-content/uploads/2026/04/Karnataka.pdf">Industrial Policy 2025–30 operative guidelines</a> say that eligible MSMEs should apply for the specified capital or base subsidy within one year of commencing commercial production. That is one rule within that policy, not a deadline for every Karnataka incentive or every project.</p><p>The policy also addresses project approval, investment and expansion. Check which policy version covers your project and whether earlier assistance affects the claim.</p></div>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>What to do now</h2>
+      <p>Identify the exact scheme first, then read its official eligibility conditions, date definitions, filing window and evidence list. If a possible deadline is close, check the official portal or District Industries Centre promptly. A general web article cannot reserve a deadline or establish that late filing will be accepted.</p>
+      <p>If you have only your Udyam certificate and are unsure which programmes to inspect, start with <a href="/guides/udyam-registration-next-steps/">the post-registration checklist</a>. If your goal is government sales rather than a machinery incentive, read the <a href="/guides/gem-seller-registration/">GeM seller guide</a> or the <a href="/guides/gem-catalogue-rejected/">catalogue correction checklist</a>.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Official sources</h2>
+      <ul>
+        <li><a href="https://msmeonline.tn.gov.in/incentives/index.php">Tamil Nadu MSME incentives portal</a> — current application entry point and state scheme material.</li>
+        <li><a href="https://www.msmeonline.tn.gov.in/incentives/pdf/GO37.pdf">Tamil Nadu MSME incentive government order</a> — illustrates why order, loan and production dates must be read against the applicable order.</li>
+        <li><a href="https://investkarnataka.co.in/state-at-a-glance/">Invest Karnataka policy downloads</a> and <a href="https://investkarnataka.co.in/wp-content/uploads/2026/04/Karnataka.pdf">Industrial Policy 2025–30 operative guidelines</a> — Karnataka's current policy source and timing rules.</li>
+      </ul>
+      <p class="fine">A newer order or amendment may govern your project. Verify the current version and jurisdiction before acting.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Ask Porul to review the facts</h2>
+      <p>Porul reviews potentially relevant schemes for manufacturing businesses in Tamil Nadu and Karnataka, then explains the conditions and next steps to check. Share your activity, district, stage and approximate dates in the initial enquiry. We agree the assessment scope and any fee before work begins; an enquiry does not decide eligibility.</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><a href="/msme-benefits/">Read the review scope</a></div>
+      <p class="fine">Do not send bank records, identity numbers, passwords or full financial files in an initial message. For a correction to this guide, email <a href="mailto:hello@porul.in?subject=MSME%20guide%20correction">hello@porul.in</a>.</p>
+    </div></section>
+    <ArticleEndNote />
+  </article>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+// Guide index groups practical service questions and links to the official-source pages.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/services.css";
+
+const guides = [
+  { href: "/guides/udyam-registration-next-steps/", label: "MSME benefits", title: "Udyam registration is done. What next?", summary: "Check your activity, category, location and project stage before selecting a scheme." },
+  { href: "/guides/msme-incentives-after-machinery-purchase/", label: "MSME benefits", title: "Already bought machinery or started production?", summary: "Build a project timeline and check the applicable state incentive rules." },
+  { href: "/guides/gem-seller-registration/", label: "GeM", title: "How to approach GeM seller registration", summary: "Separate account setup, catalogue preparation and bid readiness." },
+  { href: "/guides/gem-catalogue-rejected/", label: "GeM", title: "GeM catalogue rejected?", summary: "Use the reason in your seller account to guide a careful correction." }
+];
+---
+<BaseLayout title="Practical MSME and GeM Guides" description="Practical, officially sourced guides for manufacturing MSMEs: Udyam next steps, incentive timing, GeM seller registration and catalogue corrections." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Guides", path: "/guides/" }]}>
+  <div class="service-page">
+    <header class="service-intro"><div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Guides</span></nav>
+      <p class="eyebrow">Porul.in / Service guides</p>
+      <h1>Start with the question in front of you.</h1>
+      <p class="intro-copy">These guides help manufacturing businesses prepare a clearer next step on MSME benefits and GeM. They link to official sources and explain where individual review is needed.</p>
+      <p class="fine">Guides describe Porul's service areas. Company stories and sector intelligence remain separate editorial work.</p>
+    </div></header>
+    <section class="service-band"><div class="wrap service-grid guide-grid">
+      {guides.map(guide => <article><p class="eyebrow">{guide.label}</p><h2><a href={guide.href}>{guide.title}</a></h2><p>{guide.summary}</p></article>)}
+    </div></section>
+    <section class="service-band"><div class="wrap service-split">
+      <div><h2>Need an MSME benefits review?</h2><p>Porul reviews potentially relevant central and state schemes for manufacturing businesses in Tamil Nadu and Karnataka. See the <a href="/msme-benefits/">scope and limits</a> before you enquire.</p></div>
+      <div><h2>Need GeM portal help?</h2><p>Porul offers independent registration and catalogue assistance for Tamil Nadu MSMEs. See the <a href="/gem-services/">GeM service scope</a> or <a href="/enquire/?service=catalogue">describe a catalogue issue</a>.</p></div>
+    </div></section>
+  </div>
+</BaseLayout>

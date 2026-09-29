@@ -49,6 +49,8 @@ Do not imply that all audiences have equal priority on every page. Each route ne
 
 ## 4. Content types and page jobs
 
+Service guides under `/guides/` answer one practical customer question per page. They distinguish Porul's paid service from government routes, cite current official sources for policy and portal claims, state review dates, and link to the relevant service page or another guide only when it helps the reader's next decision. A guide is not a client case study, eligibility decision, or independent editorial endorsement of Porul. Review dated scheme claims when official rules change.
+
 | Type | Primary job | Required proof | Prohibited drift |
 | --- | --- | --- | --- |
 | Home | Explain Porul and direct readers to its strongest proof | Real published work, accountable editorial promise | Fake scale, generic mission copy, multiple equal CTAs |

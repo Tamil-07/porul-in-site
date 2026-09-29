@@ -1,0 +1,62 @@
+---
+// A practical service guide for sellers whose GeM product listing was rejected.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArticleEndNote from "@/components/ArticleEndNote.astro";
+import "@/styles/services.css";
+
+const title = "GeM Catalogue Rejected? Correction Checklist";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Guides", path: "/guides/" },
+  { name: "GeM catalogue rejection", path: "/guides/gem-catalogue-rejected/" }
+];
+---
+<BaseLayout title={title} description="GeM listing rejected? Use the portal's reason to check category fit, specifications, brand evidence and images before resubmitting." article={{ headline: title, publishDate: "2026-09-29", section: "GeM service guides" }} breadcrumbs={breadcrumbs}>
+  <article class="service-page">
+    <header class="service-intro"><div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span>GeM catalogue rejection</span></nav>
+      <p class="eyebrow">Service guide / Government e-Marketplace</p>
+      <h1>GeM catalogue rejected? Start with the reason shown in your account.</h1>
+      <p class="intro-copy">Find the affected product and save the exact rejection reason before changing the listing. GeM distinguishes rejected products from drafts and products awaiting clearance; the next step depends on which state you see.</p>
+      <p class="fine">By Porul.in · <time datetime="2026-09-29">29 September 2026</time> · Reviewed against official GeM material on 29 September 2026</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=catalogue">Discuss a catalogue correction →</a><a href="#checklist">Use the checklist</a></div>
+    </div></header>
+
+    <section class="service-band" id="checklist"><div class="wrap">
+      <h2>Work through the listing in this order</h2>
+      <ol class="service-steps">
+        <li><strong>Identify the listing and its status.</strong> Note the product name, category, listing reference and the exact message or notification. A draft, an item awaiting clearance and a rejected item call for different actions. Keep a dated copy of the message for your own records.</li>
+        <li><strong>Check the category against the real product.</strong> Read the current category name and its requested attributes. Do not choose a nearby category merely because it is easier to fill. GeM's terms require sellers to use the correct category and provide accurate product details.</li>
+        <li><strong>Compare every entered specification with evidence.</strong> Check model, dimensions, material, capacity, standards, warranty and other fields actually requested in that category against the product datasheet. Ask the manufacturer for missing facts; do not fill an unknown field with a guess.</li>
+        <li><strong>Check brand and certification claims.</strong> Confirm that any brand, OEM or reseller status and any certificate you submit belong to the product being listed. Some categories require specific licences, reports or certifications; use the current category requirements, rather than a universal document checklist.</li>
+        <li><strong>Review images and attachments.</strong> Make sure they show the offered product and match its model and written specifications. Check the current portal's image and file requirements for that category before changing format or background.</li>
+        <li><strong>Correct the underlying mismatch, then resubmit.</strong> Re-read the full listing after the edit. If the reason is unclear, use GeM's current seller guidance or support channel and keep the response with the listing record.</li>
+      </ol>
+      <p class="fine">This checklist does not predict whether GeM will approve a product. Requirements and review decisions depend on the category and the current portal.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap service-split">
+      <div><h2>What to gather before asking for help</h2><p>Bring the rejection message, the product category and model, the information you entered, the manufacturer datasheet and any certificate relevant to that product. A useful review compares those records with the live category template and tells you which facts are still missing.</p><p>For an initial enquiry, describe the issue and the number of products. Do not send a password, OTP, DSC PIN, Aadhaar copy or bank record.</p></div>
+      <div><h2>New to the seller journey?</h2><p>Registration, catalogue publication and bidding are separate steps. Read our <a href="/guides/gem-seller-registration/">GeM seller registration guide</a> for the starting workflow, or see <a href="/gem-services/">Porul's GeM support scope</a>.</p><p>If the question is which MSME programmes your manufacturing unit could explore after registering, start with <a href="/guides/udyam-registration-next-steps/">what to check after Udyam registration</a>.</p></div>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Official sources</h2>
+      <ul>
+        <li><a href="https://assets-bg.gem.gov.in/resources/pdf/seller-user-manual.pdf">GeM seller manual</a> — shows catalogue states, including rejected products and notifications.</li>
+        <li><a href="https://assets-bg.gem.gov.in/resources/upload/shared_doc/gtc/general-te-1675401798.pdf">GeM general terms and conditions</a> — seller responsibility for correct categories and accurate specifications.</li>
+        <li><a href="https://assets-bg.gem.gov.in/resources/upload/shared_doc/gem-overview-ppt-2-september-2024-1_1725964078.pdf">GeM overview of category-driven catalogue management</a> — describes category-specific certification requirements.</li>
+        <li><a href="https://elearning.gem.gov.in/course/index.php?categoryid=2">GeM seller courses</a> — current training entry point for catalogue management.</li>
+      </ul>
+      <p class="fine">Use the live GeM category and any current portal instructions for the product you are listing. Older manuals explain the workflow but may not show today's fields.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Need a person to review the correction?</h2>
+      <p>Porul.in offers independent GeM catalogue assistance for Tamil Nadu MSMEs. Shreepriya handles GeM portal work. We review the issue and agree the scope and fee before starting; GeM makes the approval decision.</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=catalogue">Discuss your rejected catalogue →</a><a href="/guides/">Browse the other guides</a></div>
+      <p class="fine">Porul is not affiliated with GeM or the government. For a correction to this guide, email <a href="mailto:hello@porul.in?subject=GeM%20guide%20correction">hello@porul.in</a>.</p>
+    </div></section>
+    <ArticleEndNote />
+  </article>
+</BaseLayout>

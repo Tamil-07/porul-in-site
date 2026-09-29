@@ -1,5 +1,15 @@
 # Decisions
 
+## 2026-09-29 — Three practical guides and relevant inbound links
+
+**Founder direction:** Prioritise three customer questions for search discovery: a rejected GeM catalogue, what to check after Udyam registration, and incentives after machinery purchase or production start. Connect the pages strongly through relevant internal links. Seek useful inbound links as Bing Webmaster Tools recommends.
+
+**Content decision:** Add a `/guides/` index and three distinct, source-linked service guides. Connect them from the homepage, existing GeM registration guide, the relevant service pages and one another where the next question is useful. Each guide gives a direct answer, a practical checklist, official sources, a review date and an honest service path. GeM approval and MSME scheme eligibility remain decisions of the respective authorities. Do not turn the Gemini audit's unsupported portal mechanics into public claims.
+
+**Inbound-link approach:** Share the live guides with relevant industry associations and partners as resources after deployment and factual review. Links must be editorial choices by those organisations; do not buy ranking links, automate submissions or trade reciprocal links. Outreach is a separate external communication step. The local content pass does not claim any earned backlink or search ranking.
+
+**Release state:** Implemented and verified locally on 29 September 2026. Deployment, Bing/Google indexing and outreach remain unverified external steps.
+
 ## 2026-09-28 — City relevance without a public office address
 
 **Founder direction:** Do not show a physical workspace or invent an address. Improve relevance for searches from Coimbatore, Hosur and Chennai MSMEs, and make the site interlink coherently.

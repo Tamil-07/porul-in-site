@@ -1,0 +1,61 @@
+---
+// This service guide helps registered manufacturers decide what facts to check next.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArticleEndNote from "@/components/ArticleEndNote.astro";
+import "@/styles/services.css";
+
+const title = "Udyam Registered? MSME Benefits to Check";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Guides", path: "/guides/" },
+  { name: "After Udyam registration", path: "/guides/udyam-registration-next-steps/" }
+];
+---
+<BaseLayout title={title} description="Udyam registered? A manufacturing MSME can check activity, size, location, project stage and official scheme rules before seeking benefits." article={{ headline: title, publishDate: "2026-09-29", section: "MSME benefits service guides" }} breadcrumbs={breadcrumbs}>
+  <article class="service-page">
+    <header class="service-intro"><div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span>After Udyam registration</span></nav>
+      <p class="eyebrow">Service guide / Manufacturing MSMEs</p>
+      <h1>Udyam registration is done. What should you check next?</h1>
+      <p class="intro-copy">Your Udyam certificate records your enterprise; it does not itself approve a subsidy, loan or government order. The useful next step is to match your unit's activity, size, location and dates to the rules of a specific programme.</p>
+      <p class="fine">By Porul.in · <time datetime="2026-09-29">29 September 2026</time> · Official sources checked 29 September 2026</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><a href="#first-checks">See the first checks</a></div>
+    </div></header>
+
+    <section class="service-band" id="first-checks"><div class="wrap">
+      <h2>Five checks before choosing a scheme</h2>
+      <ol class="service-steps">
+        <li><strong>Read your current Udyam record.</strong> Check the registered activity, location and micro, small or medium classification on the <a href="https://udyamregistration.gov.in/">official Udyam portal</a>. Its classification uses both investment and turnover. Registration is free on the government portal.</li>
+        <li><strong>Write down your business stage.</strong> Is the unit planned, newly producing or expanding? Record when commercial production began and when major machinery was ordered, paid for and installed. Those dates can matter under state incentive rules.</li>
+        <li><strong>Separate the different kinds of support.</strong> A state capital incentive, a lender's credit guarantee and a public procurement preference solve different problems. For example, the central public procurement policy covers micro and small enterprises; a medium enterprise should not assume it receives that MSE preference.</li>
+        <li><strong>Check the state and the exact activity.</strong> Tamil Nadu and Karnataka publish their own industrial incentive rules. District, product, project type and previous assistance may change what needs review. Start with the current state policy and application portal, not a general list of “MSME benefits”.</li>
+        <li><strong>Find the current official application route.</strong> Note the scheme's implementing agency, required evidence, deadline and whether the application is made by the unit, a bank or another intermediary. Udyam may be one required record without being the entire application.</li>
+      </ol>
+    </div></section>
+
+    <section class="service-band"><div class="wrap service-split">
+      <div><h2>Three routes worth distinguishing</h2><p><strong>State incentives:</strong> Start with the <a href="https://msmeonline.tn.gov.in/incentives/index.php">Tamil Nadu MSME incentives portal</a> or <a href="https://investkarnataka.co.in/state-at-a-glance/">Karnataka's industrial policy and operative guidelines</a>, according to where the unit operates. Read the particular scheme and the version that applies to your project.</p><p><strong>Credit:</strong> CGTMSE is a guarantee provided to eligible lenders for credit to micro and small enterprises. It is not a cash grant sent to every Udyam holder. Ask the lender which facility and guarantee rules it is considering.</p><p><strong>Public procurement:</strong> MSE policy can affect tender participation, but registration does not guarantee a purchase. If you want to sell through GeM, see the <a href="/guides/gem-seller-registration/">seller registration guide</a>; if a product listing has been returned, use the <a href="/guides/gem-catalogue-rejected/">catalogue rejection checklist</a>.</p></div>
+      <div><h2>Prepare a short fact sheet</h2><p>For a first review, write down your manufacturing activity, district and state, Udyam classification, whether the unit is planning, producing or expanding, and the relevant production and machinery dates. Add any scheme name you have been told about, even if you are unsure it fits.</p><p>Already bought machinery or started production? Read <a href="/guides/msme-incentives-after-machinery-purchase/">why the dates still need checking</a>. Do not send identity numbers, loan files, bank records or passwords in an initial enquiry.</p></div>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Official sources</h2>
+      <ul>
+        <li><a href="https://udyamregistration.gov.in/">Udyam Registration Portal</a> — free registration and current enterprise classification.</li>
+        <li><a href="https://www.msme.gov.in/sites/default/files/CitizenCharterEnglish.pdf">Ministry of MSME citizen charter</a> — how Udyam may support access to other schemes.</li>
+        <li><a href="https://ideas.msme.gov.in/MSME_Ministry_entrepreneurs/PMEGP_bank_loan_finance/old_existing_Schemes.htm">Ministry of MSME public procurement policy summary</a> — MSE scope and procurement provisions.</li>
+        <li><a href="https://my.msme.gov.in/MyMsme/Reg/COM_CgtmseAppForm.aspx">Ministry of MSME CGTMSE information</a> — lender-led credit guarantee route.</li>
+        <li><a href="https://msmeonline.tn.gov.in/incentives/index.php">Tamil Nadu MSME incentives portal</a> and <a href="https://investkarnataka.co.in/state-at-a-glance/">Karnataka industrial policy portal</a> — state-specific starting points.</li>
+      </ul>
+      <p class="fine">Scheme conditions change. These links are starting points for checking current rules, not a list of benefits for which every registered enterprise qualifies.</p>
+    </div></section>
+
+    <section class="service-band"><div class="wrap">
+      <h2>Want help identifying which rules to read?</h2>
+      <p>Porul reviews potentially relevant central and state schemes for manufacturing businesses in Tamil Nadu and Karnataka and explains conditions and next steps to check. We confirm the scope and any fee before an assessment. The relevant authority decides eligibility and approval.</p>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss a benefits review →</a><a href="/msme-benefits/">See the review scope</a></div>
+      <p class="fine">This is a guide to Porul's own service area. For a correction, email <a href="mailto:hello@porul.in?subject=MSME%20guide%20correction">hello@porul.in</a>.</p>
+    </div></section>
+    <ArticleEndNote />
+  </article>
+</BaseLayout>
