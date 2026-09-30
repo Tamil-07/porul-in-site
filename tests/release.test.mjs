@@ -64,7 +64,7 @@ test("benefits fields are stage-specific and cannot leak into GeM enquiries", ()
   const values={service:"benefits",stage:"planning",district:"Salem",state:"Tamil Nadu",production:"2025-01",machinery:"Planning a purchase"};
   assert.doesNotMatch(benefitsLines(values).join("\n"),/2025-01/);
   assert.match(benefitsLines(values).join("\n"),/Salem, Tamil Nadu/);
-  for (const service of ["registration","catalogue","bid","tn-tender","marketing","certification","exhibitions","compliance","other"]) assert.deepEqual(benefitsLines({...values,service}),[]);
+  for (const service of ["registration","catalogue","dsc","bid","tn-tender","marketing","certification","exhibitions","compliance","other"]) assert.deepEqual(benefitsLines({...values,service}),[]);
 });
 test("built release includes parity, contact trust, bounded FAQs and machine discovery", async () => {
   const map=JSON.parse(await readFile(new URL("../.generated/routes.json",import.meta.url),"utf8"));

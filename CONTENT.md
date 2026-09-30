@@ -1,5 +1,11 @@
 # Porul.in Content System
 
+## GeM Digital Signature Certificate service — 2026-09-29
+
+The founder confirmed that Porul can provide Digital Signature Certificates and has USB tokens available through partnerships with PantaSign and emSigner. Publish one commercial service page and one official-source guide answering whether DSC is mandatory for GeM. Do not claim DSC is mandatory for every seller, registration or transaction: GeM's published material describes OTP, eSign and DSC verification, while a particular bid or live workflow may require a valid DSC. Ask visitors to check the current transaction and bid document.
+
+No price, standard validity, certificate configuration, turnaround, nationwide delivery, KYC-document list or installation scope has been approved. Confirm the applicant, certificate details, USB-token terms, KYC process, fee and support in writing before payment. Do not request Aadhaar, PAN, bank records, passwords, OTPs or DSC PINs in the initial enquiry. Partner names may be stated in text; no logo-use permission has been established.
+
 ## Current approved public offer — 2026-09-28
 
 The founder confirmed delivery of MSME benefits reviews and approved release of the v3 direction. This supersedes older homepage audience and back-office copy below. Lead with manufacturing businesses in Tamil Nadu and Karnataka seeking central/state scheme conditions and next steps. Primary CTA: “Discuss MSME benefits”. GeM registration and catalogue help is secondary; preserve dedicated GeM pages. Karnataka GeM delivery is not confirmed.

@@ -1,5 +1,9 @@
 # Search and agent readiness
 
+## 2026-09-29 GeM DSC expansion
+
+The verified local build contains 22 indexable HTML pages after adding a commercial GeM Digital Signature Certificate page and an official-source guide distinguishing OTP, eSign and DSC requirements. Both routes use the shared canonical, social, robots, sitemap, Markdown and JSON-LD system. Internal links connect them to GeM services, seller registration, the guide hub, contact, enquiry and the sitewide footer. The sitemap, generated Markdown, discovery audit and nine release tests pass. Responsive browser checks at 320, 390, 768, 1024 and 1440 CSS pixels found one H1 and no horizontal overflow on either new route. Deployment, indexing and rankings remain external outcomes.
+
 ## 2026-09-29 local guide expansion
 
 The local build now contains 20 indexable HTML pages, including a `/guides/` index and three new customer-question guides. The generated sitemap and Markdown representations include the new routes; the discovery audit and release tests pass. Internal links connect the guides to the homepage, relevant service pages and the existing GeM seller guide. Browser checks at 320, 390, 768, 1024 and 1440 CSS pixels found one H1 and no horizontal overflow on the four new routes. This is local evidence only; live deployment, indexing, redirects and inbound links require separate verification.

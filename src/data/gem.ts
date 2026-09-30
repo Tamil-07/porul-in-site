@@ -1,7 +1,7 @@
 // Shared answers keep the visible FAQ and structured data identical.
 export const gemService = {
   name: "GeM registration and catalogue support",
-  description: "Porul.in helps Tamil Nadu MSMEs with GeM seller registration, product catalogue preparation and enquiries about bid assistance.",
+  description: "Porul.in helps Tamil Nadu MSMEs with GeM seller registration, product catalogue preparation, Digital Signature Certificates and enquiries about bid assistance.",
   path: "/gem-services/",
   email: "hello@porul.in",
 };
@@ -26,6 +26,10 @@ export const gemFaqs = [
   {
     question: "Can I enquire about an existing GeM bid?",
     answer: "Yes. Include the official bid link or ID and closing date. Porul first reviews the requirement, your business eligibility and the time available, then confirms whether it can take on the assignment. Porul does not guarantee qualification, approval or a contract award."
+  },
+  {
+    question: "Can Porul help me obtain a DSC for GeM?",
+    answer: "Yes. If a GeM bid or signing step requires a Digital Signature Certificate, Porul can help arrange a Class 3 DSC and USB token through PantaSign and emSigner partner channels. First check the live transaction or bid because GeM also supports OTP and eSign verification for some workflows."
   },
   {
     question: "Do I need to share my password or OTP?",

@@ -15,6 +15,7 @@
 .service-page .button { border-radius: 0; cursor: pointer; font-family: inherit; border: 1px solid var(--border-strong); }
 .service-band { padding-block: var(--space-12); border-bottom: 1px solid var(--border-subtle); }
 .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); }
+.service-grid.service-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .service-grid.guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .service-grid > article { border-top: 2px solid var(--action-primary); padding-top: var(--space-5); }
 .service-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-12); }
@@ -34,7 +35,7 @@
 .service-page [hidden] { display: none !important; }
 .service-page :is(a, h1, h2, h3, p, label) { overflow-wrap: anywhere; }
 @media (max-width: 767px) {
-  .service-grid, .service-split, .enquiry-fields { grid-template-columns: 1fr; }
+  .service-grid, .service-grid.service-grid--four, .service-split, .enquiry-fields { grid-template-columns: 1fr; }
   .service-grid.guide-grid { grid-template-columns: 1fr; }
   .service-page h1 { font-size: 36px; }
   .service-page h2 { font-size: 26px; }

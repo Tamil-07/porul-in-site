@@ -1,5 +1,15 @@
 # Decisions
 
+## 2026-09-29 — Digital signatures for GeM users
+
+**Founder direction:** Add Digital Signature Certificates as a GeM service. Porul has USB tokens and works with PantaSign and emSigner, making fulfilment a confirmed, low-effort capability. Apply strong E-E-A-T, SEO and answer-engine standards.
+
+**Content decision:** Publish `/digital-signature-for-gem/` as the commercial service page and `/guides/is-dsc-mandatory-for-gem/` as the evidence-led question page. Keep the intents distinct and link them from GeM services, the seller-registration guide, the guide hub, contact and the sitewide footer. Add a dedicated DSC enquiry intent without collecting identity records or credentials in the first message.
+
+**Accuracy boundary:** Do not state that DSC is universally mandatory on GeM. Official GeM material says documents and transactions can be verified using OTP, eSign or DSC, and the correct method depends on the live workflow and any bid-specific requirement. The commercial page may offer Class 3 DSC and USB-token support, but the applicant, configuration, validity, KYC process, fee, timeframe and included support must be confirmed in writing. No ranking, issuance, portal acceptance or bid-award outcome is guaranteed.
+
+**Trust and discovery:** Use visible official sources, publication/review dates, commercial disclosure, correction paths, unique page titles and descriptions, canonicals, crawlable internal links, Article/Service/FAQ/Breadcrumb schema derived from visible content, HTML/Markdown parity and sitemap inclusion. Avoid hidden keyword blocks, duplicate location pages and unsupported partner-logo use.
+
 ## 2026-09-29 — Three practical guides and relevant inbound links
 
 **Founder direction:** Prioritise three customer questions for search discovery: a rejected GeM catalogue, what to check after Udyam registration, and incentives after machinery purchase or production start. Connect the pages strongly through relevant internal links. Seek useful inbound links as Bing Webmaster Tools recommends.

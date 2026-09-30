@@ -16,7 +16,7 @@ import "@/styles/services.css";
             <label>Business name<input name="business" autocomplete="organization" required maxlength="120" /></label>
             <label>Email (optional)<input type="email" name="email" autocomplete="email" maxlength="150" /></label>
             <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel" maxlength="25" /></label>
-            <label class="full">What do you need?<select name="service" required><option value="">Select a requirement</option><option value="benefits">MSME benefits review</option><option value="registration">GeM seller registration</option><option value="catalogue">Product listing or catalogue correction</option><option value="bid">A specific GeM bid</option><option value="tn-tender">A Tamil Nadu tender scope review</option><option value="marketing">Business profile, website or marketing</option><option value="certification">Certification or audit preparation</option><option value="exhibitions">Expo or exhibition preparation</option><option value="compliance">Compliance coordination</option><option value="other">Another task / help choosing the next step</option></select></label>
+            <label class="full">What do you need?<select name="service" required><option value="">Select a requirement</option><option value="benefits">MSME benefits review</option><option value="registration">GeM seller registration</option><option value="catalogue">Product listing or catalogue correction</option><option value="dsc">Digital Signature Certificate for GeM</option><option value="bid">A specific GeM bid</option><option value="tn-tender">A Tamil Nadu tender scope review</option><option value="marketing">Business profile, website or marketing</option><option value="certification">Certification or audit preparation</option><option value="exhibitions">Expo or exhibition preparation</option><option value="compliance">Compliance coordination</option><option value="other">Another task / help choosing the next step</option></select></label>
             <div id="benefits-fields" class="full enquiry-fields" hidden>
               <label>District / town<input name="district" maxlength="100" disabled /></label>
               <label>State<select name="state" disabled><option value="">Select a state</option><option>Tamil Nadu</option><option>Karnataka</option><option>Another state — scope review needed</option></select></label>
@@ -65,7 +65,7 @@ import "@/styles/services.css";
     const stage = form.elements.namedItem("stage") as HTMLSelectElement;
     // Generic enquiries must not require GeM information or retain a stale status in the draft.
     const syncStatus = () => {
-      const needsStatus = ["registration", "catalogue", "bid"].includes(service.value);
+      const needsStatus = ["registration", "catalogue", "dsc", "bid"].includes(service.value);
       status.disabled = !needsStatus;
       status.required = needsStatus;
       if (statusField) statusField.hidden = !needsStatus;
