@@ -192,3 +192,17 @@ The signature interaction is `EvidenceTrace`, a native disclosure on the lead st
 - [ReUI](https://reui.io/components) demonstrates the value of composing real product patterns from accessible primitives and owning the code. Because Porul is Astro, ReUI is a pattern reference, not a dependency recommendation.
 - [UI Skills](https://www.ui-skills.com/playbook) supports practical craft rules used here: stable aspect ratios, readable measure, 44px touch targets, visible focus, sufficient muted-text contrast, restrained accents, and reduced motion.
 - [Design System Checklist](https://www.designsystemchecklist.com/category/foundations) supports explicit foundations, semantic tokens, per-breakpoint grids, documented component anatomy/states, and ongoing maintenance rules.
+
+## 2026-10-08 — Global system supersedes the historical visual foundation
+
+The founder authorised local implementation of `design/global-system/DESIGN-SYSTEM.md`. Its approved neutral/green palette, Source Serif 4, Source Sans 3, Noto Tamil roles, spacing, geometry and width-only page modes supersede the copper/Satoshi/chamfer requirements and landing-only direction recorded above. Preserve the bilingual wordmark, with Clash used only for its lettering. GeM is the first lead priority; editorial credibility and accurate service scope remain part of one organisation's identity.
+
+`src/styles/tokens.css` is the single definition authority; `design/global-system/tokens.css` is an import-only swatch wrapper. Self-hosted font assets live in `public/fonts`, using `/fonts/` URLs. Page and component styles consume tokens, including central responsive navigation, layering, skip-link and story-media mechanics. Local migration is complete. See the 9 October finalisation record below for current verification. No redesign has been deployed.
+
+## 2026-10-09 — Refined Business desk implemented locally
+
+The founder approved the refined C composition and asked to complete this release, with further design work planned later. Home now uses a quiet serif introduction, four visible task routes, a dominant GeM service section, calmer website/story routes, a scheme-output band and a separate free-publication section. Existing shared cards supply published content and commercial disclosures. The approved conceptual Orbit illustration is optimised at build time and labelled as AI-generated, not factual photography.
+
+Every page family uses the same palette, type roles and primitives. Reading remains 704px; catalog is 1152px; forms are 640px, excluding gutters. Removed the DSC guide's narrower local width override. Palette and font tokens are unchanged from the approved system. Current verification and screenshots: `design/global-system/implementation/finalisation-20261009/RELEASE.md`.
+
+This is a completed local iteration, not the final expression of Porul's design. Future refinement should build on one system and evidence from real owners. No deployment was performed.

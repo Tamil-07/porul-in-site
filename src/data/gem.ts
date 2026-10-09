@@ -9,7 +9,7 @@ export const gemService = {
 export const gemFaqs = [
   {
     question: "Who can help with GeM seller registration in Tamil Nadu?",
-    answer: "Porul.in offers independent GeM seller registration and catalogue support for MSMEs in Tamil Nadu. Share your business, products and current GeM status with hello@porul.in. Shreepriya handles GeM portal work through Porul; the team confirms the scope and fee before starting."
+    answer: "Porul.in offers independent GeM seller registration and catalogue support for MSMEs in Tamil Nadu. Share your business, products and current GeM status with hello@porul.in. Porul's MSME and GeM portal specialist has five years of experience working with MSMEs; the team confirms the scope and fee before starting."
   },
   {
     question: "Is Porul the official GeM registration website?",
@@ -29,7 +29,7 @@ export const gemFaqs = [
   },
   {
     question: "Can Porul help me obtain a DSC for GeM?",
-    answer: "Yes. If a GeM bid or signing step requires a Digital Signature Certificate, Porul can help arrange a Class 3 DSC and USB token through PantaSign and emSigner partner channels. First check the live transaction or bid because GeM also supports OTP and eSign verification for some workflows."
+    answer: "Yes. Porul provides a Class 3 signing and encryption DSC with two-year or three-year validity and a HYP2003 or Precision USB token. Porul works through Finbees Consulting, a partner of eMudhra, PantaSign and Capricorn. First check the live transaction or bid because GeM also supports OTP and eSign verification for some workflows."
   },
   {
     question: "Do I need to share my password or OTP?",

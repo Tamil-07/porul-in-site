@@ -5,7 +5,7 @@ import { whatsappUrl } from "@/data/contact";
 import "@/styles/services.css";
 const breadcrumbs = [{ name: "Home", path: "/" }, { name: "GeM services", path: gemService.path }];
 ---
-<BaseLayout title="GeM Registration & DSC Support in Tamil Nadu" description="GeM seller registration, catalogue and digital-signature support for Tamil Nadu MSMEs. Enquire with Porul.in for a clear scope and quote." service={gemService} faqs={gemFaqs} breadcrumbs={breadcrumbs}>
+<BaseLayout layout="catalog" title="GeM Registration & DSC Support in Tamil Nadu" description="GeM seller registration, catalogue and digital-signature support for Tamil Nadu MSMEs. Enquire with Porul.in for a clear scope and quote." service={gemService} faqs={gemFaqs} breadcrumbs={breadcrumbs}>
   <div class="service-page">
     <section class="service-intro">
       <div class="wrap">
@@ -13,7 +13,7 @@ const breadcrumbs = [{ name: "Home", path: "/" }, { name: "GeM services", path: 
         <p class="eyebrow">Porul.in / MSME services</p>
         <h1>GeM registration support for Tamil Nadu MSMEs.</h1>
         <p class="intro-copy">Get help setting up your seller account, preparing product listings, obtaining a DSC when required and understanding your next step on the Government e-Marketplace.</p>
-        <div class="actions"><a class="button button--dark" href="/enquire/?service=registration">Get GeM support <span aria-hidden="true">→</span></a><a href={whatsappUrl("Hello Porul, I need help with GeM portal work.")}>Chat on WhatsApp</a><a href="#services">See what we can help with</a></div>
+        <div class="actions"><a class="button" href="/enquire/?service=registration">Discuss GeM support <span aria-hidden="true">→</span></a><a href={whatsappUrl("Hello Porul, I need help with GeM portal work.")}>Chat on WhatsApp</a><a href="#services">See what we can help with</a></div>
         <p class="fine">Independent assistance from Porul.in. Registration and transactions take place on <a href="https://gem.gov.in/">the official GeM portal</a>. Porul is not affiliated with GeM or the government.</p>
       </div>
     </section>
@@ -24,13 +24,13 @@ const breadcrumbs = [{ name: "Home", path: "/" }, { name: "GeM services", path: 
           <article><h3>Seller registration</h3><p>For businesses starting on GeM or working through an incomplete profile. We help organise the information needed and guide account setup and profile corrections.</p><a href="/enquire/?service=registration">Discuss account setup →</a></article>
           <article><h3>Products &amp; catalogues</h3><p>For products waiting to be listed or catalogues returned for correction. We help with category fit, specifications, product information and the issues raised in a rejection.</p><a href="/guides/gem-catalogue-rejected/">Check a rejected catalogue →</a><p><a href="/enquire/?service=catalogue">Get catalogue help →</a></p></article>
           <article><h3>A specific GeM bid</h3><p>Already have a bid in mind? Send its official link and deadline. We review eligibility, the documents involved and the time available before confirming an assignment.</p><a href="/enquire/?service=bid">Discuss a GeM bid →</a></article>
-          <article><h3>Digital signature certificate</h3><p>If a GeM bid or signing step requires a DSC, Porul can help arrange a Class 3 certificate and USB token through PantaSign and emSigner partner channels.</p><a href="/digital-signature-for-gem/">Review the GeM DSC service →</a><p><a href="/guides/is-dsc-mandatory-for-gem/">Check whether DSC is mandatory →</a></p></article>
+          <article><h3>Digital signature certificate</h3><p>Get a Class 3 signing and encryption DSC with two-year or three-year validity and a HYP2003 or Precision USB token.</p><a href="/digital-signature-for-gem/">Review the Class 3 DSC service →</a><p><a href="/guides/is-dsc-mandatory-for-gem/">Check whether your bid needs a DSC →</a></p></article>
         </div>
       </div>
     </section>
     <section class="service-band" aria-labelledby="process-title">
       <div class="wrap service-split">
-        <div><p class="eyebrow">A clear scope before we start</p><h2 id="process-title">Tell us the task. Get a written quote.</h2><p>Shreepriya handles GeM portal work through Porul.in. Your enquiry helps us understand what you sell, where you are stuck and what support you need.</p><p>Fees depend on the account, catalogue or bid work involved. We agree deliverables, your responsibilities and payment milestones before starting. Portal approvals and contract awards are not guaranteed.</p></div>
+        <div><p class="eyebrow">A clear scope before we start</p><h2 id="process-title">Tell us the task. Get a written quote.</h2><p>Porul's MSME and GeM portal specialist handles this work and has five years of experience working with MSMEs. Your enquiry helps us understand what you sell, where you are stuck and what support you need.</p><p>Fees depend on the account, catalogue or bid work involved. We agree deliverables, your responsibilities and payment milestones before starting. Portal approvals and contract awards are not guaranteed.</p></div>
         <ol class="service-steps"><li><strong>Share the essentials.</strong> Your business, product or service, current GeM status and any deadline.</li><li><strong>Confirm the work.</strong> We review the request and send the scope, fee and information needed.</li><li><strong>Work through it together.</strong> Your business keeps control of its account, declarations and final approvals.</li></ol>
       </div>
     </section>
@@ -41,6 +41,6 @@ const breadcrumbs = [{ name: "Home", path: "/" }, { name: "GeM services", path: 
       </div>
     </section>
     <section class="service-band" aria-labelledby="faq-title"><div class="wrap"><h2 id="faq-title">GeM support: your questions answered</h2>{gemFaqs.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
-    <section class="service-band" aria-labelledby="contact-title"><div class="wrap"><h2 id="contact-title">What is holding up your GeM account?</h2><p>Send the task you need help with. We will review it before quoting.</p><div class="actions"><a class="button button--dark" href="/enquire/">Discuss your requirement →</a><a href="mailto:hello@porul.in?subject=GeM%20service%20enquiry">hello@porul.in</a></div><p class="fine">Looking for support with manufacturing schemes instead? See the separate <a href="/msme-benefits/">MSME benefits review</a>.</p><p class="fine">Service information updated <time datetime="2026-09-24">24 September 2026</time>. For platform instructions, see <a href="https://elearning.gem.gov.in/course/index.php?categoryid=2">GeM's official seller courses</a>.</p></div></section>
+    <section class="service-band" aria-labelledby="contact-title"><div class="wrap"><h2 id="contact-title">What is holding up your GeM account?</h2><p>Send the task you need help with. We will review it before quoting.</p><div class="actions"><a class="button" href="/enquire/?service=registration">Discuss GeM support →</a><a href="mailto:hello@porul.in?subject=GeM%20service%20enquiry">hello@porul.in</a></div><p class="fine">Looking for support with manufacturing schemes instead? See the separate <a href="/msme-benefits/">government scheme check</a>.</p><p class="fine">Service information updated <time datetime="2026-09-30">30 September 2026</time>. For platform instructions, see <a href="https://elearning.gem.gov.in/course/index.php?categoryid=2">GeM's official seller courses</a>.</p></div></section>
   </div>
 </BaseLayout>

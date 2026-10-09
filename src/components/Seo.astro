@@ -7,6 +7,10 @@ interface ArticleSeo {
   image?: string;
   inLanguage?: "en" | "ta";
   section?: string;
+  authorship?: "porul" | "partner";
+  producerName?: string;
+  sponsored?: boolean;
+  sponsorName?: string;
 }
 
 interface BreadcrumbSeo {
@@ -81,7 +85,7 @@ const graph: Record<string, unknown>[] = [
       email: "hello@porul.in"
     },
     alternateName: ["Porul", "பொருள்"],
-    description: "MSME benefits reviews for manufacturing businesses in Tamil Nadu and Karnataka, with GeM registration and catalogue support also available.",
+    description: "GeM registration and catalogue support, government scheme checks, company stories and industry analysis for small manufacturers. Website and software requirements are reviewed before agreeing scope.",
     sameAs: ["https://www.linkedin.com/company/porul-in/"]
   },
   {
@@ -89,7 +93,7 @@ const graph: Record<string, unknown>[] = [
     "@id": websiteId,
     name: "Porul.in",
     url: site.toString(),
-    description: "MSME benefits reviews, GeM support, company stories and sector intelligence.",
+    description: "GeM support, website and software enquiries, company stories, industry analysis and government scheme checks.",
     publisher: { "@id": organizationId },
     inLanguage: ["en", "ta"]
   },
@@ -135,6 +139,9 @@ if (faqs.length) {
 }
 
 if (article) {
+  if (article.authorship === "partner" && !article.producerName?.trim()) {
+    throw new Error("Partner-produced articles require producerName in their SEO metadata.");
+  }
   graph.push({
     "@type": "Article",
     "@id": `${canonicalUrl}#article`,
@@ -144,8 +151,11 @@ if (article) {
     image: [articleImageUrl],
     datePublished: new Date(article.publishDate).toISOString(),
     dateModified: new Date(article.updatedDate ?? article.publishDate).toISOString(),
-    author: { "@id": organizationId },
+    // Use the visible producer without guessing whether it is a person or an
+    // organisation. Porul remains the publisher in both authorship states.
+    author: article.authorship === "partner" ? { name: article.producerName } : { "@id": organizationId },
     publisher: { "@id": organizationId },
+    ...(article.sponsored && article.sponsorName ? { sponsor: { name: article.sponsorName } } : {}),
     inLanguage: article.inLanguage ?? lang,
     articleSection: article.section
   });
@@ -186,7 +196,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta property="og:image" content={socialImageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Porul.in — MSME benefits reviews and GeM support" />
+<meta property="og:image:alt" content="Porul.in · பொருள் — Practical help for small manufacturers. GeM support · Stories · Intelligence." />
 {article && <meta property="article:published_time" content={new Date(article.publishDate).toISOString()} />}
 {article && <meta property="article:modified_time" content={new Date(article.updatedDate ?? article.publishDate).toISOString()} />}
 
@@ -194,6 +204,6 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 <meta name="twitter:title" content={resolvedTitle} />
 <meta name="twitter:description" content={resolvedDescription} />
 <meta name="twitter:image" content={socialImageUrl} />
-<meta name="twitter:image:alt" content="Porul.in — MSME benefits reviews and GeM support" />
+<meta name="twitter:image:alt" content="Porul.in · பொருள் — Practical help for small manufacturers. GeM support · Stories · Intelligence." />
 
 <script type="application/ld+json" set:html={jsonLd} />

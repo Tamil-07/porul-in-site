@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Porul.in — Approved design system</title><link rel="stylesheet" href="tokens.css"><style>
+* { box-sizing: border-box; }
+body { margin: var(--space-0); background: var(--surface-0); color: var(--text-primary); font-family: var(--font-ui); font-size: var(--type-body); line-height: var(--leading-body); letter-spacing: var(--tracking-normal); font-synthesis: none; }
+strong,b { font-weight: var(--weight-semibold); }
+h1,h2,h3,p,figure,fieldset { margin: var(--space-0); }
+h1,.title { font-family: var(--font-reading); font-size: var(--type-title); line-height: var(--leading-title); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); text-wrap: balance; }
+h2 { font-size: var(--type-section); line-height: var(--leading-section); font-weight: var(--weight-semibold); }
+h3 { font-size: var(--type-card); line-height: var(--leading-card); font-weight: var(--weight-semibold); }
+a { color: var(--accent); text-underline-offset: var(--underline-offset); }
+a:hover { color: var(--accent-hover); }
+:where(a,button,input,select,textarea,summary):focus-visible { outline: var(--focus-outline-width) solid var(--accent); outline-offset: var(--focus-outline-offset); box-shadow: var(--focus-ring); }
+button,input,select,textarea { font-family: var(--font-ui); font-size: var(--type-control); line-height: var(--leading-control); letter-spacing: var(--tracking-normal); }
+::selection { background: var(--selection-surface); color: var(--selection-text); }
+code { font-family: var(--font-code); font-size: var(--type-meta); line-height: var(--leading-meta); overflow-wrap: anywhere; }
+.shell { width: var(--width-full); max-width: calc(var(--width-catalog) + var(--page-gutter) + var(--page-gutter)); margin-inline: auto; padding-inline: var(--page-gutter); }
+header { padding-block: var(--space-6); border-bottom: var(--border-width) solid var(--border); }
+.brand { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-3); }
+.wordmark { font-family: var(--font-brand); font-size: var(--type-wordmark); line-height: var(--leading-body); font-weight: var(--weight-brand); }
+.wordmark span { color: var(--accent); }
+.signature { font-family: var(--font-tamil-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); color: var(--text-secondary); }
+nav,.actions,.meta-row { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); align-items: center; }
+nav { margin-top: var(--space-4); }
+nav a { display: inline-flex; align-items: center; min-height: var(--control-height); font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+section { padding-block: var(--section-gap); border-bottom: var(--border-width) solid var(--border); scroll-margin-top: var(--space-6); }
+.stack { display: grid; gap: var(--grid-gap); min-width: var(--width-zero); }
+.tight { display: grid; gap: var(--label-gap); min-width: var(--width-zero); }
+.pair { display: grid; grid-template-columns: var(--grid-pair); gap: var(--grid-gap); align-items: start; }
+.meta,.eyebrow,figcaption { font-size: var(--type-meta); line-height: var(--leading-meta); color: var(--text-secondary); }
+.eyebrow { font-weight: var(--weight-semibold); }
+.lead { max-width: var(--width-editorial); color: var(--text-secondary); }
+.palette { display: grid; grid-template-columns: var(--grid-palette); gap: var(--grid-gap); }
+.swatch { background: var(--surface-1); border: var(--border-width) solid var(--border); border-radius: var(--radius-panel); overflow: hidden; }
+.chip { height: var(--specimen-chip-height); border-bottom: var(--border-width) solid var(--border); }
+.swatch figcaption { padding: var(--space-4); display: grid; gap: var(--space-2); }
+.type-row { display: grid; gap: var(--space-4); padding-block: var(--space-6); border-top: var(--border-width) solid var(--border); overflow-wrap: break-word; }
+.feature { font-family: var(--font-reading); font-size: var(--type-feature); line-height: var(--leading-feature); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); text-wrap: balance; }
+.story-title { font-family: var(--font-reading); font-size: var(--type-card); line-height: var(--leading-card); font-weight: var(--weight-semibold); }
+.module-title { font-family: var(--font-ui); font-size: var(--type-card); line-height: var(--leading-card); font-weight: var(--weight-semibold); }
+.section-sample { font-size: var(--type-section); line-height: var(--leading-section); font-weight: var(--weight-semibold); }
+.reading { max-width: var(--width-editorial); font-family: var(--font-reading); font-size: var(--type-reading); line-height: var(--leading-reading); font-weight: var(--weight-regular); }
+.reading p + p { margin-top: var(--paragraph-gap); }
+.ui-sample { font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+.panel { padding: var(--panel-padding); border: var(--border-width) solid var(--border-strong); border-radius: var(--radius-panel); background: var(--surface-1); box-shadow: var(--shadow-none); }
+.mode { width: var(--width-full); max-width: var(--layout-max); }
+.disclosure { padding: var(--space-4); border: var(--border-width) solid var(--disclosure-border); border-radius: var(--radius-panel); background: var(--disclosure-surface); color: var(--disclosure-text); }
+.disclosure strong { font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+.preview { padding-block: var(--space-6); border-top: var(--border-width) solid var(--border-strong); }
+.preview a { color: var(--text-primary); }
+.preview a:hover { color: var(--accent); }
+.preview-label { font-size: var(--type-meta); line-height: var(--leading-meta); color: var(--text-secondary); font-weight: var(--weight-semibold); }
+.space-row { display: grid; gap: var(--space-3); }
+.space-bar { width: var(--specimen-space-active); height: var(--specimen-space-thickness); background: var(--text-secondary); }
+.route { padding-block: var(--space-4); border-top: var(--border-width) solid var(--border); overflow-wrap: anywhere; }
+label,.field { display: grid; gap: var(--label-gap); }
+label { font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+input,select,textarea { width: var(--width-full); min-width: var(--width-zero); min-height: var(--control-height); padding: var(--control-padding-y) var(--control-padding-x); border: var(--border-width) solid var(--control-border); border-radius: var(--radius-control); color: var(--control-text); background: var(--control-surface); }
+input:hover:enabled,select:hover:enabled,textarea:hover:enabled { border-color: var(--control-border-hover); }
+input::placeholder,textarea::placeholder { color: var(--control-placeholder); opacity: initial; }
+input:disabled,button:disabled { background: var(--control-disabled-surface); color: var(--control-disabled-text); border-color: var(--control-disabled-border); cursor: not-allowed; }
+[aria-invalid='true'] { border-color: var(--control-error); border-width: var(--border-width-active); }
+.error-message { color: var(--error); font-size: var(--type-control); line-height: var(--leading-control); }
+button,.button { display: inline-flex; align-items: center; justify-content: center; text-align: center; max-width: var(--width-full); min-height: var(--control-height); padding: var(--control-padding-y) var(--space-6); border: var(--border-width) solid var(--accent); border-radius: var(--radius-control); background: var(--action-surface); color: var(--action-text); font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); text-decoration: none; cursor: pointer; transition: background-color var(--motion-fast) var(--motion-ease); }
+button:hover:enabled,.button:hover { background: var(--action-hover-surface); color: var(--action-text); }
+button:active:enabled,.button:active { background: var(--action-pressed-surface); border-color: var(--text-primary); }
+button.secondary { background: var(--surface-1); border-color: var(--control-border); color: var(--text-primary); }
+button.secondary:hover:enabled { background: var(--surface-2); color: var(--text-primary); }
+.state { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-4); border: var(--border-width) solid currentColor; border-radius: var(--radius-control); font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+.available { color: var(--success); } .attention { color: var(--warning); } .failed { color: var(--error); }
+.inverse { background: var(--surface-inverse); color: var(--text-inverse); padding: var(--panel-padding); border-radius: var(--radius-panel); }
+.inverse .meta { color: var(--text-inverse-secondary); }
+.inverse a { color: var(--text-inverse); }
+.inverse a:focus-visible { outline-color: var(--surface-1); box-shadow: var(--focus-ring-inverse); }
+summary { padding-block: var(--space-3); cursor: pointer; font-size: var(--type-control); line-height: var(--leading-control); font-weight: var(--weight-semibold); }
+details[open] summary { margin-bottom: var(--space-4); }
+footer { padding-block: var(--space-8); }
+.chip-surface-0 { background: var(--surface-0); }
+.chip-surface-1 { background: var(--surface-1); }
+.chip-surface-2 { background: var(--surface-2); }
+.chip-surface-inverse { background: var(--surface-inverse); }
+.chip-text-primary { background: var(--text-primary); }
+.chip-text-secondary { background: var(--text-secondary); }
+.chip-text-tertiary { background: var(--text-tertiary); }
+.chip-text-inverse { background: var(--text-inverse); }
+.chip-accent { background: var(--accent); }
+.chip-accent-hover { background: var(--accent-hover); }
+.chip-accent-subtle { background: var(--accent-subtle); }
+.chip-border { background: var(--border); }
+.chip-border-strong { background: var(--border-strong); }
+.chip-success { background: var(--success); }
+.chip-warning { background: var(--warning); }
+.chip-error { background: var(--error); }
+</style></head>
+<body>
+<header><div class="shell"><div class="brand"><span class="wordmark">Porul<span>.</span>in</span><span class="signature" lang="ta">பொருள்</span><span class="meta">Design system · approved foundation</span></div><nav aria-label="Swatch sections"><a href="#type">Typography</a><a href="#tamil">தமிழ்</a><a href="#publishing">Publishing</a><a href="#controls">Controls</a><a href="#palette">Palette</a><a href="#layouts">Widths & spacing</a></nav></div></header>
+<main class="shell">
+<section class="stack" aria-labelledby="intro"><p class="eyebrow">One identity. Every Porul page.</p><h1 id="intro">Clear thinking.<br>Practical next steps.</h1><p class="lead">An editorial voice for stories worth reading, with a clear, approachable interface for business owners seeking help.</p><p class="meta">System specimens only. This is not a proposed homepage or a published article. All visual values come from <a href="tokens.css">one token file</a>. Read the <a href="DESIGN-SYSTEM.md">approved specification</a>.</p></section>
+<section id="type" class="stack" aria-labelledby="type-title"><div class="tight"><p class="eyebrow">01 / Typography</p><h2 id="type-title">One voice across services and publishing</h2><p class="lead">Source Serif 4 gives titles and reading their editorial character. Source Sans 3 provides clear explanations, navigation, controls and metadata.</p></div>
+<div class="type-row"><code>Exceptional lead · 40/46 → 60/66</code><p class="feature">The people behind the work.</p></div>
+<div class="type-row"><code>Main title · 32/38 → 48/54</code><p class="title">Understand the work. Choose the next step.</p></div>
+<div class="type-row"><code>Section · 24/32 → 32/40</code><p class="section-sample">Scope and responsibilities</p></div>
+<div class="type-row"><code>Story title · 24/30</code><p class="story-title">A closer look at everyday decisions</p></div>
+<div class="type-row"><code>Service heading · 24/30</code><p class="module-title">What support includes</p></div>
+<div class="type-row"><code>Reading · 18/29 → 20/32</code><p class="reading">A useful story makes room for context. It helps readers understand the people, decisions and constraints behind the work.</p></div>
+<div class="type-row"><code>Service explanation · 18/28</code><p class="body-sample">Describe what you need help with. The scope and any fee should be clear before work begins.</p></div>
+<div class="type-row"><code>Controls and labels · 16/24</code><p class="ui-sample">Discuss your requirement</p></div>
+<div class="type-row"><code>Metadata · 14/20</code><p class="meta">Porul.in · Editorial · Publication date · Reading time</p></div>
+<div class="mode reading" data-layout="editorial"><p>Reading should feel continuous. A narrow measure, steady paragraph rhythm and a clear distinction between evidence and interpretation help a reader follow an argument.</p><p>A service explanation can sit alongside that editorial voice without adopting another theme. Headings, text, controls and supporting notes draw from the same global roles.</p></div></section>
+<section id="tamil" class="stack" aria-labelledby="tamil-title"><div class="tight"><p class="eyebrow">02 / Tamil identity</p><h2 id="tamil-title">Equal care in both languages</h2><p class="lead">Noto Serif Tamil for reading and titles. Noto Sans Tamil for controls and supporting information. These samples demonstrate typography and require editorial review before public use.</p></div><div class="mode stack" data-layout="editorial" lang="ta"><p class="title">தொழிலின் அடுத்த படி</p><div class="reading"><p>தொழிலை வளர்க்கும் ஒவ்வொரு முடிவுக்கும் தெளிவான தகவல்கள் தேவை. மனிதர்கள், அனுபவங்கள், செயல்முறைகள் ஆகியவற்றைப் புரிந்துகொள்ள பொருள் உதவுகிறது.</p><p>உங்கள் தேவையைப் பகிருங்கள். செய்ய வேண்டிய வேலை, அதன் வரம்பு, அடுத்த படி ஆகியவற்றைத் தெளிவாகப் பேசலாம்.</p></div><p class="module-title">உங்கள் தேவையைத் தெரிவிக்கவும்</p><p class="meta">பொருள் · வெளியீட்டுத் தேதி · வாசிப்பு நேரம்</p><div class="actions"><button type="button">உங்கள் தொழில் தேவையைப் பற்றிப் பேசலாம்</button></div></div></section>
+<section id="publishing" class="stack" aria-labelledby="publishing-title"><div class="tight"><p class="eyebrow">03 / Publishing and disclosure</p><h2 id="publishing-title">Free to read. Clear about funding.</h2><p class="lead">Sponsorship and authorship are separate from access. The same typography and layout serve editorial, sponsored and partner-supplied work.</p><p class="meta">Illustrative specimens below use placeholders. They do not describe actual sponsors, articles or partnerships.</p></div>
+<div class="pair"><article class="preview stack"><div class="tight"><p class="preview-label">Stories · Editorial specimen</p><h3 class="story-title"><a href="#article-disclosure">The decisions behind a growing workshop</a></h3></div><p>A text-led preview works without inventing a photograph or filling an empty image box.</p><p class="meta">Porul.in · Editorial · Date · Read time</p></article><article class="preview stack"><div class="tight"><p class="preview-label">Sponsored · [Sponsor name]</p><h3 class="story-title"><a href="#article-disclosure">Making a complex process easier to understand</a></h3></div><p>A sponsored preview uses the same hierarchy, with the funding relationship visible before the headline.</p><p class="meta">Porul.in · Editorial · Date · Read time</p></article><article class="preview stack"><div class="tight"><p class="preview-label">Partner content · [Partner name]</p><h3 class="story-title"><a href="#partner-disclosure">A partner explains its approach</a></h3></div><p>The producer is named explicitly. Partner-supplied material is not attributed to Porul’s editorial reporting.</p><p class="meta">Prepared by [Partner name] · Date · Read time</p></article><article class="preview stack"><div class="tight"><p class="preview-label">Sponsored · [Sponsor name]</p><p class="preview-label">Partner content · [Partner name]</p><h3 class="story-title"><a href="#partner-disclosure">Funding and authorship can both be visible</a></h3></div><p>When a partner supplies sponsored material, both relationships appear before the title.</p><p class="meta">Prepared by [Partner name] · Date · Read time</p></article></div>
+<div id="article-disclosure" class="mode stack" data-layout="editorial"><div class="disclosure tight"><strong>Sponsored · [Sponsor name]</strong><p>This is a disclosure specimen. Published wording must explain who funded the article and the sponsor’s actual involvement.</p></div><p class="title">An article opening keeps its identity.</p><p class="meta">Porul.in · Editorial · Publication date · Reading time</p><p class="reading">The disclosure belongs before the reading begins. Sources, reporting notes and corrections remain part of the article’s evidence.</p></div>
+<div id="partner-disclosure" class="mode disclosure tight" data-layout="editorial"><strong>Partner content · [Partner name]</strong><p>Prepared by [Partner name]. State whether Porul edited or verified the material. If the placement is also sponsored, disclose that funding separately.</p></div>
+<div class="panel tight"><h3>Attribution has a defined place</h3><p>A sponsor’s identity belongs in the disclosure area. The article retains Porul’s fonts, palette and reading layout. No warning colour, hidden label or sponsor takeover.</p></div></section>
+<section id="controls" class="stack" aria-labelledby="control-title"><div class="tight"><p class="eyebrow">04 / Services and controls</p><h2 id="control-title">Make the next action understandable</h2><p class="lead">These are isolated control specimens. Nothing is submitted, transmitted or stored.</p></div>
+<div class="pair"><div class="stack"><h3>Service explanation</h3><p>Use a clear sequence: who the service suits, confirmed scope, responsibilities, deliverables, and the next action.</p><details><summary>Disclosure control specimen</summary><p>Use an expandable section for supporting detail. Core scope and commercial disclosures remain visible.</p></details><div class="actions"><button type="button">Discuss GeM support</button><button type="button" class="secondary">Read the guide</button></div><p class="meta">Action labels are specimens; buttons do not navigate or send enquiries.</p></div>
+<div class="mode stack" data-layout="form"><div class="field"><label for="name">Name</label><input id="name" name="specimen-name" autocomplete="off" placeholder="Your name"></div><div class="field"><label for="interest">Service of interest</label><select id="interest"><option value="">Choose a service</option>GeM support</option>Website or software</option>Story enquiry</option>MSME schemes or loan-related enquiry</option></select></div><div class="field"><label for="business">Business name (optional)</label><input id="business" autocomplete="off"></div><div class="field"><label for="contact">Email — error specimen</label><input id="contact" type="email" value="incomplete-address" aria-invalid="true" aria-describedby="contact-error" autocomplete="off"><p id="contact-error" class="error-message">Enter an email address in the format name@example.com.</p></div><div class="field"><label for="need">Your requirement</label><textarea id="need" rows="3" aria-describedby="need-hint"></textarea><p id="need-hint" class="meta">A short description is enough for the first conversation.</p></div><div class="field"><label for="disabled">Disabled field specimen</label><input id="disabled" disabled value="Unavailable in this specimen"></div><div class="actions"><button type="button">Discuss your requirement</button><button type="button" disabled>Unavailable</button><button type="button" disabled aria-busy="true">Preparing…</button></div></div></div>
+<div class="actions" aria-label="Status specimens"><span class="state available">✓ Available</span><span class="state attention">! Needs attention</span><span class="state failed">× Error</span></div><div class="panel tight"><h3>Empty and completion states</h3><p>No published articles yet is an honest empty state. A prepared enquiry is not a sent enquiry. Only a delivery system’s acknowledgement can support a submitted confirmation.</p></div><div class="inverse tight"><h3>Inverse focus specimen</h3><p class="meta">Secondary text on the inverse surface uses the existing light neutral.</p><p><a href="#type">Inspect the typography</a></p></div></section>
+<section id="palette" class="stack" aria-labelledby="palette-title"><div class="tight"><p class="eyebrow">05 / Colour</p><h2 id="palette-title">The exact approved palette</h2><p>Brand accent for actions and identity. Neutral surfaces for content. Status colour only for a labelled state.</p></div><div class="palette">
+<figure class="swatch"><div class="chip chip-surface-0"></div><figcaption><code>--surface-0</code><strong data-color="--surface-0"></strong><span>Page background</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-surface-1"></div><figcaption><code>--surface-1</code><strong data-color="--surface-1"></strong><span>Fields and panels</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-surface-2"></div><figcaption><code>--surface-2</code><strong data-color="--surface-2"></strong><span>Grouped information</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-surface-inverse"></div><figcaption><code>--surface-inverse</code><strong data-color="--surface-inverse"></strong><span>Inverse surface</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-text-primary"></div><figcaption><code>--text-primary</code><strong data-color="--text-primary"></strong><span>Headlines and body</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-text-secondary"></div><figcaption><code>--text-secondary</code><strong data-color="--text-secondary"></strong><span>Supporting text</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-text-tertiary"></div><figcaption><code>--text-tertiary</code><strong data-color="--text-tertiary"></strong><span>Metadata and field boundaries</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-text-inverse"></div><figcaption><code>--text-inverse</code><strong data-color="--text-inverse"></strong><span>Inverse text</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-accent"></div><figcaption><code>--accent</code><strong data-color="--accent"></strong><span>Brand, links and actions</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-accent-hover"></div><figcaption><code>--accent-hover</code><strong data-color="--accent-hover"></strong><span>Action hover and pressed</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-accent-subtle"></div><figcaption><code>--accent-subtle</code><strong data-color="--accent-subtle"></strong><span>Selected controls</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-border"></div><figcaption><code>--border</code><strong data-color="--border"></strong><span>Decorative divider</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-border-strong"></div><figcaption><code>--border-strong</code><strong data-color="--border-strong"></strong><span>Content grouping</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-success"></div><figcaption><code>--success</code><strong data-color="--success"></strong><span>Available</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-warning"></div><figcaption><code>--warning</code><strong data-color="--warning"></strong><span>Needs attention</span></figcaption></figure>
+<figure class="swatch"><div class="chip chip-error"></div><figcaption><code>--error</code><strong data-color="--error"></strong><span>Invalid or failed</span></figcaption></figure>
+</div></section><section id="layouts" class="stack" aria-labelledby="layout-title"><div class="tight"><p class="eyebrow">06 / Width, spacing and geometry</p><h2 id="layout-title">Three widths. One system.</h2><p>Modes change the content cap only. These specimens use identical presentation and typography.</p></div><div class="mode panel tight" data-layout="catalog"><h3>Catalog · 1152px maximum</h3><p>Home · MSME benefits · GeM services · DSC for GeM · Stories index · Intelligence index · The Room · Sponsor · Tamil index</p></div>
+<div class="mode panel tight" data-layout="editorial"><h3>Editorial · 704px maximum</h3><p>Story article · Intelligence article · Guides index and article · About · Privacy · Tamil article</p></div>
+<div class="mode panel tight" data-layout="form"><h3>Form · 640px maximum</h3><p>Enquire · Contact</p></div>
+<div class="pair"><div class="space-row" data-space="1"><code>--space-1 · 4px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="2"><code>--space-2 · 8px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="3"><code>--space-3 · 12px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="4"><code>--space-4 · 16px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="5"><code>--space-5 · 20px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="6"><code>--space-6 · 24px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="8"><code>--space-8 · 32px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="10"><code>--space-10 · 40px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="12"><code>--space-12 · 48px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="16"><code>--space-16 · 64px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="20"><code>--space-20 · 80px</code><div class="space-bar"></div></div>
+<div class="space-row" data-space="24"><code>--space-24 · 96px</code><div class="space-bar"></div></div>
+</div><div class="pair"><div class="panel tight"><h3>Geometry</h3><p>4px controls, 8px panels, square editorial media. Minimum 48px controls that grow with wrapped text. One-pixel rules; two-pixel active boundaries.</p></div><div class="panel tight"><h3>Elevation and feedback</h3><p>Ordinary panels have no shadow. Actual overlays use one restrained shadow. Short state feedback respects reduced-motion preferences.</p></div></div></section></main>
+<footer class="shell"><p class="meta">Porul.in · Approved design system, 8 October 2026. Local site migration completed; not deployed. <a href="DESIGN-SYSTEM.md">Specification</a> · <a href="QA.md">Validation record</a> · <a href="REDESIGN-PLAN.md">Reviewed redesign plan</a></p></footer>
+<script>
+// Display token values without creating a second source of palette values.
+const styles = getComputedStyle(document.documentElement);
+document.querySelectorAll('[data-color]').forEach(label => { label.textContent = styles.getPropertyValue(label.dataset.color).trim().toUpperCase(); });
+</script></body></html>

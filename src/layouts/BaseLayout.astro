@@ -5,8 +5,9 @@ import Seo from "@/components/Seo.astro";
 import "@/styles/global.css";
 
 const {
-  title = "Porul.in — MSME Benefits Review & GeM Support",
-  description = "MSME benefits reviews for manufacturing businesses in Tamil Nadu and Karnataka. GeM registration and catalogue support also available.",
+  title = "Porul.in — Practical help for small manufacturers",
+  description = "GeM support, website and software enquiries, government scheme checks, and independent manufacturing stories and industry analysis from Porul.",
+  layout = "catalog",
   lang = "en",
   canonicalPath,
   article,
@@ -35,16 +36,13 @@ const {
       service={service}
       faqs={faqs}
     />
-    <!-- The display weights are preloaded because the v3 identity depends on
-      them for the first viewport; all font files are local to avoid runtime
-      CDN dependencies and preserve the zero-recurring-cost rule. -->
-    <link rel="preload" href="/fonts/clash-display-600.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Clash is reserved for the wordmark; all font assets are self-hosted. -->
     <link rel="preload" href="/fonts/clash-display-700.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <Nav />
-    <main id="main">
+    <main id="main" data-layout={layout} tabindex="-1">
       <slot />
     </main>
     <Footer />

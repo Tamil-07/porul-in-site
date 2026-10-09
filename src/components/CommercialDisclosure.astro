@@ -1,0 +1,18 @@
+---
+interface Props { sponsored?: boolean; sponsorName?: string; sponsorInvolvement?: string; authorship?: "porul" | "partner"; producerName?: string; compact?: boolean; }
+const { sponsored = false, sponsorName, sponsorInvolvement, authorship = "porul", producerName, compact = false } = Astro.props;
+---
+{(sponsored || authorship === "partner") && (
+  <aside class:list={["commercial-disclosure", compact && "commercial-disclosure--compact"]} aria-label="Commercial disclosure" lang="en">
+    {sponsored && <p><strong>Sponsored · {sponsorName}</strong></p>}
+    {authorship === "partner" && <p><strong>Partner content · {producerName}</strong>{!compact && <> — Produced by {producerName}.</>}</p>}
+    {!compact && sponsorInvolvement && <p>{sponsorInvolvement}</p>}
+  </aside>
+)}
+<style>
+  .commercial-disclosure { padding: var(--space-4); border: var(--border-width) solid var(--disclosure-border); border-radius: var(--radius-panel); background: var(--disclosure-surface); color: var(--disclosure-text); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  .commercial-disclosure p { margin: var(--space-0); }
+  .commercial-disclosure p + p { margin-top: var(--space-2); }
+  .commercial-disclosure strong { font-weight: var(--weight-semibold); }
+  .commercial-disclosure--compact { padding: var(--space-2) var(--space-3); }
+</style>

@@ -8,7 +8,7 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
 );
 ---
 
-<BaseLayout lang="ta" title="தமிழ் — Porul.in" description="தமிழில் Porul.in கட்டுரைகள்.">
+<BaseLayout layout="catalog" lang="ta" title="தமிழ் — Porul.in" description="தமிழில் Porul.in கட்டுரைகள்.">
   <section class="page-intro">
     <div class="wrap">
       <p class="page-intro__kicker">பொருள் · தமிழ்</p>
@@ -19,11 +19,13 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
 
   <section class="page-band" aria-label="Published Tamil articles">
     <div class="wrap">
-      <div class="cards">
+      <div class="page-grid">
         {
           articles.length > 0 ? (
             articles.map((item) => (
               <IntelCard
+                headingLevel={2}
+                {...item.data}
                 title={item.data.title}
                 dek={item.data.dek}
                 category={item.data.category}
@@ -37,7 +39,7 @@ const articles = (await getCollection("tamil", ({ data }) => !data.draft)).sort(
               />
             ))
           ) : (
-            <p class="empty-state cham" role="status">தமிழ் கட்டுரைகள் இன்னும் வெளியிடப்படவில்லை. இந்தப் பகுதி செயல்பாட்டில் உள்ளது; மதிப்பாய்வு செய்யப்பட்ட கட்டுரைகள் மட்டும் இங்கே வெளியாகும்.</p>
+            <p class="panel" role="status">தமிழ் கட்டுரைகள் இன்னும் வெளியிடப்படவில்லை. இந்தப் பகுதி செயல்பாட்டில் உள்ளது; மதிப்பாய்வு செய்யப்பட்ட கட்டுரைகள் மட்டும் இங்கே வெளியாகும்.</p>
           )
         }
       </div>

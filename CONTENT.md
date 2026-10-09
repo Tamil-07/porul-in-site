@@ -1,10 +1,16 @@
 # Porul.in Content System
 
-## GeM Digital Signature Certificate service — 2026-09-29
+## GeM Digital Signature Certificate service — updated 2026-09-30
 
-The founder confirmed that Porul can provide Digital Signature Certificates and has USB tokens available through partnerships with PantaSign and emSigner. Publish one commercial service page and one official-source guide answering whether DSC is mandatory for GeM. Do not claim DSC is mandatory for every seller, registration or transaction: GeM's published material describes OTP, eSign and DSC verification, while a particular bid or live workflow may require a valid DSC. Ask visitors to check the current transaction and bid document.
+The founder confirmed that Porul provides a Class 3 signing and encryption Digital Signature Certificate with two-year or three-year validity and an included HYP2003 or Precision USB token. The customer receives a setup tutorial and a renewal reminder. Porul coordinates the callback, applicant confirmation, KYC, certificate issuance and token delivery, and can add agreed GeM registration or portal support. Delivery is available across South India; Coimbatore, Chennai and Hosur may be named as example delivery cities, not office locations.
 
-No price, standard validity, certificate configuration, turnaround, nationwide delivery, KYC-document list or installation scope has been approved. Confirm the applicant, certificate details, USB-token terms, KYC process, fee and support in writing before payment. Do not request Aadhaar, PAN, bank records, passwords, OTPs or DSC PINs in the initial enquiry. Partner names may be stated in text; no logo-use permission has been established.
+Porul fulfils the service through Finbees Consulting, a partner of eMudhra, PantaSign and Capricorn. State this chain precisely; do not describe Porul as a direct partner of those certifying authorities. The certifying authority used for an individual order is confirmed during the application process.
+
+Keep the specialist anonymous in public content. The approved claim is: Porul's MSME and GeM portal specialist has five years of experience working with MSMEs. Do not publish the specialist's personal name.
+
+Publish one commercial service page and one official-source guide answering whether DSC is mandatory for GeM. Do not claim DSC is mandatory for every seller, registration or transaction: GeM's published material describes OTP, eSign and DSC verification, while a particular bid or live workflow may require a valid DSC. Ask visitors to check the current transaction and bid document.
+
+Do not publish a fixed price or turnaround. Confirm the applicant, intended use, validity, delivery city, KYC process, fee and support before work. Do not request Aadhaar, PAN, bank records, passwords, OTPs or DSC PINs in the initial enquiry. The supplied GeM logo may identify the portal use case only and must appear with an independence note; no partner-logo permission has been established.
 
 ## Current approved public offer — 2026-09-28
 
@@ -16,7 +22,7 @@ Coimbatore, Hosur and Chennai may be named naturally as Tamil Nadu manufacturing
 
 Services and editorial are separate. Company features are not testimonials or evidence of clients. The Room and Tamil boundaries remain unchanged. Do not publish the client's private WhatsApp facts or use their address in Porul schema. Contact is hello@porul.in and the existing founder-confirmed WhatsApp number; no physical address has been supplied. `llms.txt`, Markdown and schema must describe the same visible offer, not contain hidden promotional instructions.
 
-**2026-09-24 service expansion:** Porul now offers independent GeM assistance for Tamil Nadu MSMEs. Shreepriya is the founder-confirmed person handling GeM work, without invented credentials. Public service copy may describe registration and catalogue help and invite scoped bid enquiries. TN tender enquiries are for capability review. Service fees do not purchase editorial coverage. This supersedes the editorial-only positioning below for Porul's own services. Quotes replace unapproved package prices. Service guides identify their commercial purpose and link official sources; do not present them as independent reviews of Porul.
+**2026-09-24 service expansion, privacy updated 2026-09-30:** Porul now offers independent GeM assistance for Tamil Nadu MSMEs. Public service copy uses the anonymous role “Porul's MSME and GeM portal specialist”; do not publish the specialist's personal name. Public copy may describe registration and catalogue help and invite scoped bid enquiries. TN tender enquiries are for capability review. Service fees do not purchase editorial coverage. This supersedes the editorial-only positioning below for Porul's own services. Quotes replace unapproved package prices. Service guides identify their commercial purpose and link official sources; do not present them as independent reviews of Porul.
 
 **Status:** Approved Phase 1 editorial foundation as of 2026-09-03. Content workflow and live edge configuration remain separate operational decisions.
 
@@ -179,3 +185,13 @@ Before setting `draft: false`, verify:
 - links work and private `research/` material is not exposed;
 - English and Tamil copy have been reviewed in the language published;
 - the build succeeds and the detail/archive pages render the entry honestly.
+
+## 2026-10-09 — Plain service language and future commercial articles
+
+The current lead order is GeM, website/software enquiries, business stories, then government schemes. Replace the unclear public label “MSME benefits review” with concrete language about schemes for a manufacturing unit. Preserve `/msme-benefits/` and `service=benefits` for existing links.
+
+The founder confirmed both written outputs and a call: a written shortlist of schemes to check, a written checklist, and a call explaining the options. The shortlist may find no relevant scheme. Official conditions, exclusions, sources and date checked guide the agreed work; authorities decide eligibility and approval. Do not imply that preparing or sending an enquiry starts the service. Scope and any fee are agreed first. Filing, department follow-ups, appeals and arranging loans are excluded.
+
+Stories remain free to read. Paid articles are labelled; payment does not buy editorial influence or guaranteed publication. Funding and authorship are independent fields. Published sponsored content requires sponsor name and involvement; partner content requires its producer. Cards and articles disclose these visibly. Image captions belong to article data, so a later story cannot inherit Orbit's credit. The Home illustration is conceptual and explicitly labelled AI-generated.
+
+OpenCode supplied two bounded copy proposals for this pass. Editorial review corrected its “shortlist or checklist” wording to the founder's confirmed offer and removed invented office and process claims. No private documents or production source were submitted for that review.

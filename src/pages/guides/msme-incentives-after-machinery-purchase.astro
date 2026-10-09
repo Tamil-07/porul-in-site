@@ -1,6 +1,7 @@
 ---
 // This service guide explains why purchase and production dates need scheme-specific review.
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Prose from "@/components/Prose.astro";
 import ArticleEndNote from "@/components/ArticleEndNote.astro";
 import "@/styles/services.css";
 
@@ -11,13 +12,14 @@ const breadcrumbs = [
   { name: "Machinery purchase timing", path: "/guides/msme-incentives-after-machinery-purchase/" }
 ];
 ---
-<BaseLayout title={title} description="Bought machinery or started production? Check the dates, state policy and scheme rules that may affect MSME incentive applications." article={{ headline: title, publishDate: "2026-09-29", section: "MSME benefits service guides" }} breadcrumbs={breadcrumbs}>
+<BaseLayout layout="editorial" title={title} description="Bought machinery or started production? Check the dates, state policy and scheme rules that may affect MSME incentive applications." article={{ headline: title, publishDate: "2026-09-29", section: "Government scheme guides" }} breadcrumbs={breadcrumbs}>
+  <Prose>
   <article class="service-page">
     <header class="service-intro"><div class="wrap">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span>Machinery purchase timing</span></nav>
       <p class="eyebrow">Service guide / Manufacturing MSMEs</p>
       <h1>Already bought machinery or started production?</h1>
-      <p class="intro-copy">You can still ask for an MSME benefits review. A purchase alone does not answer whether an incentive applies. The scheme, state, project type and dates of ordering, investment and commercial production all need checking.</p>
+      <p class="intro-copy">You can still ask which government schemes could apply to your unit. A purchase alone does not answer whether an incentive applies. The scheme, state, project type and dates of ordering, investment and commercial production all need checking.</p>
       <p class="fine">By Porul.in · <time datetime="2026-09-29">29 September 2026</time> · Official sources checked 29 September 2026</p>
       <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss your unit's dates →</a><a href="#timeline">Build a simple timeline</a></div>
     </div></header>
@@ -58,9 +60,10 @@ const breadcrumbs = [
     <section class="service-band"><div class="wrap">
       <h2>Ask Porul to review the facts</h2>
       <p>Porul reviews potentially relevant schemes for manufacturing businesses in Tamil Nadu and Karnataka, then explains the conditions and next steps to check. Share your activity, district, stage and approximate dates in the initial enquiry. We agree the assessment scope and any fee before work begins; an enquiry does not decide eligibility.</p>
-      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><a href="/msme-benefits/">Read the review scope</a></div>
+      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Ask about government schemes →</a><a href="/msme-benefits/">Read the review scope</a></div>
       <p class="fine">Do not send bank records, identity numbers, passwords or full financial files in an initial message. For a correction to this guide, email <a href="mailto:hello@porul.in?subject=MSME%20guide%20correction">hello@porul.in</a>.</p>
     </div></section>
     <ArticleEndNote />
   </article>
+  </Prose>
 </BaseLayout>

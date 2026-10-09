@@ -1,248 +1,99 @@
 ---
-const links = [
-  { href: "/msme-benefits/", label: "MSME benefits" },
-  { href: "/gem-services/", label: "GeM services" },
-  { href: "/stories/", label: "Stories" },
-  { href: "/intelligence/", label: "Intelligence" },
-  { href: "/the-room/", label: "The Room" },
-  { href: "/about/", label: "About" },
-  { href: "/ta/", label: "தமிழ்" }
+// Native header menus stay in document flow and retain visible Tamil access.
+const normalizePath = (value: string) => value.split("?")[0].replace(/\/+$/, "") || "/";
+const currentPath = normalizePath(Astro.props.currentPath || Astro.url.pathname);
+const currentService = Astro.props.currentSearch || Astro.url.searchParams.get("service");
+const isActivePath = (href: string) => {
+  const expected = normalizePath(href);
+  return currentPath === expected || (expected !== "/" && currentPath.startsWith(`${expected}/`));
+};
+const serviceLinks = [
+  { href: "/gem-services/", label: "GeM support" },
+  { href: "/digital-signature-for-gem/", label: "Digital signature support" },
+  { href: "/enquire/?service=website-software", label: "Websites & software", intent: "website-software" },
+  { href: "/enquire/?service=story", label: "Business stories", intent: "story" },
+  { href: "/msme-benefits/", label: "Government schemes" },
 ];
-
-const currentPath = Astro.url.pathname;
-const isCurrent = (href: string) => currentPath === href || currentPath.startsWith(href);
+const serviceActive = (link: typeof serviceLinks[number]) => link.intent
+  ? currentPath === "/enquire" && currentService === link.intent : isActivePath(link.href);
+const servicesCurrent = serviceLinks.some(serviceActive) || (currentPath === "/enquire" && ["gem", "registration", "catalogue", "dsc", "bid", "benefits", "tn-tender"].includes(currentService || ""));
+const readingLinks = [
+  { href: "/stories/", label: "Stories" }, { href: "/intelligence/", label: "Intelligence" },
+  { href: "/guides/", label: "Guides" }, { href: "/the-room/", label: "The Room" },
+];
 ---
-
 <header class="site-header">
-  <nav class="wrap nav" aria-label="Primary navigation">
-    <a class="logo" href="/" aria-label="Porul.in home">
-      <span class="logo__word">Porul<span>.</span>in</span>
-      <span class="logo__tamil" lang="ta">பொருள்</span>
+  <div class="wrap site-header__bar">
+    <a class="wordmark" href="/" aria-label="Porul.in home" aria-current={isActivePath("/") ? "page" : undefined}>
+      <span class="wordmark__mark">Porul<span class="wordmark__dot">.</span>in</span><span class="wordmark__tamil" lang="ta">பொருள்</span>
     </a>
-    <div class="nav__links" aria-label="Primary sections">
-      {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>)}
-    </div>
-    <div class="nav__actions">
-      <details class="nav__menu" data-mobile-menu>
-        <summary class="nav__summary" aria-label="Open primary navigation" title="Menu">
-          <span class="nav__menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-        </summary>
-        <div class="nav__menu-panel cham">
-          {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>)}
-        </div>
-      </details>
-    </div>
-  </nav>
+    <nav class="nav-wide" aria-label="Primary">
+      <ul class="nav-wide__list">
+        <li><details class="services" data-current={servicesCurrent || undefined}>
+          <summary class="nav-link">Services <span class="menu-marker menu-marker--closed" aria-hidden="true">+</span><span class="menu-marker menu-marker--open" aria-hidden="true">−</span></summary>
+          <div class="services__panel panel"><ul class="services__list">{serviceLinks.map(link => <li><a class="nav-link" href={link.href} aria-current={serviceActive(link) ? "page" : undefined}>{link.label}</a></li>)}</ul></div>
+        </details></li>
+        {readingLinks.map(link => <li><a class="nav-link" href={link.href} aria-current={isActivePath(link.href) ? "page" : undefined}>{link.label}</a></li>)}
+        <li><a class="button" href="/enquire/" aria-current={currentPath === "/enquire" && !currentService ? "page" : undefined}>Enquire</a></li>
+      </ul>
+    </nav>
+    <a class="nav-link nav-tamil" href="/ta/" lang="ta" hreflang="ta" aria-current={isActivePath("/ta/") ? "page" : undefined}>தமிழ்</a>
+    <details class="menu nav-compact">
+      <summary class="menu__summary" aria-controls="primary-menu-panel">Menu <span class="menu-marker menu-marker--closed" aria-hidden="true">+</span><span class="menu-marker menu-marker--open" aria-hidden="true">−</span></summary>
+      <nav class="menu__panel panel" id="primary-menu-panel" aria-label="Menu">
+        <ul class="menu__list">
+          <li><details class="services" data-current={servicesCurrent || undefined}>
+            <summary class="nav-link">Services <span class="menu-marker menu-marker--closed" aria-hidden="true">+</span><span class="menu-marker menu-marker--open" aria-hidden="true">−</span></summary>
+            <div class="services__panel"><ul class="services__list">{serviceLinks.map(link => <li><a class="nav-link" href={link.href} aria-current={serviceActive(link) ? "page" : undefined}>{link.label}</a></li>)}</ul></div>
+          </details></li>
+          {readingLinks.map(link => <li><a class="nav-link" href={link.href} aria-current={isActivePath(link.href) ? "page" : undefined}>{link.label}</a></li>)}
+          <li><a class="button" href="/enquire/" aria-current={currentPath === "/enquire" && !currentService ? "page" : undefined}>Discuss your requirement</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
 </header>
-
+<style>
+  .site-header { background: var(--surface-0); border-bottom: var(--border-width-active) solid var(--text-primary); }
+  .site-header__bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--label-gap); padding-block: var(--space-4); }
+  .wordmark { display: inline-flex; align-items: center; min-height: var(--control-height); flex-shrink: 0; gap: var(--space-3); color: var(--text-primary); text-decoration: none; }
+  .wordmark__mark { font-family: var(--font-brand); font-size: var(--type-wordmark); font-weight: var(--weight-brand); line-height: var(--leading-control); letter-spacing: var(--tracking-normal); }
+  .wordmark__dot { color: var(--accent); }
+  .wordmark__tamil { font-family: var(--font-tamil-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); line-height: var(--leading-control); }
+  .nav-wide { display: var(--nav-wide-display); flex: 1; min-width: var(--width-zero); justify-content: flex-end; }
+  .nav-wide__list { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--label-gap); }
+  .nav-wide__list, .services__list, .menu__list { margin: var(--space-0); padding: var(--space-0); list-style: none; }
+  .nav-wide__list > li { min-width: var(--width-zero); max-width: var(--width-full); }
+  .nav-link { display: inline-flex; align-items: center; gap: var(--label-gap); min-height: var(--control-height); max-width: var(--width-full); padding: var(--space-2); font-family: var(--font-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); line-height: var(--leading-control); color: var(--text-primary); text-decoration: none; border-radius: var(--radius-control); overflow-wrap: anywhere; }
+  .nav-link:hover, .nav-link[aria-current="page"], .services[data-current] > summary { color: var(--accent); }
+  .nav-tamil { margin-inline-start: auto; flex-shrink: 0; }
+  .nav-compact { display: var(--nav-compact-display); }
+  .menu { flex-direction: column; min-width: var(--width-zero); max-width: var(--width-full); }
+  .menu[open] { flex-basis: var(--width-full); }
+  .menu > summary { align-self: flex-end; }
+  summary { cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .menu-marker { display: inline-block; font-family: var(--font-ui); font-weight: var(--weight-regular); }
+  details:not([open]) > summary > .menu-marker--open,
+  details[open] > summary > .menu-marker--closed { display: none; }
+  .menu__summary { display: inline-flex; align-items: center; justify-content: center; gap: var(--label-gap); min-height: var(--control-height); padding: var(--control-padding-y) var(--control-padding-x); border: var(--border-width) solid var(--control-border); border-radius: var(--radius-control); color: var(--control-text); background: var(--control-surface); font-family: var(--font-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); line-height: var(--leading-control); }
+  .menu__summary:hover { border-color: var(--control-border-hover); }
+  .menu__panel { width: var(--width-full); max-width: var(--width-full); margin-top: var(--space-4); }
+  .menu__list, .services__list { display: grid; gap: var(--label-gap); }
+  .services__panel { width: var(--width-full); max-width: var(--nav-panel-width); margin-top: var(--space-2); }
+  .menu .services__panel { padding-inline-start: var(--space-4); border-inline-start: var(--border-width) solid var(--border); }
+</style>
 <script>
-  // The native disclosure remains usable without JavaScript; this small layer
-  // only closes it after selection or Escape so keyboard focus stays predictable.
-  document.querySelectorAll<HTMLDetailsElement>("[data-mobile-menu]").forEach((menu) => {
-    const summary = menu.querySelector<HTMLElement>("summary");
-
-    menu.addEventListener("toggle", () => {
-      summary?.setAttribute("aria-label", menu.open ? "Close primary navigation" : "Open primary navigation");
-    });
-
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => menu.removeAttribute("open"));
-    });
-
-    menu.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menu.open) {
-        menu.removeAttribute("open");
-        summary?.focus();
-      }
-    });
-
-    document.addEventListener("click", (event) => {
-      if (menu.open && event.target instanceof Node && !menu.contains(event.target)) {
-        menu.removeAttribute("open");
-      }
-    });
+  // Escape closes the nearest open header disclosure, then returns its focus.
+  const header = document.querySelector<HTMLElement>(".site-header");
+  header?.addEventListener("keydown", event => {
+    if (event.key !== "Escape" || !(event.target instanceof Element)) return;
+    let menu = event.target.closest<HTMLDetailsElement>("details");
+    while (menu && header.contains(menu) && !menu.open) menu = menu.parentElement?.closest<HTMLDetailsElement>("details") ?? null;
+    if (!menu || !header.contains(menu) || !menu.open) return;
+    menu.open = false;
+    menu.querySelector<HTMLElement>(":scope > summary")?.focus();
+    event.preventDefault();
+    event.stopPropagation();
   });
 </script>
-
-<style>
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-header);
-    border-bottom: 1px solid var(--line);
-    background: var(--surface-page);
-  }
-
-  .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 70px;
-    gap: 24px;
-  }
-
-  .logo {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 11px;
-    min-height: 44px;
-    justify-content: center;
-    min-width: max-content;
-  }
-
-  .logo__word {
-    font-family: var(--display);
-    font-size: 23px;
-    font-weight: 700;
-  }
-
-  .logo__word span {
-    color: var(--spark);
-  }
-
-  .logo__tamil {
-    color: var(--muted);
-    font-family: var(--tamil);
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .nav__links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: var(--ink);
-    font-size: 14.5px;
-    font-weight: 600;
-  }
-
-  .nav__links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    opacity: 0.82;
-    transition: opacity 0.2s ease;
-  }
-
-  .nav__links a:hover {
-    opacity: 1;
-  }
-
-  .nav__links a[aria-current="page"] {
-    text-decoration: underline;
-    text-decoration-color: var(--spark);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 7px;
-    opacity: 1;
-  }
-
-  .nav__actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav__menu {
-    position: relative;
-    display: none;
-  }
-
-  .nav__summary {
-    display: grid;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    border: 1px solid var(--border-strong);
-    background: var(--paper-2);
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .nav__summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .nav__menu-icon {
-    display: grid;
-    width: 18px;
-    gap: 4px;
-  }
-
-  .nav__menu-icon span {
-    display: block;
-    height: 2px;
-    background: var(--ink);
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-
-  .nav__menu[open] .nav__menu-icon span:first-child {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .nav__menu[open] .nav__menu-icon span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav__menu[open] .nav__menu-icon span:last-child {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  .nav__menu-panel {
-    --cham: 16px;
-    position: absolute;
-    top: calc(100% + 14px);
-    right: 0;
-    display: grid;
-    width: min(300px, calc(100vw - 40px));
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--paper-2);
-    box-shadow: 0 18px 40px rgba(17, 17, 20, 0.14);
-  }
-
-  .nav__menu-panel a {
-    display: flex;
-    align-items: center;
-    min-height: 48px;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--line);
-    font-size: 15px;
-    font-weight: 650;
-  }
-
-  .nav__menu-panel a:last-child {
-    border-bottom: 0;
-  }
-
-  .nav__menu-panel a:hover,
-  .nav__menu-panel a[aria-current="page"] {
-    background: #F0EFE9;
-    color: var(--spark);
-  }
-
-  @media (max-width: 1100px) {
-    .nav__links {
-      display: none;
-    }
-
-    .nav__menu {
-      display: block;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .nav {
-      gap: 10px;
-    }
-
-    .logo__tamil { font-size: 14px; }
-
-  }
-
-  @media (max-width: 360px) {
-    .logo__word {
-      font-size: 20px;
-    }
-
-  }
-</style>

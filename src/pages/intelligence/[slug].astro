@@ -21,10 +21,15 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
 ---
 
 <BaseLayout
+  layout="editorial"
   title={entry.data.title}
   description={entry.data.dek}
   article={{
     headline: entry.data.title,
+    authorship: entry.data.authorship,
+    producerName: entry.data.producerName,
+    sponsored: entry.data.sponsored,
+    sponsorName: entry.data.sponsorName,
     publishDate: entry.data.publishDate,
     updatedDate: entry.data.updatedDate,
     image: entry.data.heroImage?.src,
@@ -39,6 +44,7 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
 >
   <article class="wrap">
     <ArticleHeader
+      {...entry.data}
       kicker={kicker}
       title={entry.data.title}
       dek={entry.data.dek}
@@ -51,7 +57,7 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
     {
       entry.data.heroImage && (
         <img
-          class="article-image cham"
+          class="article-image"
           src={entry.data.heroImage.src}
           width={entry.data.heroImage.width}
           height={entry.data.heroImage.height}
@@ -71,10 +77,9 @@ const kicker = `${entry.data.category} · ${entry.data.location} · ${entry.data
 
 <style>
   .article-image {
-    --cham: 22px;
     display: block;
-    width: min(100%, 960px);
+    width: var(--width-full);
     height: auto;
-    margin: 0 0 36px;
+    margin: var(--space-0) var(--space-0) var(--space-8);
   }
 </style>

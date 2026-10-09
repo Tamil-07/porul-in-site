@@ -10,6 +10,7 @@ publishDate: 2026-09-02
 updatedDate: 2026-09-03
 heroImage: "./orbit-laser-cutting/laser-stm.png"
 heroImageAlt: "Orbit Laser Cutting's laser cutting machine, as shown in the company's supplied profile."
+heroImageCaption: "Image supplied by Orbit Laser Cutting and cropped from the company’s profile."
 readingMinutes: 4
 sponsored: false
 reportingNote: "Orbit Laser Cutting's company profile and ISO 9001:2015 certificate, both supplied to Porul.in."

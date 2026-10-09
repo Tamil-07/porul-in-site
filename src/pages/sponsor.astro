@@ -1,32 +1,18 @@
 ---
+// Commercial formats and transparent editorial boundaries share the global system.
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Prose from "@/components/Prose.astro";
 ---
-
-<BaseLayout title="Sponsor — Porul.in" description="Quiet, factual sponsorship information for Porul.in.">
-  <section class="page-intro">
-    <div class="wrap">
-      <p class="page-intro__kicker">Sponsorship</p>
-      <h1>Editorial sponsorship, sold directly.</h1>
-      <p class="page-intro__dek">Porul.in accepts only clear, disclosed sponsorship that fits the publication. There is no display-ad infrastructure, no ad server, and no programmatic slot.</p>
+<BaseLayout layout="catalog" title="Sponsor — Porul.in" description="Discuss disclosed sponsorship for Porul.in. Commercial support does not buy editorial opinion, sourcing, buyer access or hidden influence.">
+  <section class="page-intro"><div class="wrap"><p class="page-intro__kicker">Sponsorship</p><h1>Support work worth reading.</h1><p class="page-intro__dek">Porul accepts clear, disclosed sponsorship that fits the publication. The founder handles sponsorship conversations directly.</p><p><a class="button" href="mailto:hello@porul.in?subject=Sponsorship%20enquiry">Discuss sponsorship</a></p></div></section>
+  <section class="page-band"><div class="wrap stack">
+    <div class="sponsor-grid">
+      <section class="stack"><h2>What can be sponsored</h2><p>A company story, an expo promotion or a product launch feature can be sponsored when its disclosure is visible and the subject fits Porul’s editorial boundaries.</p><p>We confirm the format, involvement, scope and fee before work begins. There is no display-ad infrastructure, ad server or programmatic slot.</p></section>
+      <section class="stack"><h2>What sponsorship cannot buy</h2><p>Editorial opinion, sourcing, matching, fulfilment, buyer access or hidden influence. Sponsorship funds attention and craft; it does not buy a breach of trust.</p><p>Paying for a service does not guarantee editorial coverage, endorsement or publication.</p></section>
     </div>
-  </section>
-
-  <section class="page-band">
-    <div class="wrap page-grid">
-      <Prose>
-        <h2>What Can Be Sponsored</h2>
-        <p>A company story, an expo promotion, or a product launch feature can be sponsored when the disclosure is visible and the subject fits Porul.in's editorial boundaries.</p>
-        <h2>What Cannot Be Sponsored</h2>
-        <p>Editorial opinion, sourcing, matching, fulfilment, buyer access, or hidden influence cannot be bought. Sponsorship buys attention and craft, not a breach of trust.</p>
-        <h2>Disclosure</h2>
-        <p>Sponsored entries render a visible "Sponsored profile" pill on cards and article pages. That disclosure is non-negotiable.</p>
-      </Prose>
-      <aside class="panel cham">
-        <h2>Contact Path</h2>
-        <p>Prices are not listed here because prices move. The founder will handle sponsorship conversations directly.</p>
-        <p><a href="mailto:hello@porul.in">hello@porul.in</a></p>
-      </aside>
-    </div>
-  </section>
+    <section class="panel stack"><h2>Visible disclosure, consistent standards</h2><p>Sponsored work is labelled before the headline on both previews and article pages. The article names the sponsor and explains its involvement before the body.</p><p>Partner-produced work names its producer. When a piece is both sponsored and partner-produced, readers see both relationships. Our articles remain free to read.</p><p><a href="/about/#editorial-standards">Read our approach and editorial standards</a>.</p></section>
+    <section class="stack"><h2>Start with the subject and purpose</h2><p>Email <a href="mailto:hello@porul.in?subject=Sponsorship%20enquiry">hello@porul.in</a> with your organisation, the proposed subject and what you want the work to explain. Prices are discussed directly; no fixed rate is listed here.</p></section>
+  </div></section>
 </BaseLayout>
+<style>
+  .sponsor-grid { display: grid; grid-template-columns: var(--grid-pair); gap: var(--group-gap); }
+</style>

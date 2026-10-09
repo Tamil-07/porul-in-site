@@ -1,12 +1,24 @@
 # Decisions
 
-## 2026-09-29 — Digital signatures for GeM users
+## 2026-10-09 — Complete the refined Business desk locally
 
-**Founder direction:** Add Digital Signature Certificates as a GeM service. Porul has USB tokens and works with PantaSign and emSigner, making fulfilment a confirmed, low-effort capability. Apply strong E-E-A-T, SEO and answer-engine standards.
+**Founder direction:** Complete the approved design now and return to design refinement in the future. GeM remains the main lead priority, followed by website/software, business stories and government schemes.
+
+**Implementation:** Integrate the refined C Home into shared Astro components, retain the one token authority and all approved page modes, and replace unclear benefits-review language across active navigation, forms, service copy and discovery text. The scheme offer includes a written shortlist, a checklist and an explanatory call, as confirmed by the founder. Article image captions now come from content data.
+
+**Review:** OpenCode supplied two public-copy proposals after external access was announced. Its suggestions were edited against the confirmed service scope. Owner-role simulations informed the direction but are not customer research or conversion evidence.
+
+**Release state:** Completed and verified locally. Evidence is in `design/global-system/implementation/finalisation-20261009/RELEASE.md`. No deployment, remote push or customer message was performed. Future design refinement remains planned.
+
+## 2026-09-30 — Digital signatures for GeM users
+
+**Founder direction:** Add Digital Signature Certificates as a GeM service. Porul provides Class 3 signing and encryption certificates with two-year or three-year validity and an included HYP2003 or Precision USB token. The customer receives a tutorial, renewal reminder and optional agreed GeM support. Porul can deliver across South India.
 
 **Content decision:** Publish `/digital-signature-for-gem/` as the commercial service page and `/guides/is-dsc-mandatory-for-gem/` as the evidence-led question page. Keep the intents distinct and link them from GeM services, the seller-registration guide, the guide hub, contact and the sitewide footer. Add a dedicated DSC enquiry intent without collecting identity records or credentials in the first message.
 
-**Accuracy boundary:** Do not state that DSC is universally mandatory on GeM. Official GeM material says documents and transactions can be verified using OTP, eSign or DSC, and the correct method depends on the live workflow and any bid-specific requirement. The commercial page may offer Class 3 DSC and USB-token support, but the applicant, configuration, validity, KYC process, fee, timeframe and included support must be confirmed in writing. No ranking, issuance, portal acceptance or bid-award outcome is guaranteed.
+**Accuracy boundary:** Do not state that DSC is universally mandatory on GeM. Official GeM material says documents and transactions can be verified using OTP, eSign or DSC, and the correct method depends on the live workflow and any bid-specific requirement. Do not publish price or turnaround. No ranking, issuance, portal acceptance or bid-award outcome is guaranteed.
+
+**Delivery and authority:** Porul coordinates the callback, applicant confirmation, KYC, certificate issuance, token delivery and setup guidance. Fulfilment is through Finbees Consulting, a partner of eMudhra, PantaSign and Capricorn; do not shorten this into a direct Porul partnership claim. Public copy hides the specialist's personal name and may state the founder-confirmed five years of MSME experience. The GeM logo may identify the use case only and must appear beside an independence disclosure.
 
 **Trust and discovery:** Use visible official sources, publication/review dates, commercial disclosure, correction paths, unique page titles and descriptions, canonicals, crawlable internal links, Article/Service/FAQ/Breadcrumb schema derived from visible content, HTML/Markdown parity and sitemap inclusion. Avoid hidden keyword blocks, duplicate location pages and unsupported partner-logo use.
 
@@ -283,3 +295,11 @@ This file starts the running log required by the PRD. Each entry records the cho
 **Why:** The lead story cannot function as a supplier capability sheet, and time-sensitive policy work cannot be promoted with stale numbers or unsupported eligibility implications.
 
 **Rejected alternative:** Feature the existing pieces unchanged and repair trust later. That would make the landing page amplify the audit’s highest-risk editorial problems.
+
+## 2026-10-08 — Approved Global Design System Enters Local Implementation
+
+**Decision:** Implement the founder-approved global system across Porul's existing page families. `src/styles/tokens.css` is the sole authority; the design-folder token file only imports it. The approved neutral/green palette, Source Serif 4, Source Sans 3 and Noto Tamil roles supersede the legacy v3 copper/Satoshi visual requirements. Clash remains restricted to the preserved wordmark. Catalog, editorial and form modes change maximum width only.
+
+**Direction:** Lead priorities are GeM support, website/software requirements, story-related enquiries and MSME benefits enquiries, while preserving factual service boundaries, editorial independence, commercial disclosure and Tamil identity. The Home copy beginning “For the work beyond the workshop.” is provisionally approved. The founder requested advance notice before external access; production source is not to be sent to OpenCode as part of local implementation.
+
+**Status:** Local migration authorised and in progress. Production-token and source checks have run; build/browser QA remains pending. No redesign deployment has occurred. Earlier token-and-swatch-only gates are superseded by the founder's instruction to proceed; deployment remains a separate action.

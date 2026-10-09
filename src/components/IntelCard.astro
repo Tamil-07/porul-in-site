@@ -1,140 +1,29 @@
 ---
+import CommercialDisclosure from "@/components/CommercialDisclosure.astro";
 interface Props {
-  title: string;
-  dek: string;
-  category: string;
-  readingMinutes: number;
-  publishDate?: Date;
-  updatedDate?: Date;
-  slug: string;
-  sponsored?: boolean;
-  basePath?: string;
-  readLabel?: string;
+  title: string; dek: string; category: string; readingMinutes: number; publishDate?: Date; updatedDate?: Date; slug: string;
+  sponsored?: boolean; sponsorName?: string; sponsorInvolvement?: string; authorship?: "porul" | "partner"; producerName?: string;
+  basePath?: string; readLabel?: string;
+  headingLevel?: 2 | 3;
 }
-
-const { title, dek, category, readingMinutes, publishDate, updatedDate, slug, sponsored = false, basePath = "/intelligence", readLabel = "Read the analysis" } = Astro.props;
-const label = category === "digest" ? "Porul digest" : "Sector intel";
+const { title, dek, category, readingMinutes, publishDate, updatedDate, slug, basePath = "/intelligence", readLabel = "Read the analysis" } = Astro.props;
 const date = updatedDate ?? publishDate;
-const dateLabel = date ? new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(date) : undefined;
+const Heading = Astro.props.headingLevel === 2 ? "h2" : "h3";
+const dateLabel = date ? new Intl.DateTimeFormat(basePath === "/ta" ? "ta-IN" : "en-IN", { day: "numeric", month: "short", year: "numeric" }).format(date) : undefined;
 ---
-
-<article class="card">
-  <a href={`${basePath}/${slug}/`} aria-label={`${readLabel}: ${title}`}>
-    <div class="body">
-      <div class="card__topline">
-        <span class="pill">{sponsored ? "Sponsored profile" : label}</span>
-        <p class="meta">{category}{dateLabel && <> · {updatedDate ? "Updated " : ""}{dateLabel}</>} · {readingMinutes} min</p>
-      </div>
-      <h3>{title}</h3>
-      <p>{dek}</p>
-      <span class="read">{readLabel} <span aria-hidden="true">→</span></span>
-    </div>
-  </a>
+<article class="intel-card">
+  <CommercialDisclosure {...Astro.props} compact />
+  <p class="intel-card__meta">{category} · {readingMinutes} min{dateLabel && <> · {updatedDate ? "Updated " : ""}<time datetime={date?.toISOString()}>{dateLabel}</time></>}</p>
+  <Heading><a href={`${basePath}/${slug}/`}>{title}</a></Heading>
+  <p class="intel-card__dek">{dek}</p>
+  <a class="intel-card__read" href={`${basePath}/${slug}/`} aria-label={`${readLabel}: ${title}`}>{readLabel} <span aria-hidden="true">→</span></a>
 </article>
-
 <style>
-  .card {
-    border-top: 2px solid var(--border-strong);
-    border-bottom: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px -22px rgba(17, 17, 20, 0.4);
-  }
-
-  a {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-  }
-
-  .pill {
-    color: var(--action-primary);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-height: 290px;
-    padding: var(--space-6);
-  }
-
-  .card__topline {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-2) var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-
-  .meta {
-    margin: 0;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  h3 {
-    max-width: 20ch;
-    margin: 0 0 var(--space-3);
-    font-family: var(--display);
-    font-size: var(--type-heading-md);
-    font-weight: 600;
-    line-height: 1.16;
-  }
-
-  .body > p:not(.meta) {
-    margin: 0;
-    color: #4A4A52;
-    font-size: 14px;
-  }
-
-  .read {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-top: auto;
-    padding-top: 18px;
-    color: var(--spark);
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-  }
-
-  .read span {
-    transition: transform 0.2s ease;
-  }
-
-  .card:hover .read span {
-    transform: translateX(4px);
-  }
-
-  .card:active {
-    transform: translateY(-1px);
-  }
-
-  @media (max-width: 599px) {
-    .body {
-      min-height: 0;
-      padding: var(--space-5) 0 var(--space-6);
-    }
-
-    .card__topline {
-      display: grid;
-      margin-bottom: var(--space-5);
-    }
-  }
+  .intel-card { display: flex; flex-direction: column; align-items: start; gap: var(--space-4); min-width: var(--width-zero); padding: var(--space-6) var(--space-0); border-top: var(--border-width) solid var(--border-strong); }
+  .intel-card__meta { margin: var(--space-0); color: var(--text-secondary); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  h2, h3 { margin: var(--space-0); font-family: var(--font-reading); font-size: var(--type-card); font-weight: var(--weight-semibold); line-height: var(--leading-card); }
+  :is(h2, h3) a { color: var(--text-primary); text-decoration: none; }
+  :is(h2, h3) a:hover { color: var(--accent); text-decoration: underline; }
+  .intel-card__dek { margin: var(--space-0); color: var(--text-secondary); font-size: var(--type-body); line-height: var(--leading-body); }
+  .intel-card__read { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); margin-top: auto; font-family: var(--font-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); line-height: var(--leading-control); }
 </style>

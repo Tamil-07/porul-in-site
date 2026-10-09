@@ -1,29 +1,32 @@
 ---
-// One substantive benefits-service page; cities describe enquiry coverage, not offices.
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { benefitsFaqs, benefitsService } from "@/data/benefits";
+import { benefitsFaqs, benefitsService, benefitsCopy as copy, schemeDeliverables } from "@/data/benefits";
 import "@/styles/services.css";
-const breadcrumbs = [{ name: "Home", path: "/" }, { name: "MSME benefits", path: benefitsService.path }];
+const breadcrumbs = [{ name: "Home", path: "/" }, { name: "Government schemes", path: benefitsService.path }];
 ---
-<BaseLayout title="MSME Benefits Review for Manufacturers" description="MSME benefits reviews for manufacturing units in Coimbatore, Hosur, Chennai and Karnataka. See Porul's scope, limits and enquiry steps." service={benefitsService} faqs={benefitsFaqs} breadcrumbs={breadcrumbs}>
+<BaseLayout layout="catalog" title={copy.title} description={copy.description} service={benefitsService} faqs={benefitsFaqs} breadcrumbs={breadcrumbs}>
   <div class="service-page">
     <section class="service-intro"><div class="wrap">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>MSME benefits</span></nav>
-      <p class="eyebrow">Porul.in / MSME services</p>
-      <h1>MSME benefits review for manufacturing businesses.</h1>
-      <p class="intro-copy">Started production, bought machinery or planning an expansion? Porul reviews central and state schemes that may apply to your unit in Tamil Nadu or Karnataka, then explains the conditions and next steps to check.</p>
-      <div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits <span aria-hidden="true">→</span></a><a href="#scope">See what a review can clarify</a></div>
-      <p class="fine">An enquiry is not an eligibility decision. The relevant authority decides eligibility and approval. Porul confirms the scope and any fee before an assessment begins.</p>
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Government schemes</span></nav>
+      <p class="eyebrow">For manufacturers in Tamil Nadu &amp; Karnataka</p><h1>{copy.heading}</h1><p class="intro-copy">{copy.intro}</p>
+      <div class="actions"><a class="button" href="/enquire/?service=benefits">{copy.primary_action} <span aria-hidden="true">↗</span></a><a class="text-link" href="#scope">See what you receive <span aria-hidden="true">↓</span></a></div>
+      <p class="fine">We agree the work and any fee before starting. The relevant authority decides eligibility and approval.</p>
     </div></section>
     <section class="service-band" id="scope" aria-labelledby="scope-title"><div class="wrap service-split">
-      <div><h2 id="scope-title">What the review can clarify</h2><p>We look at potentially relevant central and state schemes, their published conditions and exclusions, information still needed, and practical next steps. Official sources and the date checked should be visible in the agreed work.</p><p>We confirm what your assessment will cover before it starts. This is a scope description, not a sample assessment or a promise that a scheme applies.</p><p>Already registered? Read <a href="/guides/udyam-registration-next-steps/">what to check after Udyam registration</a>.</p></div>
-      <div><h2>What it does not include</h2><p>A benefits assessment does not include filing applications, dealing with departments, appeals or arranging loans. Additional work needs a separate capability and scope review. No subsidy, approval or payment is guaranteed.</p><p>For a separate portal need, see <a href="/gem-services/">GeM registration and catalogue support</a>.</p></div>
+      <div><h2 id="scope-title">{copy.scope_heading}</h2><p>{copy.scope_body}</p><p>Already registered? Read <a href="/guides/udyam-registration-next-steps/">what to check after Udyam registration</a>.</p></div>
+      <div class="scheme-deliverables"><h2>What you receive</h2><ul>{schemeDeliverables.map(item => <li>{item}</li>)}</ul><p>The check can also find that no relevant scheme is available. A shortlist is not a promise of eligibility or funding.</p></div>
     </div></section>
-    <section class="service-band" aria-labelledby="location-title"><div class="wrap service-split">
-      <div><h2 id="location-title">Your unit's location matters</h2><p>Manufacturers in <strong>Coimbatore, Hosur and Chennai</strong> can enquire about a benefits review for their Tamil Nadu units. Porul also reviews enquiries from manufacturing units elsewhere in Tamil Nadu and in Karnataka.</p><p>District, activity, production stage and the timing of machinery purchases can change which rules need checking. We do not assume that a scheme applies just because a unit is in one of these cities.</p><p>If you have already invested, see <a href="/guides/msme-incentives-after-machinery-purchase/">which machinery and production dates to collect</a>.</p></div>
-      <div><h2>What to share first</h2><p>Tell us what you manufacture, your district and state, and whether your unit is planned, producing or expanding. If production has started or machinery has been purchased, the timing may matter. The <a href="/enquire/?service=benefits">enquiry form</a> asks for these details without requesting investment amounts or sensitive documents.</p><p>Do not send identity numbers, bank documents, passwords or OTPs in an initial enquiry. Read the <a href="/privacy/">enquiry privacy notice</a>.</p></div>
+    <section class="service-band"><div class="wrap service-split">
+      <div><h2>{copy.limits_heading}</h2><p>{copy.limits_body}</p><p>For a separate portal need, see <a href="/gem-services/">GeM registration and product listing help</a>.</p></div>
+      <div><h2>{copy.location_heading}</h2><p>{copy.location_body}</p><p>If you have already invested, see <a href="/guides/msme-incentives-after-machinery-purchase/">which machinery and production dates to collect</a>.</p></div>
     </div></section>
+    <section class="service-band" aria-labelledby="first-details"><div class="wrap service-split"><h2 id="first-details">What to share first</h2><div><p>{copy.first_details_body}</p><a class="text-link" href="/privacy/">Read the enquiry privacy notice</a></div></div></section>
     <section class="service-band" aria-labelledby="faq-title"><div class="wrap"><h2 id="faq-title">Questions before you enquire</h2>{benefitsFaqs.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
-    <section class="service-band" aria-labelledby="contact-title"><div class="wrap"><h2 id="contact-title">Start with your manufacturing unit.</h2><p>Describe your activity, location and stage. Porul will review the requirement and confirm the assessment scope and any fee before work begins.</p><div class="actions"><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><a href="/contact/">Other ways to contact Porul</a></div></div></section>
+    <section class="service-band" aria-labelledby="contact-title"><div class="wrap service-split"><h2 id="contact-title">{copy.final_heading}</h2><div><p>{copy.final_body}</p><div class="actions"><a class="button" href="/enquire/?service=benefits">{copy.primary_action} <span aria-hidden="true">↗</span></a><a class="text-link" href="/contact/">Other ways to contact Porul</a></div></div></div></section>
   </div>
 </BaseLayout>
+<style>
+  .scheme-deliverables { padding: var(--panel-padding); background: var(--surface-2); }
+  .scheme-deliverables li + li { margin-top: var(--space-3); }
+  .scheme-deliverables p { font-size: var(--type-control); line-height: var(--leading-control); }
+</style>

@@ -1,5 +1,15 @@
 # Porul.in Agent Instructions
 
+## Current founder-approved design: 2026-10-09
+
+The founder approved the refined C / Business desk direction and asked to complete the local site. This supersedes the benefits-first and reading-first homepage priorities below. Lead priorities are GeM, website/software requirements, business-story enquiries, then government schemes. Preserve the Tamil identity and bilingual wordmark. Design will be refined again in a later iteration.
+
+Use `design/global-system/DESIGN-SYSTEM.md` and the sole authority `src/styles/tokens.css`. The three page modes change width only: catalog 1152px, editorial 704px, form 640px, excluding shared gutters. No second theme or hardcoded visual values. New commercial articles need visible funding and authorship disclosures on cards and articles.
+
+Call the scheme service “government schemes” in navigation and explain its output plainly: a written shortlist, a written checklist and an explanatory call. This is confirmed for manufacturers in Tamil Nadu and Karnataka. Agree scope and any fee before work. Authorities decide eligibility and approval; filing, department follow-ups, appeals and arranging loans are excluded. Keep the existing route and enquiry intent IDs.
+
+External OpenCode use must be announced before access. Delegate bounded public-copy tasks and review the results; simulated owner preferences are hypotheses, not real user research. Local completion does not authorise deployment. Preserve existing uncommitted work.
+
 ## Current founder-approved release: 2026-09-28
 
 The founder approved shipping the benefits-first v3 direction and requested the Is Agentic fixes. This supersedes the September 24 “extended back office / pending work” homepage and the older reading-first priority. Lead with “Find out which MSME benefits could apply.” and “Discuss MSME benefits”; manufacturing businesses in Tamil Nadu and Karnataka are the benefits-review audience. GeM remains second, with its existing routes and delivery boundaries. English leads; the Tamil signature stays visible on phones. Preserve editorial independence and The Room's four questions.

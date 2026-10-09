@@ -1,6 +1,7 @@
 ---
 // A practical service guide for sellers whose GeM product listing was rejected.
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Prose from "@/components/Prose.astro";
 import ArticleEndNote from "@/components/ArticleEndNote.astro";
 import "@/styles/services.css";
 
@@ -11,7 +12,8 @@ const breadcrumbs = [
   { name: "GeM catalogue rejection", path: "/guides/gem-catalogue-rejected/" }
 ];
 ---
-<BaseLayout title={title} description="GeM listing rejected? Use the portal's reason to check category fit, specifications, brand evidence and images before resubmitting." article={{ headline: title, publishDate: "2026-09-29", section: "GeM service guides" }} breadcrumbs={breadcrumbs}>
+<BaseLayout layout="editorial" title={title} description="GeM listing rejected? Use the portal's reason to check category fit, specifications, brand evidence and images before resubmitting." article={{ headline: title, publishDate: "2026-09-29", section: "GeM service guides" }} breadcrumbs={breadcrumbs}>
+  <Prose>
   <article class="service-page">
     <header class="service-intro"><div class="wrap">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Guides</a><span aria-hidden="true">/</span><span>GeM catalogue rejection</span></nav>
@@ -53,10 +55,11 @@ const breadcrumbs = [
 
     <section class="service-band"><div class="wrap">
       <h2>Need a person to review the correction?</h2>
-      <p>Porul.in offers independent GeM catalogue assistance for Tamil Nadu MSMEs. Shreepriya handles GeM portal work. We review the issue and agree the scope and fee before starting; GeM makes the approval decision.</p>
+      <p>Porul.in offers independent GeM catalogue assistance for Tamil Nadu MSMEs. Porul's MSME and GeM portal specialist handles the work. We review the issue and agree the scope and fee before starting; GeM makes the approval decision.</p>
       <div class="actions"><a class="button button--dark" href="/enquire/?service=catalogue">Discuss your rejected catalogue →</a><a href="/guides/">Browse the other guides</a></div>
       <p class="fine">Porul is not affiliated with GeM or the government. For a correction to this guide, email <a href="mailto:hello@porul.in?subject=GeM%20guide%20correction">hello@porul.in</a>.</p>
     </div></section>
     <ArticleEndNote />
   </article>
+  </Prose>
 </BaseLayout>

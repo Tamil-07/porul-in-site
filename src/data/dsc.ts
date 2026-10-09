@@ -1,55 +1,55 @@
-// Shared DSC service facts keep visible FAQs and structured data in sync.
+// Shared DSC facts keep the service page, FAQ markup and answer engines aligned.
 export const dscService = {
-  name: "Digital Signature Certificate support for GeM",
-  description: "Porul.in helps Tamil Nadu GeM users obtain a Digital Signature Certificate and USB token through its PantaSign and emSigner partner channels.",
+  name: "Class 3 Digital Signature Certificate with USB token",
+  description: "Porul.in provides Class 3 signing and encryption DSCs with a HYP2003 or Precision USB token, KYC coordination, delivery and setup guidance for South Indian MSMEs.",
   path: "/digital-signature-for-gem/",
   email: "hello@porul.in",
-  serviceType: "Digital Signature Certificate for GeM bidding",
-  areaServed: ["Tamil Nadu"]
+  serviceType: "Class 3 signing and encryption Digital Signature Certificate",
+  areaServed: ["Tamil Nadu", "Karnataka", "Kerala", "Andhra Pradesh", "Telangana"]
 };
 
 export const dscFaqs = [
   {
+    question: "What DSC does Porul provide?",
+    answer: "Porul provides a Class 3 signing and encryption Digital Signature Certificate with a choice of two-year or three-year validity. A HYP2003 or Precision USB token is included."
+  },
+  {
+    question: "What is included with the DSC?",
+    answer: "The customer receives the certificate, a USB token, a tutorial video for using the DSC and a renewal reminder. Porul can also help with GeM registration or portal support when that work is needed and agreed."
+  },
+  {
     question: "Is a DSC mandatory for every GeM seller?",
-    answer: "No universal rule should be assumed. GeM's published guidance says documents and transactions can be verified using OTP, eSign or a Digital Signature Certificate. A particular bid, transaction or portal step may require a DSC, so check the current GeM prompt and the bid document before ordering one."
+    answer: "GeM supports OTP, eSign and DSC verification routes, so a DSC should not be treated as compulsory for every account action. A bid or signing step may require one. Check the current portal instruction and the bid document before ordering."
   },
   {
-    question: "Can Porul provide a Digital Signature Certificate for GeM bidding?",
-    answer: "Yes. Porul works through PantaSign and emSigner partner channels to support DSC issuance for GeM users. Porul confirms the applicant, certificate configuration, validity, USB-token terms, fee and KYC process in writing before payment."
+    question: "How much does a Class 3 DSC cost?",
+    answer: "Porul does not publish a standard price. The quote is shared after confirming the applicant, validity choice, delivery city and support required."
   },
   {
-    question: "Which DSC should I buy for GeM?",
-    answer: "The right certificate depends on the transaction, the bid instructions, the applicant and the authorised signatory. Porul can review that context before quoting a Class 3 DSC. Do not buy solely from a generic checklist when a live bid specifies different requirements."
+    question: "How does the application process work?",
+    answer: "Send Porul a WhatsApp message. The team calls back, confirms the applicant and intended use, coordinates KYC, and arranges certificate issuance and USB-token delivery. Setup and GeM portal help can follow when needed."
   },
   {
-    question: "Is a USB token included with the DSC?",
-    answer: "Porul has USB tokens available, but the certificate, token, validity and any support included must be stated in the written quote for your order. No standard package price or configuration is published on this page."
+    question: "Who issues the certificate?",
+    answer: "Porul provides the service through Finbees Consulting, a partner of eMudhra, PantaSign and Capricorn. The certifying authority used for an order is confirmed during the application process."
   },
   {
-    question: "Can I use an existing DSC or token on GeM?",
-    answer: "Possibly, if the certificate is valid, belongs to the correct authorised signatory and is compatible with the required workflow. Share the certificate type, expiry date and the portal step or bid requirement; never share the token PIN in an initial enquiry."
-  },
-  {
-    question: "What should I send in the first enquiry?",
-    answer: "Send your business name, applicant or authorised-signatory role, whether you already have a DSC or token, the GeM bid link or ID where relevant, and the deadline. Do not send Aadhaar, PAN, passwords, OTPs, DSC PINs or bank records in the initial message."
-  },
-  {
-    question: "Is Porul affiliated with GeM or the government?",
-    answer: "No. Porul.in is an independent service provider. GeM decides its portal requirements, and the relevant issuing provider completes certificate issuance after the required verification."
+    question: "Where can Porul deliver the DSC token?",
+    answer: "Porul serves customers across South India, including delivery to Coimbatore, Chennai and Hosur. Share your delivery city in the first message so the team can confirm fulfilment."
   }
 ];
 
 export const dscGuideFaqs = [
   {
     question: "Is DSC compulsory for GeM registration?",
-    answer: "Do not assume that a DSC is compulsory merely to begin seller registration. GeM's published workflow describes OTP, eSign and DSC verification. Follow the method shown in the current portal for your account and transaction."
+    answer: "Do not buy a DSC only because you are opening a GeM seller account. GeM's published workflow includes OTP, eSign and DSC verification. Follow the method shown in the current portal for the action you are completing."
   },
   {
-    question: "Is DSC compulsory for submitting a GeM bid?",
-    answer: "A bid or its additional conditions may require a valid Digital Signature Certificate, while GeM also supports eSign for certain transactions. Read the live bid document and the signing step before deciding which method applies."
+    question: "Is DSC required for submitting a GeM bid?",
+    answer: "A bid, its additional terms or the final submission step may require a valid DSC. Read the live bid document and the signing instruction before the deadline."
   },
   {
-    question: "What is the difference between eSign and DSC on GeM?",
-    answer: "GeM describes eSign as an online verification route and DSC as certificate-based signing. The available method can depend on the transaction and portal workflow. A USB-token DSC should not be presented as universally necessary when eSign is accepted for the task."
+    question: "What should I check before buying a DSC for GeM?",
+    answer: "Confirm the authorised signatory, the instruction in the bid or portal, the certificate type, the validity period, the USB token and the time available for KYC, delivery and setup."
   }
 ];

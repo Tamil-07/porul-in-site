@@ -1,41 +1,10 @@
 ---
-interface Props {
-  text?: string;
-}
-
+interface Props { text?: string; }
 const { text } = Astro.props;
 ---
-
-{text && (
-  <aside class="takeaway" aria-labelledby="key-takeaway">
-    <p class="takeaway__label" id="key-takeaway">Key takeaway</p>
-    <p>{text}</p>
-  </aside>
-)}
-
+{text && <aside class="takeaway" aria-labelledby="key-takeaway"><p class="takeaway__label" id="key-takeaway" lang="en">Key takeaway</p><p class="takeaway__text">{text}</p></aside>}
 <style>
-  .takeaway {
-    max-width: var(--measure-reading);
-    margin: 0 0 var(--space-8);
-    padding: var(--space-5) 0 var(--space-5) var(--space-5);
-    border-left: 3px solid var(--action-primary);
-  }
-
-  .takeaway__label {
-    margin: 0 0 var(--space-2);
-    color: var(--action-primary);
-    font-size: var(--type-meta);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .takeaway p:last-child {
-    margin: 0;
-    color: var(--text-strong);
-    font-family: var(--display);
-    font-size: var(--type-heading-sm);
-    font-weight: 600;
-    line-height: 1.4;
-  }
+  .takeaway { margin: var(--space-0) var(--space-0) var(--space-8); padding: var(--panel-padding); border: var(--border-width) solid var(--border-strong); border-radius: var(--radius-panel); background: var(--surface-2); }
+  .takeaway__label { margin: var(--space-0) var(--space-0) var(--space-2); color: var(--text-secondary); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  .takeaway__text { margin: var(--space-0); font-family: var(--font-reading); font-size: var(--type-reading); font-weight: var(--weight-semibold); line-height: var(--leading-reading); }
 </style>

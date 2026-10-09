@@ -1,10 +1,10 @@
 ---
-// Commercial DSC page: explains the service without overstating GeM requirements.
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { dscFaqs, dscService } from "@/data/dsc";
-import { whatsappUrl } from "@/data/contact";
+import { whatsappDisplay, whatsappUrl } from "@/data/contact";
 import "@/styles/services.css";
 
+const whatsappMessage = "Hello Porul, I need a Class 3 DSC. Purpose: GeM / GST / MCA. Preferred validity: 2 years / 3 years. Delivery city: ";
 const breadcrumbs = [
   { name: "Home", path: "/" },
   { name: "GeM services", path: "/gem-services/" },
@@ -12,8 +12,9 @@ const breadcrumbs = [
 ];
 ---
 <BaseLayout
-  title="Digital Signature for GeM Bidding & DSC Support"
-  description="Get Class 3 DSC and USB-token support for GeM bidding. Porul works through PantaSign and emSigner partner channels for Tamil Nadu users."
+  layout="catalog"
+  title="Class 3 DSC for GeM Bidding with USB Token"
+  description="Get a Class 3 signing and encryption DSC with a HYP2003 or Precision USB token. Two or three years, with delivery across South India."
   service={dscService}
   faqs={dscFaqs}
   breadcrumbs={breadcrumbs}
@@ -21,58 +22,103 @@ const breadcrumbs = [
   <div class="service-page">
     <header class="service-intro"><div class="wrap">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/gem-services/">GeM services</a><span aria-hidden="true">/</span><span>Digital signature</span></nav>
-      <p class="eyebrow">Porul.in / GeM support</p>
-      <h1>Digital Signature Certificate for GeM portal users.</h1>
-      <p class="intro-copy">Need a Class 3 DSC for a GeM bid or signing step? Porul can help arrange the certificate and USB token through its PantaSign and emSigner partner channels.</p>
-      <div class="actions"><a class="button button--dark" href="/enquire/?service=dsc">Enquire about a GeM DSC →</a><a href={whatsappUrl("Hello Porul, I need a Digital Signature Certificate for GeM. Please help me check the requirement and quote.")}>Ask on WhatsApp</a><a href="/guides/is-dsc-mandatory-for-gem/">Check whether you need one</a></div>
-      <p class="fine">Independent paid assistance from Porul.in. Porul is not affiliated with GeM or the government. Certificate configuration, validity, KYC steps, token terms, fee and expected issuance time are confirmed before payment.</p>
+      <div class="dsc-hero">
+        <div>
+          <p class="eyebrow">Class 3 DSC / South India</p>
+          <h1>Class 3 Digital Signature Certificate with USB token.</h1>
+          <p class="intro-copy">For GeM bidding, GST and MCA filings. Choose two-year or three-year validity. Porul coordinates the application, KYC, certificate issuance, token delivery and setup guidance.</p>
+          <div class="actions"><a class="button" href={whatsappUrl(whatsappMessage)}>WhatsApp {whatsappDisplay} →</a><a href="/enquire/?service=dsc">Prepare an enquiry</a></div>
+          <p class="fine">Price is shared after we confirm the applicant, validity and delivery city.</p>
+        </div>
+        <aside class="dsc-product-card" aria-label="Class 3 DSC package">
+          <h2 class="dsc-package-title">Your DSC package</h2>
+          <dl class="dsc-specs">
+            <div><dt>Certificate</dt><dd>Class 3 signing + encryption</dd></div>
+            <div><dt>Validity</dt><dd>2 years or 3 years</dd></div>
+            <div><dt>USB token</dt><dd>HYP2003 or Precision</dd></div>
+            <div><dt>Delivery</dt><dd>Across South India</dd></div>
+          </dl>
+          <p class="fine">Porul.in is an independent service provider and is not affiliated with GeM or the Government of India.</p>
+        </aside>
+      </div>
     </div></header>
 
-    <section class="service-band" aria-labelledby="answer-title"><div class="wrap service-split">
-      <div><p class="eyebrow">The short answer</p><h2 id="answer-title">Do not assume every GeM user needs a DSC.</h2><p>GeM's published guidance says documents and transactions can be verified using OTP, eSign or a Digital Signature Certificate. A particular bid, transaction or portal step may still ask for a valid DSC. Check the live portal and the bid document before ordering.</p><p><a href="/guides/is-dsc-mandatory-for-gem/">Read the evidence-led eSign versus DSC guide →</a></p></div>
-      <div><h2>When this service is useful</h2><ul><li>A GeM bid or signing step asks for a valid DSC.</li><li>The authorised signatory needs a new certificate and USB token.</li><li>An existing certificate is nearing expiry or its fit for the current workflow is unclear.</li><li>You want the applicant, certificate type, validity and token terms checked before paying.</li></ul></div>
-    </div></section>
-
-    <section class="service-band" id="scope" aria-labelledby="scope-title"><div class="wrap">
-      <h2 id="scope-title">What Porul helps you confirm</h2>
-      <div class="service-grid">
-        <article><h3>The actual requirement</h3><p>Share the GeM step, bid link or bid ID where relevant. We separate a general preference for DSC from a requirement stated by the current workflow or bid document.</p></article>
-        <article><h3>The applicant and certificate</h3><p>We confirm whose name and role the certificate should reflect and the proposed Class 3 DSC configuration before an order is placed. The authorised signatory remains responsible for the declarations made.</p></article>
-        <article><h3>The written quote</h3><p>The quote identifies the issuing route, validity, USB-token terms, fee, KYC process and support included. No fixed price or turnaround is promised until those details are checked.</p></article>
+    <section class="service-band" aria-labelledby="included-title"><div class="wrap">
+      <p class="eyebrow">What you receive</p>
+      <h2 id="included-title">The certificate, the token and help using both.</h2>
+      <div class="service-grid service-grid--four dsc-includes">
+        <article><p class="dsc-card-number" aria-hidden="true">01</p><h3>Class 3 DSC</h3><p>A signing and encryption certificate with a choice of two-year or three-year validity.</p></article>
+        <article><p class="dsc-card-number" aria-hidden="true">02</p><h3>USB token</h3><p>A HYP2003 or Precision token is included and delivered to the confirmed address.</p></article>
+        <article><p class="dsc-card-number" aria-hidden="true">03</p><h3>Setup tutorial</h3><p>A tutorial video explains how to connect the token and use the certificate.</p></article>
+        <article><p class="dsc-card-number" aria-hidden="true">04</p><h3>Renewal reminder</h3><p>Porul records the validity period and sends a reminder before renewal is due.</p></article>
       </div>
     </div></section>
 
-    <section class="service-band" aria-labelledby="process-title"><div class="wrap service-split">
-      <div><p class="eyebrow">Before you enquire</p><h2 id="process-title">Bring the context, not sensitive documents.</h2><p>Tell us your business name, the applicant or authorised-signatory role, whether you already have a certificate or token, and any GeM deadline. For a bid, include its official link or ID.</p><p>Do not send Aadhaar, PAN, bank records, passwords, OTPs or DSC token PINs in the first message. If KYC records are required after scope confirmation, the authorised issuing process governs how they are collected and verified.</p></div>
-      <ol class="service-steps"><li><strong>Describe the GeM task.</strong> Identify the bid or signing step and deadline.</li><li><strong>Review the fit.</strong> We check the proposed applicant, DSC configuration and token requirement.</li><li><strong>Receive the terms.</strong> You get the validity, fee, KYC steps, token details and support scope in writing.</li><li><strong>Complete the authorised process.</strong> Certificate issuance depends on successful verification by the relevant provider.</li></ol>
+    <section class="service-band" id="process" aria-labelledby="process-title"><div class="wrap service-split">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2 id="process-title">Start with one WhatsApp message.</h2>
+        <p>Tell us where you will use the DSC, which validity you prefer and where the token must be delivered. You do not need to send identity documents in the first message.</p>
+        <p><a href={whatsappUrl(whatsappMessage)}>Start the DSC enquiry on WhatsApp →</a></p>
+      </div>
+      <ol class="service-steps dsc-process">
+        <li><strong>Porul calls you back.</strong><span> We confirm the applicant, intended use, validity choice and delivery city.</span></li>
+        <li><strong>KYC is completed.</strong><span> We guide the applicant through the required verification process.</span></li>
+        <li><strong>The certificate is issued.</strong><span> The approved DSC and its USB token are prepared and dispatched.</span></li>
+        <li><strong>You receive setup help.</strong><span> We share the tutorial and can help with GeM registration or portal use when agreed.</span></li>
+      </ol>
     </div></section>
 
-    <section class="service-band" aria-labelledby="partners-title"><div class="wrap service-split">
-      <div><h2 id="partners-title">Partner-channel disclosure</h2><p>Porul works with PantaSign and emSigner partner channels for this service. PantaSign's certification practice statement is published on the Controller of Certifying Authorities website. The provider and certificate details applicable to your order will be named in the written quote.</p><p>Partner availability does not change GeM's rules or guarantee that a certificate will be issued, registered successfully, accepted for a particular bid or result in a contract award.</p></div>
-      <div><h2>Already have a certificate?</h2><p>An existing DSC may be usable if it is valid, belongs to the correct authorised signatory and fits the required workflow. Share the certificate type and expiry date, without sharing its PIN. We will tell you what still needs checking.</p><p>For broader account help, see <a href="/gem-services/">Porul's GeM registration and catalogue services</a>.</p></div>
-    </section>
+    <section class="service-band" aria-labelledby="uses-title"><div class="wrap">
+      <p class="eyebrow">Common uses</p>
+      <h2 id="uses-title">One certificate for the business filings that ask for it.</h2>
+      <div class="service-grid">
+        <article><h3>GeM bids</h3><p>For an authorised signatory when a GeM bid or submission step asks for certificate-based signing.</p><p><a href="/guides/is-dsc-mandatory-for-gem/">Check whether your GeM task needs a DSC →</a></p></article>
+        <article><h3>GST filings</h3><p>For GST portal actions where the business type or filing workflow requires a Digital Signature Certificate.</p></article>
+        <article><h3>MCA filings</h3><p>For company and LLP filings that require the relevant director, professional or authorised signatory to sign digitally.</p></article>
+      </div>
+      <p class="fine">The portal or filing instruction decides who must sign and which signing route applies. Confirm the intended use before the application begins.</p>
+    </div></section>
 
-    <section class="service-band" aria-labelledby="faq-title"><div class="wrap">
-      <h2 id="faq-title">Digital signatures for GeM: common questions</h2>
+    <section class="service-band dsc-trust-band" aria-labelledby="team-title"><div class="wrap service-split">
+      <div>
+        <p class="eyebrow">Handled by a person who knows the workflow</p>
+        <h2 id="team-title">MSME and GeM experience behind the application.</h2>
+        <p>Your request is handled by Porul's MSME and GeM portal specialist, who has five years of experience working with MSMEs. The specialist coordinates the application and remains available for the agreed GeM support after delivery.</p>
+        <p class="fine">The specialist's name is shared directly with the applicant during service delivery.</p>
+      </div>
+      <div class="dsc-evidence-card">
+        <h3>Issuing route</h3>
+        <p>Porul provides this service through <strong>Finbees Consulting</strong>, a partner of <strong>eMudhra, PantaSign and Capricorn</strong>.</p>
+        <p>The certifying authority used for your order is confirmed during the application process. Certificate issuance follows that authority's KYC and approval process.</p>
+      </div>
+    </div></section>
+
+    <section class="service-band" aria-labelledby="coverage-title"><div class="wrap service-split">
+      <div><p class="eyebrow">Service area</p><h2 id="coverage-title">Delivery across South India.</h2><p>Porul can arrange DSC and USB-token delivery across South India, including Coimbatore, Chennai and Hosur. These are delivery locations, not Porul office locations.</p></div>
+      <div><h2>Already have a DSC?</h2><p>Before ordering another certificate, check the holder name, certificate type, expiry date and the instruction shown by the portal. Never share the token PIN. Porul can help you identify what still needs to be checked.</p></div>
+    </div></section>
+
+    <section class="service-band" aria-labelledby="faq-title"><div class="wrap dsc-reading-wrap">
+      <p class="eyebrow">Before you apply</p>
+      <h2 id="faq-title">Questions customers ask us</h2>
       {dscFaqs.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}
     </div></section>
 
-    <section class="service-band" aria-labelledby="sources-title"><div class="wrap">
-      <h2 id="sources-title">Official sources used</h2>
+    <section class="service-band" aria-labelledby="sources-title"><div class="wrap dsc-reading-wrap">
+      <h2 id="sources-title">Official references</h2>
+      <p>This page combines Porul's current service scope with public guidance from the portals and the Controller of Certifying Authorities.</p>
       <ul>
-        <li><a href="https://assets-bg.gem.gov.in/resources/upload/shared_doc/training_content/E-Sign-DSC-Process-1685708713.pdf">GeM eSign and DSC process workflow</a> — explains the portal's OTP, eSign and DSC verification routes.</li>
-        <li><a href="https://gem.gov.in/userFaqs/seller">GeM seller FAQs</a> — current official answers should be checked alongside the live portal.</li>
-        <li><a href="https://cca.gov.in/digital_signature.html">Controller of Certifying Authorities: how to obtain a DSC</a> — directs applicants to licensed certifying authorities.</li>
-        <li><a href="https://cca.gov.in/sites/files/pdf/Licensed-CA/pantasign_CPS.pdf">PantaSign certification practice statement hosted by CCA</a>.</li>
+        <li><a href="https://assets-bg.gem.gov.in/resources/upload/shared_doc/training_content/E-Sign-DSC-Process-1685708713.pdf">GeM eSign and DSC process workflow</a></li>
+        <li><a href="https://gem.gov.in/userFaqs/seller">GeM seller FAQs</a></li>
+        <li><a href="https://cca.gov.in/digital_signature.html">Controller of Certifying Authorities: how to obtain a DSC</a></li>
       </ul>
-      <p class="fine">Service information and source links reviewed <time datetime="2026-09-29">29 September 2026</time>. Portal screens and bid conditions can change; the current GeM workflow and the specific bid govern your case.</p>
+      <p class="fine">Service facts reviewed <time datetime="2026-09-30">30 September 2026</time>. Current portal instructions and the specific bid or filing govern the signing requirement.</p>
     </div></section>
 
-    <section class="service-band" aria-labelledby="contact-title"><div class="wrap">
-      <h2 id="contact-title">Need a DSC for a live GeM requirement?</h2>
-      <p>Send the GeM step or bid link, the authorised-signatory role, your existing DSC status and the deadline. Porul will review the requirement before quoting.</p>
-      <div class="actions"><a class="button button--dark" href="/enquire/?service=dsc">Prepare a DSC enquiry →</a><a href="mailto:hello@porul.in?subject=GeM%20DSC%20enquiry">hello@porul.in</a></div>
-      <p class="fine">For corrections to this page, email <a href="mailto:hello@porul.in?subject=GeM%20DSC%20page%20correction">hello@porul.in</a> with the source and wording in question.</p>
+    <section class="service-band dsc-final-cta" aria-labelledby="contact-title"><div class="wrap service-split">
+      <div><p class="eyebrow">Ready to apply?</p><h2 id="contact-title">Tell us the use, validity and delivery city.</h2><p>Porul will call back, confirm the applicant and explain the next KYC step.</p></div>
+      <div class="actions"><a class="button" href={whatsappUrl(whatsappMessage)}>Message Porul on WhatsApp →</a><a href="mailto:hello@porul.in?subject=Class%203%20DSC%20enquiry">hello@porul.in</a></div>
     </div></section>
   </div>
 </BaseLayout>

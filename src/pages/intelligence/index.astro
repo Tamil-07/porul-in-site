@@ -8,7 +8,7 @@ const intelligence = (await getCollection("intelligence", ({ data }) => !data.dr
 );
 ---
 
-<BaseLayout title="Intelligence — Porul.in" description="Durable sector intelligence for Tamil Nadu precision engineering.">
+<BaseLayout layout="catalog" title="Intelligence — Porul.in" description="Durable sector intelligence for Tamil Nadu precision engineering.">
   <section class="page-intro">
     <div class="wrap">
       <p class="page-intro__kicker">Intelligence &amp; digest</p>
@@ -19,11 +19,13 @@ const intelligence = (await getCollection("intelligence", ({ data }) => !data.dr
 
   <section class="page-band" aria-label="Published intelligence">
     <div class="wrap">
-      <div class="cards">
+      <div class="page-grid">
         {
           intelligence.length > 0 ? (
             intelligence.map((item) => (
               <IntelCard
+                headingLevel={2}
+                {...item.data}
                 title={item.data.title}
                 dek={item.data.dek}
                 category={item.data.category}
@@ -35,7 +37,7 @@ const intelligence = (await getCollection("intelligence", ({ data }) => !data.dr
               />
             ))
           ) : (
-            <p class="empty-state cham">Intelligence is published when there is something durable to say.</p>
+            <p class="panel">Intelligence is published when there is something durable to say.</p>
           )
         }
       </div>

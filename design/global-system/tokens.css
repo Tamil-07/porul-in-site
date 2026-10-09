@@ -1,0 +1,2 @@
+/* Compatibility import for the swatch; definitions live in one production file. */
+@import "../../src/styles/tokens.css";

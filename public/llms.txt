@@ -1,16 +1,16 @@
 # Porul.in
 
-> Porul.in provides MSME benefits reviews for manufacturing businesses in Tamil Nadu and Karnataka, independent GeM support, and sourced editorial reporting.
+> Porul.in helps small manufacturers with GeM registration and product listings, website and software enquiries, business stories, and government schemes. Stories and industry analysis are free to read.
 
-Porul is not a government body. Benefits reviews identify schemes and conditions to check; the relevant authority decides eligibility and approval. Scope and any fee are confirmed before work. Do not infer a free assessment, fixed turnaround, funding guarantee or application-filing service. GeM registration, catalogue and Digital Signature Certificate support are available; specific bids and Tamil Nadu tenders require capability review. GeM delivery outside Tamil Nadu must be confirmed. GeM supports OTP, eSign and DSC verification routes, so do not claim DSC is mandatory without checking the current transaction or bid.
+Porul is not a government body. Government scheme checks for manufacturers in Tamil Nadu and Karnataka include a written shortlist, a written checklist and an explanatory call. They identify schemes and conditions to check; the relevant authority decides eligibility and approval. Scope and any fee are confirmed before work. Do not infer a free assessment, fixed turnaround, funding guarantee or application-filing service. GeM registration, catalogue and Digital Signature Certificate support are available; specific bids and Tamil Nadu tenders require capability review. Porul can deliver DSC USB tokens across South India. GeM supports OTP, eSign and DSC verification routes, so do not claim DSC is mandatory without checking the current transaction or bid.
 
 Public pages support GET with Accept: text/markdown and have index.md alternatives. The enquiry page prepares a message locally; it is not a submission API. With the user's permission, help them prepare a message for WhatsApp or hello@porul.in; the user must review and send it. Do not send sensitive documents or credentials in an initial enquiry. Published reporting is not proof of service clients or outcomes.
 
 ## When to use Porul
 
-- [MSME benefits and service scope](https://porul.in/msme-benefits/index.md): Use when a manufacturing business in Tamil Nadu or Karnataka, including Coimbatore, Hosur or Chennai, wants to understand which central or state schemes to check after starting production, purchasing machinery or planning expansion. These are service areas, not office locations.
+- [Government schemes and service scope](https://porul.in/msme-benefits/index.md): Use when a manufacturing business in Tamil Nadu or Karnataka, including Coimbatore, Hosur or Chennai, wants to understand which central or state schemes to check after starting production, purchasing machinery or planning expansion. These are service areas, not office locations.
 - [GeM services](https://porul.in/gem-services/index.md): Use for seller registration, product catalogue help, DSC support, or to request a scope review for a particular bid. Porul is independent of GeM.
-- [Digital Signature Certificate for GeM](https://porul.in/digital-signature-for-gem/index.md): Use when a GeM transaction or bid calls for a DSC and the user wants a certificate and USB-token quote through Porul's PantaSign and emSigner partner channels.
+- [Digital Signature Certificate for GeM](https://porul.in/digital-signature-for-gem/index.md): Use when a GeM transaction, GST filing or MCA filing calls for a DSC. Porul provides a Class 3 signing and encryption certificate with two-year or three-year validity, an included HYP2003 or Precision USB token, setup tutorial and renewal reminder through Finbees Consulting.
 - [Prepare an enquiry](https://porul.in/enquire/index.md): Start with the business activity, district, state and current stage. No automated booking or payment occurs.
 - [Contact](https://porul.in/contact/index.md): Public WhatsApp and email, editorial enquiries and corrections.
 

@@ -1,82 +1,316 @@
-:root {
-  --paper: #F7F6F2; /* warm off-white surface from the approved v3 system */
-  --paper-2: #FFFFFF;
-  --ink: #111114; /* near-black keeps the industrial tone without pure black glare */
-  --ink-2: #16161A;
-  --muted: #5F6068; /* tuned darker than the prototype so body-adjacent text clears contrast */
-  --line: #E4E2DA; /* hairlines preserve the machined, quiet editorial feel */
-  --spark: #CE3508; /* darker molten accent clears AA contrast on paper and behind white button text */
-  --spark-2: #FF5A24;
-  --glow: rgba(240, 66, 13, 0.18);
-  --cham: 20px; /* signature 45-degree machined corner shared across components */
-
-  --display: "Clash Display", sans-serif;
-  --body: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --tamil: "Noto Sans Tamil", "Satoshi", system-ui, sans-serif;
-
-  --maxw: 1240px;
-  --gut: clamp(20px, 5vw, 56px);
-
-  /* Semantic aliases: components should depend on roles, not palette names. */
-  --surface-page: var(--paper);
-  --surface-raised: var(--paper-2);
-  --surface-subtle: #F0EFE9;
-  --surface-inverse: var(--ink);
-  --text-strong: var(--ink);
-  --text-default: #33333A;
-  --text-muted: var(--muted);
-  --text-inverse: var(--paper);
-  --text-disabled: #85868E;
-  --action-primary: var(--spark);
-  --action-primary-hover: #AA2B07;
-  --action-primary-pressed: #872205;
-  --action-on-primary: #FFFFFF;
-  --border-subtle: var(--line);
-  --border-default: #CFCDC4;
-  --border-strong: #8C8B85;
-  --border-inverse: rgba(255, 255, 255, 0.24);
-  --focus-ring: #8E2709;
-
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
-
-  --type-display-xl: clamp(44px, 7vw, 84px);
-  --type-hero: 34px;
-  --status-mark-size: 10px;
-  --type-display-lg: clamp(38px, 5.2vw, 68px);
-  --type-heading-lg: clamp(28px, 3.6vw, 44px);
-  --type-heading-md: clamp(22px, 2.5vw, 30px);
-  --type-heading-sm: 18px;
-  --type-body-lg: clamp(17px, 1.45vw, 20px);
-  --type-body-md: 16px;
-  --type-body-sm: 14px;
-  --type-meta: 12px;
-  --measure-narrow: 46ch;
-  --measure-reading: 68ch;
-  --measure-wide: 82ch;
-
-  --cham-sm: 10px;
-  --cham-md: 18px;
-  --cham-lg: 28px;
-  --motion-fast: 120ms;
-  --motion-standard: 180ms;
-  --motion-deliberate: 240ms;
-  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --shadow-low: 0 14px 34px -26px rgba(17, 17, 20, 0.5);
-  --shadow-overlay: 0 20px 48px rgba(17, 17, 20, 0.16);
-  --z-header: 50;
-  --z-overlay: 100;
+/* Porul.in global design system — approved foundation, 8 October 2026.
+   Sole production token authority for the approved Porul redesign.
+   All raw visual values, font declarations and breakpoints live in this file.
+   Layout modes set content width ONLY. Language adaptations are global roles.
+   Brand accent is functional. Sponsorship uses neutral disclosure, never status.
+   Source Sans / Source Serif / Noto are self-hosted, licensed in fonts/.
+   Existing Clash wordmark font is preserved for the logo only.
+*/
+@font-face {
+  font-family: 'Noto Sans Tamil';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/noto-sans-tamil-400-tamil.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
 }
-@media (min-width: 375px) { :root { --type-hero: 38px; } }
-@media (min-width: 600px) { :root { --type-hero: 50px; } }
-@media (min-width: 1024px) { :root { --type-hero: 64px; } }
+@font-face {
+  font-family: 'Noto Sans Tamil';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/noto-sans-tamil-600-tamil.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Noto Serif Tamil';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/noto-serif-tamil-400-tamil.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Noto Serif Tamil';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(/fonts/noto-serif-tamil-600-tamil.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/source-sans-3-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/source-sans-3-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/source-sans-3-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/source-sans-3-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/source-serif-4-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/source-serif-4-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/source-serif-4-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/source-serif-4-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face { font-family: 'Clash Display'; src: url('/fonts/clash-display-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --surface-0: #F8F6F3;
+  --surface-1: #FFFFFF;
+  --surface-2: #F1EEE9;
+  --surface-inverse: #1A1816;
+
+  --text-primary: #1A1816;
+  --text-secondary: #5C574F;
+  --text-tertiary: #6F695F;
+  --text-inverse: #F8F6F3;
+  /* Secondary text on surface-inverse only; reuses the approved light neutral. */
+  --text-inverse-secondary: var(--border-strong);
+
+  --accent: #2C4A3E;
+  --accent-hover: #243F35;
+  --accent-subtle: #E8F0EC;
+
+  --border: #E5E1DB;
+  --border-strong: #D1CBC3;
+  --success: #2F6B4F;
+  --warning: #7A5424;
+  --error: #8B3A3A;
+
+
+  /* Global content roles, never page themes. */
+  --font-ui: 'Source Sans 3', 'Noto Sans Tamil', Arial, sans-serif;
+  --font-reading: 'Source Serif 4', 'Noto Serif Tamil', Georgia, serif;
+  --font-brand: 'Clash Display', sans-serif;
+  --font-tamil-ui: 'Noto Sans Tamil', 'Source Sans 3', sans-serif;
+  --font-tamil-reading: 'Noto Serif Tamil', 'Source Serif 4', serif;
+  --font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-brand: 700;
+  --type-meta: .875rem;
+  --type-control: 1rem;
+  --type-body: 1.125rem;
+  --type-reading: 1.125rem;
+  --type-title: 2rem;
+  --type-feature: 2.5rem;
+  --type-section: 1.5rem;
+  --type-card: 1.5rem;
+  --type-wordmark: 1.4375rem;
+  --leading-meta: 1.25rem;
+  --leading-control: 1.5rem;
+  --leading-body: 1.75rem;
+  --leading-reading: 1.8125rem;
+  --leading-title: 2.375rem;
+  --leading-feature: 2.875rem;
+  --leading-section: 2rem;
+  --leading-card: 1.875rem;
+  --leading-tamil-reading: 1.8;
+  --leading-tamil-title: 1.4;
+  --leading-tamil-ui: 1.6;
+  --tracking-display: -.015em;
+  --tracking-normal: 0;
+  --text-word-break: normal;
+
+  /* Shared four-pixel spacing cadence. */
+  --space-0: 0;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --page-gutter: var(--space-5);
+  --section-gap: var(--space-10);
+  --group-gap: var(--space-8);
+  --item-gap: var(--space-4);
+  --label-gap: var(--space-2);
+  --panel-padding: var(--space-6);
+  --paragraph-gap: var(--space-6);
+  --grid-gap: var(--space-6);
+
+  /* Width excludes outer gutters. */
+  --width-editorial: 44rem;
+  --width-catalog: 72rem;
+  --width-form: 40rem;
+  --layout-max: var(--width-catalog);
+  --width-full: 100%;
+  --width-zero: 0;
+  --grid-one: minmax(0, 1fr);
+  --grid-two: repeat(2, minmax(0, 1fr));
+  --grid-four: repeat(4, minmax(0, 1fr));
+  --grid-pair: var(--grid-one);
+  --grid-palette: var(--grid-one);
+  --nav-wide-display: none;
+  --nav-compact-display: flex;
+  --nav-link-gap: var(--space-4);
+  --nav-panel-width: 20rem;
+  --layer-header: 20;
+  --layer-skip: 100;
+  --skip-hidden-transform: translateY(-200%);
+  --image-story-ratio: 3 / 2;
+
+  /* Shape, rules, elevation and actual controls. */
+  --radius-none: 0;
+  --radius-control: .25rem;
+  --radius-panel: .5rem;
+  --border-width: 1px;
+  --border-width-active: 2px;
+  --shadow-none: none;
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, .08);
+  --control-height: 3rem;
+  --control-padding-x: var(--space-4);
+  --control-padding-y: var(--space-2);
+  --control-surface: var(--surface-1);
+  --control-text: var(--text-primary);
+  --control-border: var(--text-tertiary);
+  --control-border-hover: var(--text-secondary);
+  --control-placeholder: var(--text-tertiary);
+  --control-disabled-surface: var(--surface-2);
+  --control-disabled-text: var(--text-tertiary);
+  --control-disabled-border: var(--border-strong);
+  --control-error: var(--error);
+  --action-surface: var(--accent);
+  --action-hover-surface: var(--accent-hover);
+  --action-pressed-surface: var(--accent-hover);
+  --action-text: var(--text-inverse);
+  --selection-surface: var(--accent-subtle);
+  --selection-text: var(--accent);
+  --disclosure-surface: var(--surface-2);
+  --disclosure-text: var(--text-primary);
+  --disclosure-border: var(--border-strong);
+  --focus-inner-width: 2px;
+  --focus-outer-width: 5px;
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 3px;
+  --focus-ring: 0 0 0 var(--focus-inner-width) var(--surface-1), 0 0 0 var(--focus-outer-width) var(--accent);
+  --focus-ring-inverse: 0 0 0 var(--focus-inner-width) var(--accent), 0 0 0 var(--focus-outer-width) var(--surface-1);
+  --underline-offset: .2em;
+  --motion-fast: 140ms;
+  --motion-standard: 200ms;
+  --motion-ease: ease-out;
+  --motion-none: 0s;
+
+  /* Specimen-only geometry lives here too; it is not a page-specific theme. */
+  --specimen-chip-height: 4rem;
+  --specimen-space-thickness: .75rem;
+  --specimen-space-active: var(--space-1);
+}
+[data-layout='catalog'] { --layout-max: var(--width-catalog); }
+[data-layout='editorial'] { --layout-max: var(--width-editorial); }
+[data-layout='form'] { --layout-max: var(--width-form); }
+/* CSS variables cannot be used as media-query thresholds; keep them here only. */
+@media (min-width: 48rem) {
+  :root {
+    --page-gutter: var(--space-8);
+    --section-gap: var(--space-16);
+    --type-title: 3rem;
+    --leading-title: 3.375rem;
+    --type-feature: 3.75rem;
+    --leading-feature: 4.125rem;
+    --type-section: 2rem;
+    --leading-section: 2.5rem;
+    --type-reading: 1.25rem;
+    --leading-reading: 2rem;
+    --grid-pair: var(--grid-two);
+    --grid-palette: var(--grid-two);
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --page-gutter: var(--space-12);
+    --grid-palette: var(--grid-four);
+    --nav-wide-display: flex;
+    --nav-compact-display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: var(--motion-none); --motion-standard: var(--motion-none); }
+}
+[data-space='1'] { --specimen-space-active: var(--space-1); }
+[data-space='2'] { --specimen-space-active: var(--space-2); }
+[data-space='3'] { --specimen-space-active: var(--space-3); }
+[data-space='4'] { --specimen-space-active: var(--space-4); }
+[data-space='5'] { --specimen-space-active: var(--space-5); }
+[data-space='6'] { --specimen-space-active: var(--space-6); }
+[data-space='8'] { --specimen-space-active: var(--space-8); }
+[data-space='10'] { --specimen-space-active: var(--space-10); }
+[data-space='12'] { --specimen-space-active: var(--space-12); }
+[data-space='16'] { --specimen-space-active: var(--space-16); }
+[data-space='20'] { --specimen-space-active: var(--space-20); }
+[data-space='24'] { --specimen-space-active: var(--space-24); }
+
+/* Language changes font roles/leading, not the palette or layout mode. */
+:lang(ta) {
+  --font-ui: var(--font-tamil-ui);
+  --font-reading: var(--font-tamil-reading);
+  --tracking-display: var(--tracking-normal);
+  --leading-reading: var(--leading-tamil-reading);
+  --leading-title: var(--leading-tamil-title);
+  --leading-feature: var(--leading-tamil-title);
+  --leading-section: var(--leading-tamil-title);
+  --leading-card: var(--leading-tamil-title);
+  --leading-body: var(--leading-tamil-ui);
+  --leading-control: var(--leading-tamil-ui);
+  --leading-meta: var(--leading-tamil-ui);
+}

@@ -64,7 +64,7 @@ test("benefits fields are stage-specific and cannot leak into GeM enquiries", ()
   const values={service:"benefits",stage:"planning",district:"Salem",state:"Tamil Nadu",production:"2025-01",machinery:"Planning a purchase"};
   assert.doesNotMatch(benefitsLines(values).join("\n"),/2025-01/);
   assert.match(benefitsLines(values).join("\n"),/Salem, Tamil Nadu/);
-  for (const service of ["registration","catalogue","dsc","bid","tn-tender","marketing","certification","exhibitions","compliance","other"]) assert.deepEqual(benefitsLines({...values,service}),[]);
+  for (const service of ["gem","registration","catalogue","dsc","bid","website-software","story","tn-tender","marketing","certification","exhibitions","compliance","other"]) assert.deepEqual(benefitsLines({...values,service}),[]);
 });
 test("built release includes parity, contact trust, bounded FAQs and machine discovery", async () => {
   const map=JSON.parse(await readFile(new URL("../.generated/routes.json",import.meta.url),"utf8"));
@@ -87,14 +87,26 @@ test("built release includes parity, contact trust, bounded FAQs and machine dis
     assert.ok(link[1].endsWith(".xml")||Object.values(map).includes(link[1]),link[1]);
   }
   const home=await readFile(new URL("../dist/index.html",import.meta.url),"utf8");
-  assert.match(home,/Find out which MSME benefits could apply/);
+  assert.match(home,/You make the product\. Bring the next step to Porul\./);
   assert.doesNotMatch(home,/Your MSME.s extended back office|Tell us what.s pending|proto-bar|class="rn"/);
   const nodes=walk(parse(home));
   const json=nodes.find(n=>n.tagName==="script"&&attr(n,"type")==="application/ld+json");
   const graph=JSON.parse(json.childNodes[0].value)["@graph"];
-  const faq=graph.find(n=>n["@type"]==="FAQPage");
-  for(const q of faq.mainEntity) { assert.ok(home.includes(q.name)); assert.ok(home.includes(q.acceptedAnswer.text)); }
   assert.equal(graph.find(n=>n["@type"]==="Organization").address,undefined,"Never invent an address");
+  for (const route of ["/gem-services/","/digital-signature-for-gem/","/msme-benefits/"]) {
+    const html=await readFile(new URL("../dist"+route+"index.html",import.meta.url),"utf8");
+    const nodes=walk(parse(html));
+    const json=nodes.find(n=>n.tagName==="script"&&attr(n,"type")==="application/ld+json");
+    const graph=JSON.parse(json.childNodes[0].value)["@graph"];
+    const faq=graph.find(n=>n["@type"]==="FAQPage");
+    assert.ok(faq?.mainEntity?.length,`${route} must retain its published FAQs`);
+    const main=nodes.find(n=>n.tagName==="main");
+    const text=walk(main).filter(n=>n.nodeName==="#text").map(n=>n.value).join(" ").replace(/\s+/g," ");
+    for(const q of faq.mainEntity) {
+      assert.ok(text.includes(q.name.replace(/\s+/g," ")),`${route}: FAQ question must be visible`);
+      assert.ok(text.includes(q.acceptedAnswer.text.replace(/\s+/g," ")),`${route}: FAQ answer must be visible`);
+    }
+  }
 });
 
 test("all generated internal links, fragments and assets resolve", async () => {
@@ -103,6 +115,16 @@ test("all generated internal links, fragments and assets resolve", async () => {
   for(const route of [...Object.keys(map),"/404.html"]) {
     const file=route.endsWith(".html")?route:route+"index.html";
     documents.set(route,walk(parse(await readFile(new URL("../dist"+file,import.meta.url),"utf8"))));
+  }
+  const catalogRoutes=new Set(["/","/msme-benefits/","/gem-services/","/digital-signature-for-gem/","/stories/","/intelligence/","/the-room/","/sponsor/","/ta/","/404.html"]);
+  for(const [route,nodes] of documents) {
+    const expectedMode=["/enquire/","/contact/"].includes(route)?"form"
+      :catalogRoutes.has(route)?"catalog"
+      :["/about/","/privacy/"].includes(route)||route.startsWith("/guides/")||/^\/(stories|intelligence|ta)\/[^/]+\/$/.test(route)?"editorial":null;
+    assert.ok(expectedMode,`${route}: assign an approved layout mode`);
+    const mains=nodes.filter(n=>n.tagName==="main");
+    assert.equal(mains.length,1,`${route}: exactly one main landmark`);
+    assert.equal(attr(mains[0],"data-layout"),expectedMode,`${route}: approved layout mode`);
   }
   let checked=0;
   for(const [route,nodes] of documents) for(const node of nodes) {
@@ -127,7 +149,7 @@ test("benefits location copy is substantive, discoverable and never claims an of
   const markdown=await readFile(new URL("../dist/msme-benefits/index.md",import.meta.url),"utf8");
   const nodes=walk(parse(html));
   const title=nodes.find(n=>n.tagName==="title");
-  assert.match(title.childNodes[0].value,/MSME Benefits Review/);
+  assert.match(title.childNodes[0].value,/Government Scheme Checks/);
   for(const city of ["Coimbatore","Hosur","Chennai"]) {
     assert.match(html,new RegExp(city));
     assert.match(markdown,new RegExp(city));
@@ -136,7 +158,7 @@ test("benefits location copy is substantive, discoverable and never claims an of
   const graph=JSON.parse(nodes.find(n=>n.tagName==="script"&&attr(n,"type")==="application/ld+json").childNodes[0].value)["@graph"];
   const service=graph.find(n=>n["@type"]==="Service");
   assert.deepEqual(service.areaServed.map(n=>n.name),["Tamil Nadu","Karnataka"]);
-  assert.match(service.serviceType,/benefits scheme review/);
+  assert.match(service.serviceType,/Government scheme check/);
   const org=graph.find(n=>n["@type"]==="Organization");
   assert.equal(org.address,undefined);
   assert.ok(!graph.some(n=>["LocalBusiness","PostalAddress"].includes(n["@type"])));

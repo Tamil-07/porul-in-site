@@ -1,8 +1,7 @@
 ---
+// Human-reviewed applications retain the four approved fit questions.
 import BaseLayout from "@/layouts/BaseLayout.astro";
-
-// A structured mailto keeps applications human-reviewed while giving the
-// founder enough context to separate genuine applicants from sourcing mail.
+const questions = ["Your name and role", "Your company or organisation", "Your connection to Tamil Nadu precision engineering", "Why would The Room be useful to you?"];
 const applicationSubject = encodeURIComponent("Application to The Room at Porul.in");
 const applicationBody = encodeURIComponent(`Please answer these four questions:
 
@@ -14,147 +13,24 @@ const applicationBody = encodeURIComponent(`Please answer these four questions:
 The Room is an editorial network. This is not vendor registration, an RFQ, a sourcing request, or a sales enquiry.`);
 const entryEmail = `mailto:hello@porul.in?subject=${applicationSubject}&body=${applicationBody}`;
 ---
-
-<BaseLayout title="Apply to The Room — Porul.in" description="Apply to a reviewed editorial network for procurement professionals and Tamil Nadu precision-engineering operators.">
-  <section class="room-page">
-    <div class="wrap">
-      <div class="room-page__panel cham">
-        <div class="room-page__grid" aria-hidden="true"></div>
-        <div class="room-page__content">
-          <p class="room-page__kicker">The Room — reviewed entry</p>
-          <h1>Kept dense.<br />Not large.</h1>
-          <p class="lead">A small, reviewed room for people working in Tamil Nadu CNC and precision engineering. Every application is read by a human and judged on fit.</p>
-          <div class="room-page__columns">
-            <section>
-              <h2>Who it is for</h2>
-              <p>Procurement people who value signal over noise, and serious shops that understand credibility is built through conduct, not claims.</p>
-            </section>
-            <section>
-              <h2>Member benefits</h2>
-              <p>A weekly digest, and early access to Porul.in sector intelligence before public publication.</p>
-            </section>
-            <section>
-              <h2>What happens next</h2>
-              <p>A human reads every application. If the fit is clear, the founder follows up directly. There is no automated approval.</p>
-            </section>
-            <section>
-              <h2>The boundary</h2>
-              <p>We tell, explain, and convene. We don't quote, match, source, broker, or fulfil.</p>
-            </section>
-          </div>
-          <p class="application-boundary"><strong>Before you apply:</strong> this is not vendor registration, an RFQ, a sourcing request, or a sales-enquiry channel.</p>
-          <div class="contact-actions" aria-label="The Room application contact path">
-            <a class="button button--dark cham" href={entryEmail}>Apply to The Room <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </div>
+<BaseLayout layout="catalog" title="Apply to The Room — Porul.in" description="A small, reviewed room for people working in Tamil Nadu CNC and precision engineering. Apply with four questions; every application is read by a person.">
+  <section class="page-intro"><div class="wrap">
+    <p class="page-intro__kicker">The Room · Reviewed entry</p><h1>A small room. A useful exchange.</h1>
+    <p class="page-intro__dek">For people working in Tamil Nadu CNC and precision engineering. Every application is read by a person and judged on fit.</p>
+    <p><a class="button" href={entryEmail}>Apply to The Room</a></p>
+    <p class="fine">Four short questions. Your email app opens a draft for you to review and send.</p>
+  </div></section>
+  <section class="page-band"><div class="wrap stack">
+    <div class="room-grid">
+      <section class="room-detail stack"><h2>Who it is for</h2><p>Procurement people who value signal over noise, and serious shops that understand credibility is built through conduct, not claims.</p></section>
+      <section class="room-detail stack"><h2>Member benefits</h2><p>A weekly digest, and early access to Porul.in sector intelligence before public publication.</p></section>
+      <section class="room-detail stack"><h2>What happens next</h2><p>A human reads every application. If the fit is clear, the founder follows up directly. There is no automated approval.</p></section>
+      <section class="room-detail stack"><h2>The boundary</h2><p>We tell, explain and convene. We do not quote, match, source, broker or fulfil. This is not vendor registration, an RFQ, a sourcing request or a sales-enquiry channel.</p></section>
     </div>
-  </section>
+    <section class="panel stack" aria-labelledby="application-title"><h2 id="application-title">Four questions to apply</h2><ol>{questions.map(question => <li>{question}</li>)}</ol><p><a class="button" href={entryEmail}>Apply to The Room</a></p><p class="fine">No email app? Copy the questions into your webmail and send your answers to <a href="mailto:hello@porul.in?subject=Application%20to%20The%20Room%20at%20Porul.in">hello@porul.in</a> with the subject “Application to The Room at Porul.in”.</p></section>
+  </div></section>
 </BaseLayout>
-
 <style>
-  .room-page {
-    padding: clamp(56px, 8vw, 96px) 0 0;
-  }
-
-  .room-page__panel {
-    --cham: 34px;
-    position: relative;
-    overflow: hidden;
-    padding: clamp(40px, 6vw, 80px);
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .room-page__panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(50% 60% at 85% 15%, rgba(240, 66, 13, 0.28), transparent 60%);
-    opacity: 0.55;
-  }
-
-  .room-page__grid {
-    position: absolute;
-    inset: 0;
-    opacity: 0.12;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-    background-size: 46px 46px;
-    mask-image: radial-gradient(70% 70% at 80% 20%, #000, transparent);
-  }
-
-  .room-page__content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .room-page__kicker {
-    margin: 0 0 22px;
-    color: var(--spark-2);
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 0 0 20px;
-    font-family: var(--display);
-    font-size: clamp(38px, 7vw, 82px);
-    line-height: 0.98;
-  }
-
-  .lead {
-    max-width: 58ch;
-    margin: 0 0 38px;
-    color: #D8D8DE;
-    font-size: clamp(17px, 1.8vw, 21px);
-    line-height: 1.65;
-  }
-
-  .room-page__columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .room-page__columns section {
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-    padding-top: 18px;
-  }
-
-  .application-boundary {
-    max-width: 68ch;
-    margin: 28px 0 0;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-    color: #D8D8DE;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .application-boundary strong {
-    color: var(--paper);
-  }
-
-  h2 {
-    margin: 0 0 10px;
-    font-family: var(--display);
-    font-size: 22px;
-  }
-
-  .room-page__columns p {
-    margin: 0;
-    color: #B9B9C1;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  @media (max-width: 900px) {
-    .room-page__columns {
-      grid-template-columns: 1fr;
-    }
-  }
+  .room-grid { display: grid; grid-template-columns: var(--grid-pair); gap: var(--group-gap); }
+  .room-detail { border-top: var(--border-width) solid var(--border); padding-top: var(--item-gap); }
 </style>

@@ -1,71 +1,23 @@
 ---
-interface Props {
-  kicker: string;
-  title: string;
-  dek: string;
-  sponsored?: boolean;
-  author?: "Porul.in";
-  authorRole?: "Editorial";
-  publishDate: Date;
-  updatedDate?: Date;
-  lang?: "en" | "ta";
-}
-
 import EditorialMeta from "@/components/EditorialMeta.astro";
-
-const { kicker, title, dek, sponsored = false, author = "Porul.in", authorRole = "Editorial", publishDate, updatedDate, lang = "en" } = Astro.props;
+import CommercialDisclosure from "@/components/CommercialDisclosure.astro";
+interface Props {
+  kicker: string; title: string; dek: string; sponsored?: boolean;
+  sponsorName?: string; sponsorInvolvement?: string; authorship?: "porul" | "partner"; producerName?: string;
+  author?: "Porul.in"; authorRole?: "Editorial"; publishDate: Date; updatedDate?: Date; lang?: "en" | "ta";
+}
+const { kicker, title, dek, author = "Porul.in", authorRole = "Editorial", publishDate, updatedDate, lang = "en", authorship = "porul", producerName } = Astro.props;
 ---
-
 <header class="article-head">
   <p class="article-head__kicker">{kicker}</p>
-  {sponsored && <span class="sponsored-pill cham">Sponsored profile</span>}
+  <CommercialDisclosure {...Astro.props} />
   <h1>{title}</h1>
   <p class="article-head__dek">{dek}</p>
-  <EditorialMeta author={author} authorRole={authorRole} publishDate={publishDate} updatedDate={updatedDate} lang={lang} />
+  <EditorialMeta author={author} authorRole={authorRole} publishDate={publishDate} updatedDate={updatedDate} lang={lang} producerName={authorship === "partner" ? producerName : undefined} />
 </header>
-
 <style>
-  .article-head {
-    max-width: 860px;
-    padding: clamp(56px, 8vw, 96px) 0 28px;
-  }
-
-  .article-head__kicker {
-    margin: 0 0 18px;
-    color: var(--spark);
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .sponsored-pill {
-    --cham: 8px;
-    display: inline-flex;
-    margin-bottom: 18px;
-    padding: 7px 12px;
-    background: var(--spark);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    max-width: 12ch;
-    margin: 0 0 22px;
-    font-family: var(--display);
-    font-size: clamp(42px, 7vw, 82px);
-    font-weight: 700;
-    line-height: 0.98;
-  }
-
-  .article-head__dek {
-    max-width: 58ch;
-    margin: 0;
-    color: #33333A;
-    font-size: clamp(17px, 1.6vw, 20px);
-    line-height: 1.65;
-  }
+  .article-head { display: grid; gap: var(--space-6); padding: var(--section-gap) var(--space-0) var(--space-8); }
+  .article-head__kicker { margin: var(--space-0); color: var(--text-secondary); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  h1 { margin: var(--space-0); font-family: var(--font-reading); font-size: var(--type-title); font-weight: var(--weight-semibold); line-height: var(--leading-title); letter-spacing: var(--tracking-display); text-wrap: balance; }
+  .article-head__dek { margin: var(--space-0); color: var(--text-secondary); font-family: var(--font-reading); font-size: var(--type-reading); line-height: var(--leading-reading); }
 </style>

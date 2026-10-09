@@ -2,14 +2,14 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="About Porul: MSME Support and Editorial Standards" description="Porul reviews MSME benefits for manufacturers in Tamil Nadu and Karnataka and offers GeM support. Read our sourcing, disclosure and correction standards.">
+<BaseLayout layout="editorial" title="About Porul: MSME Support and Editorial Standards" description="Meet Porul: practical help for small manufacturers, free stories and industry analysis. Read our sourcing, disclosure and correction standards.">
   <section class="about-intro">
     <div class="wrap about-intro__grid">
       <div>
         <p class="about-intro__kicker">About Porul.in</p>
         <h1>Practical support. Accountable reporting.</h1>
       </div>
-      <div class="about-intro__dek"><p>Porul.in reviews central and state schemes for manufacturing businesses in Tamil Nadu and Karnataka, then explains the conditions and next steps. An enquiry is not an eligibility decision: the relevant authority decides eligibility and approval. Read the <a href="/msme-benefits/">MSME benefits review scope</a>.</p><p>We confirm the scope and any fee before an assessment begins. Application filing, department follow-ups, appeals and arranging loans are not included in an assessment. GeM seller registration and catalogue support is also available, with Shreepriya handling the portal work. Other requirements need a capability and scope review.</p><p>We also publish company stories and sourced sector intelligence. Paying for a service does not buy editorial coverage or endorsement.</p><a class="button button--dark" href="/enquire/?service=benefits">Discuss MSME benefits →</a><p><a href="/contact/">Contact Porul.in</a></p></div>
+      <div class="about-intro__dek"><p>Porul helps small manufacturers with GeM seller registration, product listings and digital signatures. Bring us a website or software requirement, or a story about your business. We discuss what we can help with and agree the work and any fee before starting.</p><p>For manufacturing units in Tamil Nadu and Karnataka, we check which central and state government schemes are worth looking into. The agreed service includes a written shortlist, a checklist and a call to explain the options. Read the <a href="/msme-benefits/">scope and limits</a>.</p><p>Our manufacturing stories and industry analysis are free to read. Paid articles are labelled. Paying for a service does not buy editorial influence, coverage or endorsement.</p><a class="button" href="/enquire/">Talk to Porul →</a><p><a href="/contact/">Contact and corrections</a></p></div>
     </div>
   </section>
 
@@ -73,176 +73,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style>
-  .about-intro {
-    padding: clamp(var(--space-12), 8vw, var(--space-24)) 0 var(--space-16);
-  }
-
-  .about-intro__grid,
-  .standards__grid,
-  .corrections__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: clamp(var(--space-8), 7vw, var(--space-20));
-    align-items: start;
-  }
-
-  .about-intro__kicker,
-  .standards__kicker {
-    margin: 0 0 var(--space-3);
-    color: var(--action-primary);
-    font-size: var(--type-meta);
-    font-weight: 700;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: var(--display);
-  }
-
-  h1 {
-    max-width: 12ch;
-    margin: 0;
-    font-size: var(--type-display-lg);
-    line-height: 1;
-    text-wrap: balance;
-  }
-
-  .about-intro__dek {
-    max-width: 52ch;
-    margin: var(--space-8) 0 0;
-    color: var(--text-default);
-    font-size: var(--type-body-lg);
-  }
-
-  .standards {
-    padding: var(--space-16) 0;
-    border-top: 1px solid var(--border-strong);
-    border-bottom: 1px solid var(--border-subtle);
-    background: var(--surface-raised);
-    scroll-margin-top: 90px;
-  }
-
-  .standards__intro {
-    position: sticky;
-    top: 118px;
-  }
-
-  .standards__intro h2,
-  .corrections h2,
-  .boundary h2 {
-    max-width: 13ch;
-    margin: 0;
-    font-size: var(--type-heading-lg);
-    line-height: 1.06;
-    text-wrap: balance;
-  }
-
-  .standards__intro > p:last-child {
-    max-width: 50ch;
-    margin: var(--space-5) 0 0;
-    color: var(--text-default);
-    font-size: var(--type-body-sm);
-  }
-
-  .standards__list {
-    border-top: 1px solid var(--border-strong);
-  }
-
-  .standards__list section {
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr);
-    padding: var(--space-6) 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .standards__number {
-    grid-row: 1 / span 2;
-    margin: 3px 0 0;
-    color: var(--action-primary);
-    font-size: var(--type-meta);
-    font-weight: 700;
-  }
-
-  .standards__list h3 {
-    margin: 0 0 var(--space-2);
-    font-size: var(--type-heading-sm);
-  }
-
-  .standards__list section > p:last-child,
-  .corrections__grid > div:last-child p,
-  .boundary__inner > p:not(.standards__kicker) {
-    max-width: 64ch;
-    margin: 0;
-    color: var(--text-default);
-    font-size: var(--type-body-sm);
-    line-height: 1.75;
-  }
-
-  .corrections {
-    padding: var(--space-16) 0;
-    scroll-margin-top: 90px;
-  }
-
-  .corrections__grid > div:last-child {
-    display: grid;
-    gap: var(--space-4);
-    padding-top: var(--space-2);
-  }
-
-  .corrections a {
-    color: var(--action-primary);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .boundary {
-    padding: 0 0 clamp(var(--space-16), 8vw, var(--space-24));
-  }
-
-  .boundary__inner {
-    --cham: var(--cham-lg);
-    padding: clamp(var(--space-8), 6vw, var(--space-16));
-    border: 1px solid var(--border-default);
-    background: var(--surface-subtle);
-  }
-
-  .boundary__inner > p:not(.standards__kicker) {
-    margin-top: var(--space-5);
-  }
-
-  .boundary__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-top: var(--space-6);
-  }
-
-  @media (max-width: 767px) {
-    .about-intro__grid,
-    .standards__grid,
-    .corrections__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .about-intro__dek {
-      margin-top: 0;
-    }
-
-    .standards__intro {
-      position: static;
-    }
-  }
-
-  @media (max-width: 599px) {
-    .boundary__actions {
-      display: grid;
-    }
-
-    .boundary__actions .button {
-      width: 100%;
-    }
-  }
+  .about-intro, .standards, .corrections, .boundary { padding: var(--section-gap) var(--space-0); }
+  .about-intro__grid, .standards__grid, .corrections__grid { display: grid; gap: var(--group-gap); }
+  .about-intro__kicker, .standards__kicker, .standards__number { margin: var(--space-0) var(--space-0) var(--space-3); color: var(--text-secondary); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  h1 { margin: var(--space-0); font-family: var(--font-reading); font-size: var(--type-title); font-weight: var(--weight-semibold); line-height: var(--leading-title); letter-spacing: var(--tracking-display); text-wrap: balance; }
+  h2 { margin: var(--space-0) var(--space-0) var(--space-5); font-family: var(--font-ui); font-size: var(--type-section); font-weight: var(--weight-semibold); line-height: var(--leading-section); text-wrap: balance; }
+  h3 { margin: var(--space-0) var(--space-0) var(--space-3); font-family: var(--font-ui); font-size: var(--type-card); font-weight: var(--weight-semibold); line-height: var(--leading-card); }
+  .about-intro__dek, .standards__intro > p:last-child, .standards__list section > p:last-child, .corrections__grid > div:last-child, .boundary__inner > p:not(.standards__kicker) { font-family: var(--font-reading); font-size: var(--type-reading); line-height: var(--leading-reading); }
+  p { margin: var(--space-0) var(--space-0) var(--paragraph-gap); }
+  .standards, .corrections { border-top: var(--border-width) solid var(--border); }
+  .standards__list section { padding: var(--space-6) var(--space-0); border-top: var(--border-width) solid var(--border); }
+  .standards__list section > p:last-child { margin-bottom: var(--space-0); }
+  .boundary__inner { padding: var(--panel-padding); background: var(--surface-2); border: var(--border-width) solid var(--border); border-radius: var(--radius-panel); }
+  .boundary__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+  a:not(.button) { text-decoration: underline; text-underline-offset: var(--underline-offset); }
 </style>

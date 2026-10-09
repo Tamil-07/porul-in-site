@@ -1,171 +1,45 @@
 ---
+import CommercialDisclosure from "@/components/CommercialDisclosure.astro";
 interface Props {
-  title: string;
-  dek: string;
-  location: string;
-  readingMinutes: number;
-  publishDate?: Date;
-  updatedDate?: Date;
-  slug: string;
-  sponsored?: boolean;
-  heroImage?: string;
-  heroImageAlt?: string;
+  title: string; dek: string; location: string; readingMinutes: number; publishDate?: Date; updatedDate?: Date; slug: string;
+  sponsored?: boolean; sponsorName?: string; sponsorInvolvement?: string; authorship?: "porul" | "partner"; producerName?: string;
+  heroImage?: string; heroImageAlt?: string;
+  headingLevel?: 2 | 3;
+  featured?: boolean; heroImageCaption?: string; heroImageWidth?: number; heroImageHeight?: number;
 }
-
-const {
-  title,
-  dek,
-  location,
-  readingMinutes,
-  publishDate,
-  updatedDate,
-  slug,
-  sponsored = false,
-  heroImage,
-  heroImageAlt = ""
-} = Astro.props;
+const { title, dek, location, readingMinutes, publishDate, updatedDate, slug, heroImage, heroImageAlt = "" } = Astro.props;
+const { featured = false, heroImageCaption, heroImageWidth, heroImageHeight } = Astro.props;
 const date = updatedDate ?? publishDate;
+const Heading = Astro.props.headingLevel === 2 ? "h2" : "h3";
 const dateLabel = date ? new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(date) : undefined;
 ---
-
-<article class="card cham">
-  <a href={`/stories/${slug}/`} aria-label={`Read the story: ${title}`}>
-    <div class="thumb">
-      <span class="pill cham">{sponsored ? "Sponsored profile" : "Company story"}</span>
-      {
-        heroImage ? (
-          <img class="thumb-image" src={heroImage} alt={heroImageAlt} loading="lazy" />
-        ) : (
-          <>
-            <!-- REPLACE: real licensed photography -->
-            <svg class="fig" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder profile silhouette for a company story">
-              <path fill="#26272c" d="M150 70c-6-22 9-42 32-42 22 0 36 16 37 36 1 10-1 17-1 24 14 3 26 12 34 26 9 16 12 36 13 60v8H70v-8c1-30 10-54 30-70 12-10 28-16 47-20v-14c-9-4-15-12-17-21-2-12 0-16-1-25z" />
-            </svg>
-          </>
-        )
-      }
-    </div>
-    <div class="body">
-      <p class="meta">{location}{dateLabel && <> · {updatedDate ? "Updated " : ""}{dateLabel}</>} · {readingMinutes} min</p>
-      <h3>{title}</h3>
-      <p>{dek}</p>
-      <span class="read">Read the story <span aria-hidden="true">→</span></span>
-    </div>
-  </a>
+<article class:list={["story-card", {"story-card--featured": featured}]}>
+  {heroImage && !featured && <a class="story-card__media" href={`/stories/${slug}/`} tabindex="-1" aria-hidden="true"><img src={heroImage} alt={heroImageAlt} loading="lazy" /></a>}
+  <div class="story-card__body">
+    <CommercialDisclosure {...Astro.props} compact />
+    <p class="story-card__meta">Company story · {location} · {readingMinutes} min{dateLabel && <> · {updatedDate ? "Updated " : ""}<time datetime={date?.toISOString()}>{dateLabel}</time></>}</p>
+    <Heading><a href={`/stories/${slug}/`}>{title}</a></Heading>
+    <p class="story-card__dek">{dek}</p>
+    {featured && <p class="story-card__meta">{Astro.props.authorship === "partner" ? Astro.props.producerName : "Porul.in / Editorial"}</p>}
+    {heroImage && featured && <figure class="story-card__figure"><img src={heroImage} alt={heroImageAlt} width={heroImageWidth} height={heroImageHeight} loading="lazy" />{heroImageCaption && <figcaption>{heroImageCaption}</figcaption>}</figure>}
+    <a class="story-card__read" href={`/stories/${slug}/`} aria-label={`Read the story: ${title}`}>Read the story <span aria-hidden="true">→</span></a>
+  </div>
 </article>
-
 <style>
-  .card {
-    --cham: 18px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--paper-2);
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px -22px rgba(17, 17, 20, 0.4);
-  }
-
-  a {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-  }
-
-  .thumb {
-    position: relative;
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    background: var(--surface-inverse);
-  }
-
-  .fig {
-    position: absolute;
-    right: -6%;
-    bottom: 0;
-    height: 104%;
-    opacity: 0.9;
-  }
-
-  .thumb-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 64% 72%;
-    filter: contrast(1.03) saturate(0.88);
-  }
-
-  .pill {
-    --cham: 8px;
-    position: absolute;
-    top: 13px;
-    left: 13px;
-    z-index: 2;
-    padding: 6px 11px;
-    background: rgba(247, 246, 242, 0.92);
-    color: var(--ink);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 22px 22px 24px;
-  }
-
-  .meta {
-    margin: 0 0 12px;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  h3 {
-    margin: 0 0 10px;
-    font-family: var(--display);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.16;
-  }
-
-  .body > p:not(.meta) {
-    margin: 0;
-    color: #4A4A52;
-    font-size: 14px;
-  }
-
-  .read {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-top: auto;
-    padding-top: 18px;
-    color: var(--spark);
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-  }
-
-  .read span {
-    transition: transform 0.2s ease;
-  }
-
-  .card:hover .read span {
-    transform: translateX(4px);
-  }
-
-  .card:active {
-    transform: translateY(-1px);
-  }
+  .story-card { display: flex; flex-direction: column; min-width: var(--width-zero); border-top: var(--border-width) solid var(--border-strong); }
+  .story-card__media { display: block; aspect-ratio: var(--image-story-ratio); overflow: hidden; }
+  img { display: block; width: var(--width-full); height: var(--width-full); object-fit: cover; }
+  .story-card__body { display: flex; flex: 1; flex-direction: column; align-items: start; gap: var(--space-4); padding: var(--space-6) var(--space-0); }
+  .story-card__meta { margin: var(--space-0); color: var(--text-secondary); font-family: var(--font-ui); font-size: var(--type-meta); line-height: var(--leading-meta); }
+  h2, h3 { margin: var(--space-0); font-family: var(--font-reading); font-size: var(--type-card); font-weight: var(--weight-semibold); line-height: var(--leading-card); }
+  :is(h2, h3) a { color: var(--text-primary); text-decoration: none; }
+  :is(h2, h3) a:hover { color: var(--accent); text-decoration: underline; }
+  .story-card__dek { margin: var(--space-0); color: var(--text-secondary); font-size: var(--type-body); line-height: var(--leading-body); }
+  .story-card__read { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); margin-top: auto; font-family: var(--font-ui); font-size: var(--type-control); font-weight: var(--weight-semibold); line-height: var(--leading-control); }
+  .story-card--featured { border-top: none; }
+  .story-card--featured :is(h2,h3) { font-size: var(--type-section); line-height: var(--leading-section); }
+  .story-card--featured .story-card__dek { font-family: var(--font-reading); font-size: var(--type-reading); line-height: var(--leading-reading); color: var(--text-primary); }
+  .story-card__figure { margin: var(--space-0); width: var(--width-full); }
+  .story-card__figure img { height: auto; aspect-ratio: var(--image-story-ratio); object-fit: contain; }
+  figcaption { margin-top: var(--space-2); font-size: var(--type-meta); line-height: var(--leading-meta); color: var(--text-secondary); }
 </style>

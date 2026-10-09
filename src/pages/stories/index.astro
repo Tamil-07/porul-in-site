@@ -8,7 +8,7 @@ const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort
 );
 ---
 
-<BaseLayout title="Stories — Porul.in" description="Narrative company stories from Tamil Nadu precision engineering shops.">
+<BaseLayout layout="catalog" title="Stories — Porul.in" description="Narrative company stories from Tamil Nadu precision engineering shops.">
   <section class="page-intro">
     <div class="wrap">
       <p class="page-intro__kicker">Company stories</p>
@@ -19,11 +19,13 @@ const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort
 
   <section class="page-band" aria-label="Published stories">
     <div class="wrap">
-      <div class="cards">
+      <div class="page-grid">
         {
           stories.length > 0 ? (
             stories.map((story) => (
               <StoryCard
+                headingLevel={2}
+                {...story.data}
                 title={story.data.title}
                 dek={story.data.dek}
                 location={story.data.location}
@@ -37,7 +39,7 @@ const stories = (await getCollection("stories", ({ data }) => !data.draft)).sort
               />
             ))
           ) : (
-            <p class="empty-state cham">Stories are published as they are reported — no treadmill.</p>
+            <p class="panel">Stories are published as they are reported — no treadmill.</p>
           )
         }
       </div>

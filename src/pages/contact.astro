@@ -1,10 +1,41 @@
 ---
-// Real public contact paths, without an invented office or response-time promise.
+// Route each purpose to its real contact path without duplicating the composer.
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { whatsappDisplay, whatsappUrl } from "@/data/contact";
-import "@/styles/services.css";
 ---
-<BaseLayout title="Contact Porul.in — Services, Editorial & Corrections" description="Contact Porul.in by WhatsApp or email about MSME benefits reviews, GeM support, editorial enquiries or corrections. Scope and any fee are confirmed first." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]}>
-  <div class="service-page"><section class="service-intro"><div class="wrap"><p class="eyebrow">Contact Porul.in</p><h1>Start a conversation with Porul.</h1><p class="intro-copy">For services, editorial questions and corrections, use the contact paths below. Porul.in is an independent service provider and publication, not a government body.</p><div class="actions"><a class="button button--dark" href={whatsappUrl()}>WhatsApp {whatsappDisplay}</a><a class="text-link" href="mailto:hello@porul.in">hello@porul.in</a></div></div></section>
-  <section class="service-band"><div class="wrap service-split"><div><h2>Service enquiries</h2><p>For an MSME benefits review, tell us what you manufacture, your district and state, and whether you are planning, producing or expanding. Benefits reviews cover businesses in Tamil Nadu and Karnataka. Read the <a href="/msme-benefits/">review scope and limits</a> before enquiring. We confirm scope and any fee before an assessment begins.</p><p>For GeM registration or catalogue help, share your product and current portal stage. If you need a <a href="/digital-signature-for-gem/">Digital Signature Certificate for GeM</a>, include the signing step or bid and whether you already have a certificate or token. For a bid or Tamil Nadu tender, include the official link and deadline so we can review whether we can help. An enquiry is not a booking, an eligibility decision or a guarantee of approval.</p><p><a href="/enquire/">Prepare an enquiry message</a>. Nothing is sent until you choose a channel and send it yourself. Please do not send identity numbers, bank documents, passwords or OTPs in an initial message. See our <a href="/privacy/">privacy notice</a>.</p></div><div><h2>Editorial &amp; corrections</h2><p>Send story enquiries to <a href="mailto:hello@porul.in?subject=Editorial%20enquiry">hello@porul.in with the subject “Editorial enquiry”</a>. Paid services do not purchase editorial coverage or endorsement.</p><p>To request a correction, send the article link, the claim in question and supporting evidence to <a href="mailto:hello@porul.in?subject=Correction%20request">hello@porul.in with the subject “Correction request”</a>. Each request is reviewed and answered with the change made or the reason no change was made. Read our <a href="/about/#editorial-standards">editorial standards</a>.</p><p>For The Room, use its <a href="/the-room/">application process and four fit questions</a>. It is not a sourcing or sales-enquiry channel. Service enquiries belong in the service contact path above.</p></div></div></section></div>
+<BaseLayout layout="form" title="Contact Porul.in — Services, Editorial & Corrections" description="Contact Porul.in about GeM, websites and software, story ideas, government schemes, sponsorship or corrections. Choose a relevant contact path." breadcrumbs={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]}>
+  <section class="page-intro"><div class="wrap">
+    <p class="page-intro__kicker">Contact Porul.in</p><h1>Start a conversation with Porul.</h1>
+    <p class="page-intro__dek">Choose the path that fits your enquiry, or write to us directly. Porul is an independent service provider and publication, separate from the government.</p>
+    <div class="contact-actions"><a class="button" href={whatsappUrl()}>WhatsApp {whatsappDisplay}</a><a class="text-link" href="mailto:hello@porul.in">hello@porul.in</a></div>
+  </div></section>
+  <section class="page-band"><div class="wrap stack">
+    <section class="contact-purpose stack"><h2>Service enquiries</h2>
+      <p>Tell us the requirement and where you are in the process. We review whether Porul can help and confirm scope and any fee before work begins.</p>
+      <ul>
+        <li><a href="/enquire/?service=gem">GeM support</a>: share your product and portal stage. For a bid or Tamil Nadu tender, include the official link and deadline.</li>
+        <li><a href="/enquire/?service=dsc">Digital Signature Certificate for GeM</a>: include the signing step or bid, intended use and whether you already have a certificate or token.</li>
+        <li><a href="/enquire/?service=website-software">Website or software requirements</a>: explain what it needs to do for your business.</li>
+        <li><a href="/enquire/?service=benefits">Government schemes for your unit</a>: share what you manufacture, your district and state, and whether you are planning, producing or expanding. The agreed scheme check covers Tamil Nadu and Karnataka and includes a written shortlist, a checklist and a call.</li>
+      </ul>
+      <p class="fine">An enquiry is not a booking, eligibility decision or guarantee of approval. Review our <a href="/gem-services/">GeM scope</a>, <a href="/digital-signature-for-gem/">DSC scope</a> or <a href="/msme-benefits/">Government scheme scope and limits</a>. Do not send identity numbers, bank documents, passwords or OTPs in an initial message. See our <a href="/privacy/">privacy notice</a>.</p>
+      <p><a class="text-link" href="/enquire/">Prepare an enquiry message</a>. You review and send it yourself; nothing is sent automatically.</p>
+    </section>
+    <section class="contact-purpose stack"><h2>Story ideas and editorial enquiries</h2>
+      <p>Tell us about the people, work and decisions behind your business. <a href="/enquire/?service=story">Share a story idea or commissioned-piece requirement</a>, or email <a href="mailto:hello@porul.in?subject=Editorial%20enquiry">hello@porul.in with the subject “Editorial enquiry”</a>.</p>
+      <p>A paid service does not buy editorial influence, coverage or endorsement. Story enquiries are reviewed; publication is not guaranteed.</p>
+    </section>
+    <section class="contact-purpose stack"><h2>Corrections</h2>
+      <p>Send the article link, the claim in question and supporting evidence to <a href="mailto:hello@porul.in?subject=Correction%20request">hello@porul.in with the subject “Correction request”</a>. Each request is reviewed and answered with the change made or the reason no change was made.</p>
+      <p><a href="/about/#editorial-standards">Read our editorial standards</a>.</p>
+    </section>
+    <section class="contact-purpose stack"><h2>Sponsorship and The Room</h2>
+      <p>For commercial work, review our <a href="/sponsor/">sponsorship formats and disclosure boundaries</a>, then contact the founder directly.</p>
+      <p>For The Room, use its <a href="/the-room/">application process and four fit questions</a>. It is a reviewed editorial network, not a sourcing or sales-enquiry channel.</p>
+    </section>
+  </div></section>
 </BaseLayout>
+<style>
+  .contact-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--item-gap); }
+  .contact-purpose + .contact-purpose { border-top: var(--border-width) solid var(--border); padding-top: var(--group-gap); }
+</style>

@@ -16,10 +16,26 @@ const editorialBase = (image: () => ReturnType<import("astro:content").ImageFunc
   updatedDate: z.date().optional(),
   heroImage: image().optional(),
   heroImageAlt: z.string(),
+  heroImageCaption: z.string().optional(),
   readingMinutes: z.number(),
   sponsored: z.boolean().default(false),
+  sponsorName: z.string().trim().min(1).optional(),
+  sponsorInvolvement: z.string().trim().min(1).optional(),
+  authorship: z.enum(["porul", "partner"]).default("porul"),
+  producerName: z.string().trim().min(1).optional(),
   draft: z.boolean().default(true)
 });
+
+// Funding and authorship remain independent. Drafts may be incomplete, but
+// publishing commercial material requires its visible disclosure fields.
+const validateDisclosure = (data: { draft: boolean; sponsored: boolean; sponsorName?: string; sponsorInvolvement?: string; authorship: string; producerName?: string }, context: z.RefinementCtx) => {
+  if (data.draft) return;
+  const required = data.sponsored ? ["sponsorName", "sponsorInvolvement"] : [];
+  if (data.authorship === "partner") required.push("producerName");
+  for (const field of required) {
+    if (!data[field as keyof typeof data]) context.addIssue({ code: z.ZodIssueCode.custom, path: [field], message: `${field} is required for published commercial content.` });
+  }
+};
 
 const intelligenceCategories = ["materials", "capacity", "policy", "demand", "digest"] as const;
 
@@ -33,7 +49,7 @@ const stories = defineCollection({
     company: z.string(),
     reportingNote: z.string().optional(),
     verificationNote: z.string().optional()
-  })
+  }).superRefine(validateDisclosure)
 });
 
 const intelligence = defineCollection({
@@ -44,7 +60,7 @@ const intelligence = defineCollection({
     category: z.enum(intelligenceCategories),
     keyTakeaway: z.string().optional(),
     sources: z.array(sourceSchema).optional()
-  })
+  }).superRefine(validateDisclosure)
 });
 
 const tamil = defineCollection({
@@ -56,7 +72,7 @@ const tamil = defineCollection({
     keyTakeaway: z.string().optional(),
     sources: z.array(sourceSchema).optional(),
     lang: z.literal("ta").default("ta")
-  })
+  }).superRefine(validateDisclosure)
 });
 
 const pages = defineCollection({
