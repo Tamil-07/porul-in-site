@@ -16,6 +16,7 @@ const linkGroups = [
     heading: 'Read',
     links: [
       { label: 'Stories', href: '/stories/' },
+      { label: 'Share your story', href: '/share-your-story/' },
       { label: 'Intelligence', href: '/intelligence/' },
       { label: 'Guides', href: '/guides/' },
       { label: 'The Room', href: '/the-room/' }
@@ -72,7 +73,6 @@ const linkGroups = [
           <li><a class='footer__link' href={whatsappUrl()}>WhatsApp: {whatsappDisplay}</a></li>
           <li><a class='footer__link' href='https://www.linkedin.com/company/porul-in/' target='_blank' rel='noopener noreferrer'>LinkedIn</a></li>
           <li>Designed &amp; Developed by <a class='footer__link' href='https://enmiya.com/' target='_blank' rel='noopener noreferrer'>Enmiya</a></li>
-          <li><a class='footer__quiet-link' href='https://www.google.com/preferences/source?q=porul.in'>Preferred source: Porul.in on Google</a></li>
         </ul>
       </div>
       <p class='footer__legal'>&copy; {year} Porul.in</p>
@@ -89,13 +89,14 @@ const linkGroups = [
 .footer__wrap {
   display: grid;
   gap: var(--group-gap);
-  padding-block: var(--section-gap);
+  padding-block: var(--space-12) var(--space-8);
 }
 
 .footer__grid {
   display: grid;
-  gap: var(--grid-gap);
-  grid-template-columns: var(--grid-pair);
+  gap: var(--space-10) var(--space-12);
+  grid-template-columns: minmax(15rem, .9fr) minmax(0, 1.7fr);
+  align-items: start;
 }
 
 .footer__brand {
@@ -141,8 +142,8 @@ const linkGroups = [
 
 .footer__nav {
   display: grid;
-  gap: var(--grid-gap);
-  grid-template-columns: var(--grid-pair);
+  gap: var(--space-8) var(--space-6);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .footer__group {
@@ -170,7 +171,7 @@ const linkGroups = [
 
 .footer__link-list {
   display: grid;
-  gap: var(--label-gap);
+  gap: var(--space-2);
 }
 
 .footer__meta-list {
@@ -183,7 +184,7 @@ const linkGroups = [
 .footer__quiet-link {
   display: inline-flex;
   align-items: center;
-  min-height: var(--control-height);
+  min-height: 2rem;
   font-family: var(--font-ui);
   font-size: var(--type-control);
   line-height: var(--leading-control);
@@ -219,7 +220,9 @@ const linkGroups = [
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--item-gap);
+  gap: var(--space-3) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: var(--border-width) solid var(--border-strong);
 }
 
 .footer__legal {
@@ -230,6 +233,36 @@ const linkGroups = [
   line-height: var(--leading-control);
   font-weight: var(--weight-regular);
   letter-spacing: var(--tracking-normal);
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 63.99rem) {
+  .footer__grid {
+    grid-template-columns: minmax(14rem, .8fr) minmax(0, 1.2fr);
+  }
+
+  .footer__nav {
+    grid-template-columns: var(--grid-pair);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .footer__wrap {
+    padding-block: var(--space-10) var(--space-6);
+  }
+
+  .footer__grid {
+    grid-template-columns: var(--grid-one);
+    gap: var(--space-8);
+  }
+
+  .footer__nav {
+    grid-template-columns: var(--grid-pair);
+  }
+
+  .footer__meta,
+  .footer__legal {
+    grid-column: auto;
+  }
 }
 </style>

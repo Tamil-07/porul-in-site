@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdOMm0KbgO2TYki88Y2gk5N5Ag5_XgNVLIZKIxFrheF3uRcqw/viewform?embedded=true";
+const directFormUrl = "https://forms.gle/e3hNRstScnodv4k18";
+---
+
+<BaseLayout
+  layout="form"
+  title="Share your company story — Porul.in"
+  description="Tell Porul.in about the people, decisions and engineering work behind your company. Editorial consideration has no publication fee."
+  canonicalPath="/share-your-story/"
+  breadcrumbs={[{ name: "Home", path: "/" }, { name: "Share your story", path: "/share-your-story/" }]}
+>
+  <section class="page-intro">
+    <div class="wrap story-intro">
+      <p class="page-intro__kicker">Company stories</p>
+      <h1>Tell us what the work means.</h1>
+      <p class="page-intro__dek">Porul.in covers the people, decisions and engineering work behind manufacturing companies. Short answers are welcome.</p>
+    </div>
+  </section>
+
+  <section class="page-band story-band" aria-labelledby="story-form-title">
+    <div class="wrap story-layout">
+      <aside class="story-notes panel stack">
+        <p class="fine">Before you begin</p>
+        <h2 id="story-form-title">One brief. Two clear paths.</h2>
+        <div class="story-path">
+          <span class="story-path__number">01</span>
+          <div><h3>Editorial consideration</h3><p>There is no publication fee. Selection and final editorial decisions remain with Porul.in.</p></div>
+        </div>
+        <div class="story-path">
+          <span class="story-path__number">02</span>
+          <div><h3>Sponsored story enquiry</h3><p>Scope and pricing are agreed before work begins. Published stories are clearly labelled.</p></div>
+        </div>
+        <p class="fine">Your response is reviewed privately by the Porul team. A submission does not guarantee publication.</p>
+      </aside>
+
+      <div class="story-form panel">
+        <div class="story-form__bar"><span><span class="story-form__dot" aria-hidden="true"></span>Story brief</span><span>Porul.in</span></div>
+        <iframe
+          src={formUrl}
+          title="Share your company story with Porul.in"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <p class="fine story-form__fallback">If the form does not load, <a href={directFormUrl} target="_blank" rel="noopener noreferrer">open it in a new tab ↗</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .story-intro { display: grid; gap: var(--space-6); }
+  .story-intro h1 { max-width: 16ch; }
+  .story-band { border-top: var(--border-width) solid var(--border); }
+  .story-layout { display: grid; gap: var(--grid-gap); grid-template-columns: minmax(15rem, .7fr) minmax(0, 1.3fr); align-items: start; }
+  .story-notes { position: sticky; top: 5.5rem; }
+  .story-notes h2 { margin: var(--space-0); }
+  .story-path { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-4); border-top: var(--border-width) solid var(--border); }
+  .story-path__number { color: var(--accent); font-family: var(--font-ui); font-size: var(--type-meta); font-weight: var(--weight-semibold); }
+  .story-path h3 { margin: var(--space-0) var(--space-0) var(--space-2); font-size: var(--type-control); line-height: var(--leading-control); }
+  .story-path p { margin: var(--space-0); color: var(--text-secondary); font-size: var(--type-control); line-height: var(--leading-control); }
+  .story-form { min-width: var(--width-zero); padding: var(--space-0); overflow: hidden; }
+  .story-form__bar { display: flex; align-items: center; justify-content: space-between; min-height: 3rem; padding-inline: var(--space-4); border-bottom: var(--border-width) solid var(--border); color: var(--text-tertiary); font-family: var(--font-ui); font-size: var(--type-meta); font-weight: var(--weight-semibold); letter-spacing: .04em; text-transform: uppercase; }
+  .story-form__bar span:first-child { display: inline-flex; align-items: center; gap: var(--space-2); }
+  .story-form__dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); }
+  .story-form iframe { display: block; width: 100%; height: 1650px; border: 0; background: var(--surface-0); }
+  .story-form__fallback { margin: var(--space-0); padding: var(--space-4); text-align: center; }
+  @media (max-width: 47.99rem) {
+    .story-layout { grid-template-columns: var(--grid-one); }
+    .story-notes { position: static; }
+    .story-form iframe { height: 1800px; }
+  }
+</style>

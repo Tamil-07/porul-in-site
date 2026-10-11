@@ -118,7 +118,7 @@ test("all generated internal links, fragments and assets resolve", async () => {
   }
   const catalogRoutes=new Set(["/","/msme-benefits/","/gem-services/","/digital-signature-for-gem/","/stories/","/intelligence/","/the-room/","/sponsor/","/ta/","/404.html"]);
   for(const [route,nodes] of documents) {
-    const expectedMode=["/enquire/","/contact/"].includes(route)?"form"
+    const expectedMode=["/enquire/","/contact/","/share-your-story/"].includes(route)?"form"
       :catalogRoutes.has(route)?"catalog"
       :["/about/","/privacy/"].includes(route)||route.startsWith("/guides/")||/^\/(stories|intelligence|ta)\/[^/]+\/$/.test(route)?"editorial":null;
     assert.ok(expectedMode,`${route}: assign an approved layout mode`);
