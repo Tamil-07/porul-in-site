@@ -206,3 +206,7 @@ The founder approved the refined C composition and asked to complete this releas
 Every page family uses the same palette, type roles and primitives. Reading remains 704px; catalog is 1152px; forms are 640px, excluding gutters. Removed the DSC guide's narrower local width override. Palette and font tokens are unchanged from the approved system. Current verification and screenshots: `design/global-system/implementation/finalisation-20261009/RELEASE.md`.
 
 This is a completed local iteration, not the final expression of Porul's design. Future refinement should build on one system and evidence from real owners. No deployment was performed.
+
+## 2026-10-12 — Purposeful icons and clear link labels
+
+The founder rejected decorative diagonal arrows on links and buttons. Do not add them back. Use plain, descriptive labels; add an icon only when it helps a user understand an action, state or destination. Retain useful context such as the WhatsApp symbol, location pin and downward cues for in-page navigation. Reference screens inform layout and hierarchy, not decoration copied into Porul.

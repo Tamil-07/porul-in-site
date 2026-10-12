@@ -175,6 +175,24 @@ The story card now accepts an optional hero image. Future published stories shou
 
 **Rejected alternative:** Continuing to create standalone preview sites or content folders outside the repository. These may be useful for brief experiments, but they must never become an alternate production source.
 
+### 2026-10-12 — Footer copy, contact action and credit refinement
+
+The founder requested shorter footer copy, a direct WhatsApp action without the visible number, the public location “Coimbatore, Tamilnadu”, and a separate Enmiya credit with uniform typography.
+
+The footer now has three clear regions: identity and navigation; email/WhatsApp/LinkedIn contact; copyright and developer credit. The description reads “Business support for small manufacturers. Stories and insight from the people who make things.” A smaller independence note reads “Independent of GeM and government bodies.” The location names the founder-approved city and state only; no postal address or office claim was added.
+
+The WhatsApp button uses the existing shared destination and a decorative inline icon. “Designed & Developed by Enmiya” occupies its own bottom row, with the label and backlink both using the 14px Source Sans UI role. Footer layout mechanics are defined centrally in `src/styles/tokens.css`; the approved palette and font assets are unchanged.
+
+Acceptance checks: direct contact destination, visible location, separate credit, matching credit/link font family and size, keyboard focus, 48px WhatsApp target, and no horizontal overflow. Browser checks passed at 320, 390, 768, 1024 and 1440px. `npm run build`, discovery checks and all nine release tests passed. This work is local and has not been pushed or deployed.
+
+### 2026-10-12 — Remove decorative diagonal arrows; add Inspo reference access
+
+The founder approved the footer, but rejected diagonal-arrow glyphs that add ambiguity without user value. Removed them from the footer contact links, home-page actions, government-scheme buttons, story-form fallback and article source links. Descriptive labels and destinations are unchanged. The WhatsApp symbol, location pin and in-page downward navigation cues remain meaningful. `DESIGN.md` records the preference for future work.
+
+Installed the founder-requested global `inspo` MCP at `https://inspomcp.dev/api/mcp` using `codex mcp add`. Confirmed its enabled configuration and successful remote initialization. Read its tool catalogue, called `find_components` for minimal footer references, and visually reviewed the returned Anthropic and Arc captures. Used their clear link grouping and action separation as reference, not their colours or ornamentation; Porul's approved design system remains authoritative.
+
+Verification: no diagonal arrows remain in `src` or `public`; production build, discovery checks and all nine tests pass. Desktop (1440px) and mobile (390px) checks show no horizontal overflow, the WhatsApp target remains 48px high, and the separate developer credit/link share the 14px Source Sans UI role. Changes remain local; no commit, push or deployment was performed.
+
 ## Future AI checklist
 
 Before changing anything:

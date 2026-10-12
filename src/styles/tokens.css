@@ -205,6 +205,12 @@
   --nav-compact-display: flex;
   --nav-link-gap: var(--space-4);
   --nav-panel-width: 20rem;
+  /* Footer composition changes with available space; type roles stay shared. */
+  --footer-columns: var(--grid-one);
+  --footer-nav-columns: var(--grid-two);
+  --footer-row-direction: column;
+  --footer-row-align: flex-start;
+  --footer-padding: var(--space-10);
   --layer-header: 20;
   --layer-skip: 100;
   --skip-hidden-transform: translateY(-200%);
@@ -274,6 +280,10 @@
     --leading-reading: 2rem;
     --grid-pair: var(--grid-two);
     --grid-palette: var(--grid-two);
+    --footer-nav-columns: var(--grid-four);
+    --footer-row-direction: row;
+    --footer-row-align: center;
+    --footer-padding: var(--space-12);
   }
 }
 @media (min-width: 64rem) {
@@ -282,6 +292,7 @@
     --grid-palette: var(--grid-four);
     --nav-wide-display: flex;
     --nav-compact-display: none;
+    --footer-columns: minmax(0, 1fr) minmax(0, 2.4fr);
   }
 }
 @media (prefers-reduced-motion: reduce) {

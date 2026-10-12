@@ -23,7 +23,7 @@ const cover = isOrbit ? await getImage({ src: illustration, format: "webp" }) : 
       </div>
       <div class="hero-copy">
         <p>Get help with GeM registration and product listings. Talk to us about a website, software or a story about your business.</p>
-        <div class="actions"><a class="button" href="/enquire/?service=gem">Talk to us about GeM</a><a class="text-link" href="/stories/">Read our stories ↗</a></div>
+        <div class="actions"><a class="button" href="/enquire/?service=gem">Talk to us about GeM</a><a class="text-link" href="/stories/">Read our stories</a></div>
       </div>
     </section>
     <nav class="tasks" aria-label="Start with a task"><a class="task-primary" href="#gem">GeM help <span aria-hidden="true">↓</span></a><a href="#website-software">Websites &amp; software <span aria-hidden="true">↓</span></a><a href="#story">Business stories <span aria-hidden="true">↓</span></a><a href="#schemes">Government schemes <span aria-hidden="true">↓</span></a></nav>
@@ -32,24 +32,24 @@ const cover = isOrbit ? await getImage({ src: illustration, format: "webp" }) : 
         <div class="service-heading">
         <p class="eyebrow">Start here · GeM</p>
         <h2 class="service-title" id="gem-title">Get ready to sell on GeM</h2>
-        <a class="text-link" href="/gem-services/">See GeM services ↗</a>
+        <a class="text-link" href="/gem-services/">See GeM services</a>
         </div>
         <div class="service-copy">
         <p class="service-body">We help you prepare your seller registration and product listings, or work through a rejected catalogue. Digital Signature Certificate support is available.</p>
         <p class="service-note">We agree the work and any fee before starting. Porul is independent of GeM and government. Approvals and orders are not guaranteed.</p>
-        <div class="actions"><a class="button" href="/enquire/?service=gem">Talk to us about GeM</a><a class="text-link" href="/digital-signature-for-gem/">Digital Signature Certificate support ↗</a></div>
+        <div class="actions"><a class="button" href="/enquire/?service=gem">Talk to us about GeM</a><a class="text-link" href="/digital-signature-for-gem/">Digital Signature Certificate support</a></div>
         </div>
       </section>
       <div class="pair">
         <section class="route" id="website-software" aria-labelledby="web-title">
           <h2 class="route-title" id="web-title">A website or software for your business</h2>
           <p>Tell us what it needs to do. We’ll discuss whether we can help, what the work involves and the fee.</p>
-          <a class="text-link" href="/enquire/?service=website-software">Discuss your project ↗</a>
+          <a class="text-link" href="/enquire/?service=website-software">Discuss your project</a>
         </section>
         <section class="route" id="story" aria-labelledby="story-title">
           <h2 class="route-title" id="story-title">Have a business story worth telling?</h2>
           <p>Tell us about it, or ask about a commissioned article. Paid articles are labelled. Payment does not guarantee publication or buy editorial influence.</p>
-          <a class="text-link" href="/enquire/?service=story">Discuss a story ↗</a>
+          <a class="text-link" href="/enquire/?service=story">Discuss a story</a>
         </section>
       </div>
       <section class="schemes" id="schemes" aria-labelledby="schemes-title">
@@ -57,13 +57,13 @@ const cover = isOrbit ? await getImage({ src: illustration, format: "webp" }) : 
         <p class="eyebrow">Tamil Nadu &amp; Karnataka</p>
         <h2 class="service-title" id="schemes-title">Government schemes for your manufacturing unit</h2>
         <p>Starting a unit, buying machinery or expanding? We check central and state schemes against your unit’s details in Tamil Nadu or Karnataka. Already bought your machinery? We can check your options too.</p>
-        <a class="text-link" href="/enquire/?service=benefits">Ask about government schemes ↗</a>
+        <a class="text-link" href="/enquire/?service=benefits">Ask about government schemes</a>
         </div>
         <div class="scheme-output">
         <h3>What you receive</h3>
         <ul>{schemeDeliverables.map(item => <li>{item}</li>)}</ul>
         <p class="scheme-limit">We don’t file applications or arrange loans. Authorities decide eligibility and approval.</p>
-        <a class="text-link" href="/msme-benefits/">How the scheme check works ↗</a>
+        <a class="text-link" href="/msme-benefits/">How the scheme check works</a>
         </div>
       </section>
     </div>
@@ -73,7 +73,7 @@ const cover = isOrbit ? await getImage({ src: illustration, format: "webp" }) : 
         <div class="lead-story">{story ? <StoryCard {...story.data} featured headingLevel={3} heroImage={cover?.src ?? story.data.heroImage?.src} heroImageAlt={isOrbit ? "Conceptual editorial illustration of a sheet-metal job moving between cutting and dispatch." : story.data.heroImageAlt} heroImageWidth={isOrbit ? illustration.width : story.data.heroImage?.width} heroImageHeight={isOrbit ? illustration.height : story.data.heroImage?.height} heroImageCaption={isOrbit ? "Conceptual editorial illustration, generated with AI. Not a photograph of Orbit Laser Cutting." : story.data.heroImageCaption} /> : <p>Stories appear as they are reported.</p>}</div>
         <div class="analysis">{intelligence ? <IntelCard {...intelligence.data} headingLevel={3} /> : <p>Industry analysis appears when published.</p>}</div>
       </div>
-      <p class="pub-more"><a class="text-link" href="/stories/">Explore stories ↗</a><a class="text-link" href="/intelligence/">Explore intelligence ↗</a></p>
+      <p class="pub-more"><a class="text-link" href="/stories/">Explore stories</a><a class="text-link" href="/intelligence/">Explore intelligence</a></p>
     </section>
     <section class="closing" aria-labelledby="closing-title">
       <div class="closing-copy">
